@@ -1,14 +1,15 @@
 import "./App.css";
-import React, { Component } from "react";
+import React from "react";
 import NavBar from "./components/navbar";
 import Graphs from "./components/graphs";
+import { useState } from "react";
 
-class App extends Component {
-  state = {
-    graphs: [{ name: "Default-graph", data: "Default-graph-data" }],
-  };
+function App(props) {
+  const [graphs, setGraphs] = useState([
+    { name: "Default-graph", data: "Default-graph-data" },
+  ]);
 
-  parseConfigFile = (jsonData) => {
+  const parseConfigFile = (jsonData) => {
     let parsedJson = JSON.parse(jsonData);
     console.log(parsedJson);
     console.log(parsedJson.graphs[1]);
@@ -19,26 +20,24 @@ class App extends Component {
         data: parsedJson.graphs[i].data,
       });
 
-    this.setState({ graphs: newGraphs });
+    setGraphs(newGraphs);
   };
 
-  onFileUpload = (e) => {
+  const onFileUpload = (e) => {
     const files = e.target.files;
     const reader = new FileReader();
     reader.readAsText(files[0]);
     reader.onload = (e) => {
-      this.parseConfigFile(e.target.result);
+      parseConfigFile(e.target.result);
     };
   };
 
-  render() {
-    return (
-      <React.Fragment>
-        <NavBar onFileUpload={this.onFileUpload}></NavBar>
-        <Graphs graphs={this.state.graphs}></Graphs>
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      <NavBar onFileUpload={onFileUpload}></NavBar>
+      <Graphs graphs={graphs}></Graphs>
+    </React.Fragment>
+  );
 }
 
 export default App;
