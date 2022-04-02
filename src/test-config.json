@@ -1,0 +1,47 @@
+{
+    "graphs":[
+        {
+            "name": "Graph1",
+            "data": "Data1"
+        },
+        {
+            "name": "Graph2",
+            "data": "Data1"
+        }
+        ,
+        {
+            "name": "Graph2",
+            "data": "Data1"
+        }
+        ,
+        {
+            "name": "Graph2",
+            "data": "Data1"
+        }
+        ,
+        {
+            "name": "Graph2",
+            "data": "Data1"
+        }
+        ,
+        {
+            "name": "Graph2",
+            "data": "Data1"
+        }
+        ,
+        {
+            "name": "Graph2",
+            "data": "Data1"
+        }
+        ,
+        {
+            "name": "Graph2",
+            "data": "Data1"
+        }
+        ,
+        {
+            "name": "Graph2",
+            "data": "Data1"
+        }
+    ]
+}
