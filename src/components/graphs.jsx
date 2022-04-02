@@ -4,7 +4,7 @@ import Graph from "./graph";
 function Graphs(props) {
   const sortIntoGrid = (array, chunk = 3) => {
     let result = [];
-    let i = 0;
+    let i;
     for (i = 0; i < array.length; i += chunk)
       result.push(array.slice(i, i + chunk));
     return result;
@@ -19,7 +19,7 @@ function Graphs(props) {
         <div className="row">
           {graphs.map((graph) => (
             <div className="col-xs-3">
-              <Graph name={graph.name} data={graph.data}></Graph>
+              <Graph name={graph.name} data={graph.data}/>
             </div>
           ))}
         </div>

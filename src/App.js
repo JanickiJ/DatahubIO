@@ -34,8 +34,8 @@ function App(props) {
 
   return (
     <React.Fragment>
-      <NavBar onFileUpload={onFileUpload}></NavBar>
-      <Graphs graphs={graphs}></Graphs>
+      <NavBar onFileUpload={onFileUpload}/>
+      <Graphs graphs={graphs}/>
     </React.Fragment>
   );
 }
