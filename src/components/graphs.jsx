@@ -12,7 +12,7 @@ function Graphs({graphs, sortIntoGrid}) {
                      style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
                     {graphs.map((graph) => (
                         <div className="col-xs-3">
-                        <Plot key={graph.title} plotData={graph}/>
+                        <Plot key={graph.title} plotData={graph} width={1000} aspect={2.5}/>
                         </div>
                         ))}
                 </div>

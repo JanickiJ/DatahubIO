@@ -10,7 +10,8 @@ export default class PlotData {
         let diff = Object.keys(values)
             .filter(v => !Object.keys(this.charts).includes(v));
         if (diff.length) {
-            throw new Error(diff + " chart names not defined");
+            const errorMessage = "chart names not defined";
+            throw new Error(diff + errorMessage);
         }
         this.points.push({
             "timestamp": timestamp,
