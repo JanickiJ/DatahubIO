@@ -8,10 +8,10 @@ function Graphs({graphs,sortIntoGrid}) {
   return (
     <main className="container-fluid">
       {gridArray.map((graphs) => (
-        <div className="row">
-          {graphs.map((graph) => (
+          <div className="row"
+               style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+            {graphs.map((graph) => (
               <div className="row"
-                   style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
                 <Plot key={graph.title} plotData={graph}/>
             </div>
           ))}
