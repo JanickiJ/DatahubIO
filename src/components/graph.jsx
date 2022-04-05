@@ -1,13 +1,19 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
-function Graph(props) {
+function Graph({data,name}) {
   return (
     <React.Fragment>
-      <p>{props.name}</p>
+      <p>{name}</p>
       <img src="../logo512.png"></img>
-      <p>{props.data}</p>
+      <p>{data}</p>
     </React.Fragment>
   );
 }
 
-export default Graph;
+Graph.propTypes = {
+    name: PropTypes.string.isRequired,
+    data: PropTypes.string.isRequired
+};
+
+export default Graph

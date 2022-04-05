@@ -1,18 +1,10 @@
 import React from "react";
 import Graph from "./graph";
+import PropTypes from 'prop-types';
 
-function Graphs(props) {
-  const sortIntoGrid = (array, chunk = 3) => {
-    let result = [];
-    let i;
-    for (i = 0; i < array.length; i += chunk)
-      result.push(array.slice(i, i + chunk));
-    return result;
-  };
-
-  const tempArray = props.graphs || [];
-  const gridArray = sortIntoGrid(tempArray, 3);
-  console.log(gridArray);
+function Graphs({graphs,sortIntoGrid}) {
+  const tempArray = graphs || [];
+  const gridArray = sortIntoGrid(tempArray);
   return (
     <main className="container-fluid">
       {gridArray.map((graphs) => (
@@ -28,4 +20,9 @@ function Graphs(props) {
   );
 }
 
-export default Graphs;
+Graphs.propTypes = {
+  graphs: PropTypes.array.isRequired,
+  sortIntoGrid: PropTypes.func.isRequired
+};
+
+export default Graphs
