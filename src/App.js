@@ -2,12 +2,11 @@ import "./App.css";
 import React from "react";
 import NavBar from "./components/navbar";
 import Graphs from "./components/graphs";
-import { useState } from "react";
+import {useState} from "react";
+import {mockedPlotData} from "./mockedData"
 
-function App(props) {
-  const [graphs, setGraphs] = useState([
-    { name: "Default-graph", data: "Default-graph-data" },
-  ]);
+function App() {
+  const [graphs, setGraphs] = useState([mockedPlotData(), mockedPlotData(), mockedPlotData()]);
 
   const parseConfigFile = (jsonData) => {
     let parsedJson = JSON.parse(jsonData);

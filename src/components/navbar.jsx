@@ -1,5 +1,5 @@
 import React from "react";
-import { BsArrowClockwise } from "react-icons/bs";
+import {BsArrowClockwise} from "react-icons/bs";
 
 function NavBar(props) {
   return (

@@ -1,11 +1,10 @@
 import React from "react";
-import Graph from "./graph";
+import Plot from "./Plot";
 
 function Graphs(props) {
   const sortIntoGrid = (array, chunk = 3) => {
     let result = [];
-    let i;
-    for (i = 0; i < array.length; i += chunk)
+    for (let i = 0; i < array.length; i += chunk)
       result.push(array.slice(i, i + chunk));
     return result;
   };
@@ -16,10 +15,11 @@ function Graphs(props) {
   return (
     <main className="container-fluid">
       {gridArray.map((graphs) => (
-        <div className="row">
+        <div className="row"
+             style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
           {graphs.map((graph) => (
             <div className="col-xs-3">
-              <Graph name={graph.name} data={graph.data}/>
+              <Plot key={graph.title} plotData={graph}/>
             </div>
           ))}
         </div>
