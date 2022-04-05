@@ -7,7 +7,8 @@ export default class PlotData {
   }
 
   addPoint(timestamp, values) {
-    let diff = Object.keys(values).filter(v => !Object.keys(this.charts).includes(v));
+    let diff = Object.keys(values)
+      .filter(v => !Object.keys(this.charts).includes(v));
     if (diff.length) {
       throw new Error(diff + " chart names not defined");
     }
@@ -27,6 +28,7 @@ export default class PlotData {
   }
 
   static randomColor() {
-    return "#" + Math.floor(Math.random() * 16777215).toString(16);
+    return "#" + Math.floor(Math.random() * 16777215)
+      .toString(16);
   }
 }
