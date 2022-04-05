@@ -20,8 +20,7 @@ function mapDispatchToProps (dispatch, ownProps){
 const sortIntoGrid = (graphs,chunk = 3) => {
     let array = graphs || [];
     let result = [];
-    let i;
-    for (i = 0; i < array.length; i += chunk)
+    for (let i = 0; i < array.length; i += chunk)
         result.push(array.slice(i, i + chunk));
     return result;
 };

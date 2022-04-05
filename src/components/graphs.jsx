@@ -1,5 +1,5 @@
 import React from "react";
-import Graph from "./graph";
+import Plot from "./plot";
 import PropTypes from 'prop-types';
 
 function Graphs({graphs,sortIntoGrid}) {
@@ -10,8 +10,9 @@ function Graphs({graphs,sortIntoGrid}) {
       {gridArray.map((graphs) => (
         <div className="row">
           {graphs.map((graph) => (
-            <div className="col-xs-3">
-              <Graph name={graph.name} data={graph.data}/>
+              <div className="row"
+                   style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+                <Plot key={graph.title} plotData={graph}/>
             </div>
           ))}
         </div>

@@ -1,7 +1,8 @@
 import {LOAD_CONFIG} from '../actions/types'
+import {mockedPlotData} from "../utils/mockedData"
 
 const initialState = {
-    graphs: [{name: "Default", data: "Default"}]
+    graphs: [mockedPlotData(), mockedPlotData(), mockedPlotData()]
 }
 
 export default function configReducer(state = initialState, action) {
