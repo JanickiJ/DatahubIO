@@ -9,7 +9,7 @@ export default function configReducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_CONFIG: {
             return {
-                graphs:action.config
+                graphs: action.config
             }
         }
         default:

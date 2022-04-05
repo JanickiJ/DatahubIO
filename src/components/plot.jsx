@@ -1,8 +1,8 @@
-import {LineChart, Line, XAxis, ResponsiveContainer, YAxis, Tooltip, CartesianGrid} from "recharts"
+import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts"
 import React from "react";
 import PropTypes from 'prop-types';
 
-function Plot({key,plotData}) {
+function Plot({key, plotData}) {
     return (
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
             <ResponsiveContainer width={1000} aspect={2.5}>

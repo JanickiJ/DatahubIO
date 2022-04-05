@@ -1,7 +1,7 @@
 import React from "react";
 import {BsArrowClockwise} from "react-icons/bs";
 import PropTypes from 'prop-types';
-import store from '../store/store'
+
 function Navbar({onFileUpload}) {
     return (
         <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -13,10 +13,7 @@ function Navbar({onFileUpload}) {
                         className="form-control"
                         id="customFile"
                         onChange={(e) => {
-                            console.log("BEFORE UPLOAD",e)
                             onFileUpload(e);
-                            console.log("AFTER UPLOAD",store.getState())
-                            console.log()
                         }}
                     />
                 </ul>

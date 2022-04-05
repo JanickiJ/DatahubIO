@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 import configReducer from './config'
 
 const rootReducer = combineReducers({
