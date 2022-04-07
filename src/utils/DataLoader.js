@@ -17,8 +17,6 @@ async function load(metadata) {
             body += chunk;
         });
 
-
-
         res.on("end", () => {
             try {
                 let json = JSON.parse(body);

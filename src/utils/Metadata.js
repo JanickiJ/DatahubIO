@@ -3,15 +3,15 @@ const TimeInterval = require("./TimeInterval.js");
 class Metadata {
     timeInterval;
     initEndpoint;
-    lastEndpoint;
+    offset;
     dataAccessPaths = [];
     timestampAccessPath = []
 
 
-    constructor(dataDetails, timestampAccessPath, startDate, endDate) {
+    constructor(dataDetails, timestampAccessPath, startDate, endDate, offset = 0) {
         this.timeInterval = new TimeInterval(startDate, endDate)
         this.initEndpoint = dataDetails.endpoint
-        this.lastEndpoint = this.initEndpoint
+        this.offset = offset
 
         this.dataAccessPaths = dataDetails.data
         this.timestampAccessPath = timestampAccessPath
@@ -19,4 +19,3 @@ class Metadata {
 }
 
 module.exports = Metadata
-
