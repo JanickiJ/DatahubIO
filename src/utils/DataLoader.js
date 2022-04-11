@@ -1,4 +1,6 @@
-const https = require('https')
+// const https = require('https')
+// import * as https from "https"
+import axios from 'axios'
 
 function getNestedData(data, path) {
     if (path instanceof Array && path.length > 1)
@@ -10,7 +12,10 @@ async function load(metadata) {
 
     let points = []
 
-    https.get(metadata.initEndpoint, (res) => {
+    axios.get(metadata.initEndpoint).then(res => {
+
+    // })
+    // https.get(metadata.initEndpoint, (res) => {
         let body = "";
 
         res.on("data", (chunk) => {
@@ -62,4 +67,4 @@ class DataLoader{
 
 }
 
-module.exports = DataLoader
+export {DataLoader}
