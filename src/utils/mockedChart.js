@@ -1,7 +1,9 @@
-import PlotData from "./plotData";
+import {Chart} from "./chart.js";
 
-export function mockedPlotData() {
-    const data = new PlotData();
+const mockedMetadata = require("../testMetadata")
+
+export function mockedChart() {
+    const data = new Chart(mockedMetadata);
 
     data.addChartInfo("chart1");
     data.addChartInfo("chart2");

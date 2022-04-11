@@ -1,4 +1,5 @@
-const https = require('https')
+// const https = require('https')
+import * as https from "https"
 
 function getNestedData(data, path) {
     if (path instanceof Array && path.length > 1)
