@@ -1,4 +1,4 @@
-const DataLoader = require("./DataLoader");
+import {DataLoader} from "./DataLoader"
 
 class Chart {
     metadata;
@@ -13,7 +13,7 @@ class Chart {
     }
 
     addData(newData) {
-        this.data.concat(newData);
+        this.data = this.data.concat(newData);
     }
 
     addChartInfo(name, color = null) {

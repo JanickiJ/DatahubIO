@@ -1,6 +1,6 @@
 import {Chart} from "./chart.js";
 
-const mockedMetadata = require("../testMetadata")
+import {mockedMetadata} from "../testMetadata"
 
 export function mockedChart() {
     const data = new Chart(mockedMetadata);
@@ -9,6 +9,8 @@ export function mockedChart() {
     data.addChartInfo("chart2");
     data.addChartInfo("chart3");
 
+    let points = []
+
     for (let num = 0; num < 30; num++) {
         let timestamp = num;
         let values = {
@@ -16,8 +18,13 @@ export function mockedChart() {
             "chart2": Math.random() * 2,
             "chart3": Math.random() * 2,
         }
-        data.addPoint(timestamp, values);
+        points.push({
+            "timestamp" : timestamp,
+            "values": values
+        })
     }
+
+    data.addData(points);
 
     return data;
 }

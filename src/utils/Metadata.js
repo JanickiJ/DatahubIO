@@ -1,4 +1,4 @@
-const TimeInterval = require("./TimeInterval.js");
+import {TimeInterval} from "./TimeInterval"
 
 class Metadata {
     timeInterval;
@@ -18,4 +18,4 @@ class Metadata {
     }
 }
 
-module.exports = Metadata
+export {Metadata}
