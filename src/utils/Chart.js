@@ -12,7 +12,7 @@ class Chart {
     }
 
     addData(newData) {
-        // TODO: implement the addition of data
+        this.data.concat(newData);
     }
 }
 
