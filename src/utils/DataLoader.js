@@ -1,5 +1,3 @@
-// const https = require('https')
-// import * as https from "https"
 import axios from 'axios'
 
 function getNestedData(data, path) {
@@ -12,59 +10,45 @@ async function load(metadata) {
 
     let points = []
 
-    axios.get(metadata.initEndpoint).then(res => {
+    axios.get(metadata.initEndpoint)
+        .then((response) => {
+            let json = JSON.parse(response.data);
 
-    // })
-    // https.get(metadata.initEndpoint, (res) => {
-        let body = "";
+            console.log(json);
 
-        res.on("data", (chunk) => {
-            body += chunk;
-        });
-
-        res.on("end", () => {
-            try {
-                let json = JSON.parse(body);
-
-                for (const dataPoint of json["results"]) {
-                    let timestamp = getNestedData(dataPoint, metadata.timestampAccessPath);
-                    let values = {}
-                    for (const data of metadata.dataAccessPaths) {
-                        values[data["name"]] = getNestedData(dataPoint, data["from"])
-                    }
-
-                    points.push({
-                        "timestamp": timestamp,
-                        "values": values
-                    });
+            for (const dataPoint of json["results"]) {
+                let timestamp = getNestedData(dataPoint, metadata.timestampAccessPath);
+                let values = {}
+                for (const data of metadata.dataAccessPaths) {
+                    values[data["name"]] = getNestedData(dataPoint, data["from"])
                 }
-            } catch (error) {
-                console.error(error.message);
+
+                points.push({
+                    "timestamp": timestamp,
+                    "values": values
+                });
             }
-        });
-
-
-    }).on('error', (e) => {
+        }).catch(e => {
         console.error(e);
     });
 
     return new Promise((resolve) => {
-        setTimeout(function() {
+        setTimeout(function () {
             resolve();
         }, 1000);
-    }).then(function() {
+    }).then(function () {
         return points;
     });
 
 }
 
-class DataLoader{
+class DataLoader {
 
-    async loadData(metadata){
+    async loadData(metadata) {
         return await load(metadata);
     }
 
 
 }
 
-export {DataLoader}
+export {load}
