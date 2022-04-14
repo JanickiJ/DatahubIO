@@ -12,7 +12,7 @@ async function load(metadata) {
 
 
     let endpoint = metadata.initEndpoint.slice("https://datahub.ki.agh.edu.pl".length) + "/?format=json&limit=100&offset=0"
-    console.log(endpoint)
+    //console.log(endpoint)
 
     axios.get(endpoint, {
         headers:{
@@ -20,7 +20,7 @@ async function load(metadata) {
     }).then((response) => {
         let json = response.data;
 
-        console.log(json);
+        ///console.log(json);
 
         for (const dataPoint of json["results"]) {
             let timestamp = getNestedData(dataPoint, metadata.timestampAccessPath);
@@ -38,6 +38,7 @@ async function load(metadata) {
         console.error(e);
     });
 
+
     return new Promise((resolve) => {
         setTimeout(function () {
             resolve();
@@ -52,8 +53,9 @@ class DataLoader {
 
     async loadData(chart) {
         let res = await load(chart.metadata);
-        console.log(res)
-        return res
+        res.reverse();
+        //console.log(res);
+        return res;
     }
 
 
