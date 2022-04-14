@@ -10,10 +10,17 @@ class Chart {
         this.metadata = metadata;
         this.viewingTimeInterval = metadata.timeInterval;
         this.data = [];
+        this.chartInfoFromMetadata()
     }
 
     addData(newData) {
         this.data = this.data.concat(newData);
+    }
+
+    chartInfoFromMetadata(){
+        for (const data of this.metadata.dataAccessPaths) {
+            this.addChartInfo([data["name"]]);
+        }
     }
 
     addChartInfo(name, color = null) {
