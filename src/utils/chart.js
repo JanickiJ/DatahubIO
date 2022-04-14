@@ -1,4 +1,4 @@
-import {load} from "./DataLoader"
+import {DataLoader} from "./DataLoader"
 
 class Chart {
     metadata;
@@ -40,8 +40,9 @@ class ChartContainer {
 }
 
 async function loadDataToChart(chart) {
+    const dataLoader = new DataLoader()
     chart.addData(
-        await load(chart.metadata)
+        await dataLoader.loadData(chart)
     );
     return chart;
 }

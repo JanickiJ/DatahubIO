@@ -6,7 +6,7 @@ export function parseConfig(config) {
     for (const chart of parsedConfig.charts) {
         const chartMetadata = new Metadata(
             chart.dataDetails,
-            chart.timestampsPat,
+            chart.timestampsPath,
             chart.startDate,
             chart.endDate,
             chart.xLabel,
