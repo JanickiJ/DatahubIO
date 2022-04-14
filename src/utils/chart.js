@@ -1,4 +1,4 @@
-import {DataLoader} from "./DataLoader"
+import {load} from "./DataLoader"
 
 class Chart {
     metadata;
@@ -41,7 +41,7 @@ class ChartContainer {
 
 async function loadDataToChart(chart) {
     chart.addData(
-        new DataLoader().loadData(chart.metadata)
+        await load(chart.metadata)
     );
     return chart;
 }
@@ -51,7 +51,7 @@ async function createCharts(metadataList) {
     metadataList.forEach(metadata => {
         dataLoaderCalls.push(loadDataToChart(new Chart(metadata)));
     });
-    return new ChartContainer(await Promise.all(dataLoaderCalls));
+    return new ChartContainer(await Promise.all(dataLoaderCalls).then((v) => v));
 }
 
 export {Chart, ChartContainer, createCharts}
