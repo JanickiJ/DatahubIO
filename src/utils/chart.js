@@ -1,4 +1,5 @@
 import {DataLoader} from "./DataLoader"
+import async from 'async';
 
 class Chart {
     metadata;
@@ -51,15 +52,12 @@ async function loadDataToChart(chart) {
     chart.addData(
         await dataLoader.loadData(chart)
     );
-    return chart;
+    return chart
 }
 
-async function createCharts(metadataList) {
-    let dataLoaderCalls = [];
-    metadataList.forEach(metadata => {
-        dataLoaderCalls.push(loadDataToChart(new Chart(metadata)));
-    });
-    return new ChartContainer(await Promise.all(dataLoaderCalls).then((v) => v));
+function createCharts(metadataList) {
+    let charts = metadataList.map(metadata => new Chart(metadata));
+    return Promise.resolve(async.concat(charts, loadDataToChart))
 }
 
 export {Chart, ChartContainer, createCharts}

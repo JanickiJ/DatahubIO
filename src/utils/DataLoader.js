@@ -1,4 +1,5 @@
 import axios from 'axios'
+import async from 'async'
 
 function getNestedData(data, path) {
     if (path instanceof Array && path.length > 1)
@@ -14,13 +15,13 @@ async function load(metadata) {
     let endpoint = metadata.initEndpoint.slice("https://datahub.ki.agh.edu.pl".length) + "/?format=json&limit=100&offset=0"
     //console.log(endpoint)
 
-    axios.get(endpoint, {
+    await axios.get(endpoint, {
         headers:{
         },
     }).then((response) => {
         let json = response.data;
 
-        ///console.log(json);
+        //console.log(json);
 
         for (const dataPoint of json["results"]) {
             let timestamp = getNestedData(dataPoint, metadata.timestampAccessPath);
@@ -36,26 +37,27 @@ async function load(metadata) {
         }
     }).catch(e => {
         console.error(e);
-    });
+    }).then();
 
-
-    return new Promise((resolve) => {
-        setTimeout(function () {
-            resolve();
-        }, 1000);
-    }).then(function () {
-        return points;
-    });
-
+    points.reverse();
+    return points;
+    // return new Promise((resolve) => {
+    //     setTimeout(function () {
+    //         resolve();
+    //     }, 10000);
+    // }).then(function () {
+    //     return points;
+    // });
 }
 
 class DataLoader {
 
     async loadData(chart) {
-        let res = await load(chart.metadata);
-        res.reverse();
-        //console.log(res);
+        let res = await load(chart.metadata)
+        // console.log("RES", res);
         return res;
+
+
     }
 
 
