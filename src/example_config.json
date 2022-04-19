@@ -26,7 +26,7 @@
 
             "dataDetails": {
 
-                "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data/?format=json&limit=25&offset=25",
+                "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
 
                 "data": [
                     {

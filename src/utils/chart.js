@@ -1,4 +1,5 @@
-import {load} from "./DataLoader"
+import {DataLoader} from "./DataLoader"
+import async from 'async';
 
 class Chart {
     metadata;
@@ -10,10 +11,17 @@ class Chart {
         this.metadata = metadata;
         this.viewingTimeInterval = metadata.timeInterval;
         this.data = [];
+        this.chartInfoFromMetadata()
     }
 
     addData(newData) {
         this.data = this.data.concat(newData);
+    }
+
+    chartInfoFromMetadata(){
+        for (const data of this.metadata.dataAccessPaths) {
+            this.addChartInfo([data["name"]]);
+        }
     }
 
     addChartInfo(name, color = null) {
@@ -40,18 +48,16 @@ class ChartContainer {
 }
 
 async function loadDataToChart(chart) {
+    const dataLoader = new DataLoader()
     chart.addData(
-        await load(chart.metadata)
+        await dataLoader.loadData(chart)
     );
-    return chart;
+    return chart
 }
 
-async function createCharts(metadataList) {
-    let dataLoaderCalls = [];
-    metadataList.forEach(metadata => {
-        dataLoaderCalls.push(loadDataToChart(new Chart(metadata)));
-    });
-    return new ChartContainer(await Promise.all(dataLoaderCalls).then((v) => v));
+function createCharts(metadataList) {
+    let charts = metadataList.map(metadata => new Chart(metadata));
+    return Promise.resolve(async.concat(charts, loadDataToChart))
 }
 
 export {Chart, ChartContainer, createCharts}
