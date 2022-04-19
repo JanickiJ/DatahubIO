@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Graphs from '../components/graphs'
-import {graphsSelector} from '../utils/selectors/graphs'
+import {graphsSelector} from '../utils/selectors/config'
 
 function mapStateToProps(state, ownProps) {
 
