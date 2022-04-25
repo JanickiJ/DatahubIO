@@ -2,14 +2,16 @@ import {LOAD_CONFIG} from '../actions/types'
 import {mockedChart} from "../utils/mockedChart"
 
 const initialState = {
-    graphs: [mockedChart(), mockedChart(), mockedChart()]
+    graphs: [mockedChart(), mockedChart(), mockedChart()],
+    name: ""
 }
 
 export default function configReducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_CONFIG: {
             return {
-                graphs: action.config
+                graphs: action.config,
+                name: action.name
             }
         }
         default:
