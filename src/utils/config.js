@@ -1,5 +1,5 @@
 import {parseConfig} from "./ConfigParser"
-import {createCharts, ChartContainer} from "./chart";
+import {createCharts, ChartContainer} from "../chart/chart";
 
 export async function readConfigFile(e) {
     const files = e.target.files;
@@ -7,7 +7,6 @@ export async function readConfigFile(e) {
     const metadata = parseConfig(fileString)
     const charts = await createCharts(metadata);
     const cc = new ChartContainer(charts)
-    console.log(charts)
     return cc;
 }
 

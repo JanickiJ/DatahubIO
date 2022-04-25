@@ -1,5 +1,7 @@
-import {DataLoader} from "./DataLoader"
+import {DataLoader} from "../utils/DataLoader"
 import async from 'async';
+import {ChartInfo} from "./chartInfo";
+import {AxisSide} from "./axisSide";
 
 class Chart {
     metadata;
@@ -18,19 +20,17 @@ class Chart {
         this.data = this.data.concat(newData);
     }
 
-    chartInfoFromMetadata(){
+    chartInfoFromMetadata() {
         for (const data of this.metadata.dataAccessPaths) {
-            this.addChartInfo([data["name"]]);
+            this.addChartInfo(data.name, data.axis);
         }
     }
 
-    addChartInfo(name, color = null) {
+    addChartInfo(name, yAxisSide = AxisSide.LEFT, color = null) {
         if (color == null) {
             color = Chart.randomColor();
         }
-        this.dataSeries[name] = {
-            "color": color
-        }
+        this.dataSeries[name] = new ChartInfo(color, yAxisSide)
     }
 
     static randomColor() {
