@@ -1,13 +1,14 @@
 import {Chart} from "./chart.js";
 
 import {mockedMetadata} from "../testMetadata"
+import {AxisSide} from "./axisSide";
 
 export function mockedChart() {
-    const data = new Chart(mockedMetadata);
+    const chart = new Chart(mockedMetadata);
 
-    data.addChartInfo("chart1");
-    data.addChartInfo("chart2");
-    data.addChartInfo("chart3");
+    chart.addChartInfo("chart1", AxisSide.LEFT);
+    chart.addChartInfo("chart2", AxisSide.LEFT);
+    chart.addChartInfo("chart3", AxisSide.RIGHT);
 
     let points = []
 
@@ -16,7 +17,7 @@ export function mockedChart() {
         let values = {
             "chart1": Math.random() * 2,
             "chart2": Math.random() * 2,
-            "chart3": Math.random() * 2,
+            "chart3": Math.random() * 10,
         }
         points.push({
             "timestamp" : timestamp,
@@ -24,7 +25,7 @@ export function mockedChart() {
         })
     }
 
-    data.addData(points);
+    chart.addData(points);
 
-    return data;
+    return chart;
 }

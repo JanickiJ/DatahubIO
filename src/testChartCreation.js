@@ -1,5 +1,5 @@
 const Metadata = require("./utils/Metadata");
-const charts = require("./utils/Chart");
+const charts = require("./chart/chart");
 const mockedMetadata = require("./testMetadata")
 
 let metadata = [mockedMetadata];

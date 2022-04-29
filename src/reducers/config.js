@@ -1,5 +1,5 @@
 import {LOAD_CONFIG} from '../actions/types'
-import {mockedChart} from "../utils/mockedChart"
+import {mockedChart} from "../chart/mockedChart"
 
 const initialState = {
     graphs: [mockedChart(), mockedChart(), mockedChart()],

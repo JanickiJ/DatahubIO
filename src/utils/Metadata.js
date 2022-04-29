@@ -1,4 +1,7 @@
 import {TimeInterval} from "./TimeInterval"
+import {AxisSide} from "../chart/axisSide";
+import data from "bootstrap/js/src/dom/data";
+import {isUndefined} from "util";
 
 class Metadata {
     initEndpoint;
@@ -23,8 +26,13 @@ class Metadata {
         this.yUnit = yUnit;
 
 
-        this.dataAccessPaths = dataDetails.data
         this.timestampAccessPath = timestampAccessPath
+        const dataAccessPaths = dataDetails.data
+        dataAccessPaths.forEach(v => {
+            const side = v.axis
+            v.axis = typeof side === 'undefined' ? AxisSide.LEFT : new AxisSide(side)
+        })
+        this.dataAccessPaths = dataAccessPaths
     }
 
 }
