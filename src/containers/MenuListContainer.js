@@ -1,16 +1,9 @@
 import {connect} from 'react-redux';
-import Navbar from '../components/Navbar'
+import MenuList from '../components/MenuList'
 import {readConfigFile} from '../utils/config'
 import {loadConfig} from '../actions/config'
-import {configNameSelector} from '../utils/selectors/config'
 
 function mapStateToProps(state, ownProps) {
-    const tabs = ["graph1","graph2"];
-    console.log("nav con");
-    console.log(state);
-    return {
-        tabs
-    }
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
@@ -22,4 +15,4 @@ function mapDispatchToProps(dispatch, ownProps) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(MenuList)

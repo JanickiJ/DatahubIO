@@ -1,10 +1,11 @@
 import "./App.css";
 import React from "react";
-import GraphsContainer from "./containers/GraphsContainer";
 import NavbarContainer from "./containers/NavbarContainer";
+import Demo from "./components/AppBar";
 import store, {persistor} from "./store/store"
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react'
+import Dashboard from './components/Dashboard'
 
 
 function App() {
@@ -12,8 +13,7 @@ function App() {
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <React.Fragment>
-                    <NavbarContainer/>
-                    <GraphsContainer/>
+                    <Dashboard/>
                 </React.Fragment>
             </PersistGate>
         </Provider>
