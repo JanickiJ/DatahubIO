@@ -1,7 +1,5 @@
-import {TimeInterval} from "./TimeInterval"
-import {AxisSide} from "../chart/axisSide";
-import data from "bootstrap/js/src/dom/data";
-import {isUndefined} from "util";
+import {TimeInterval} from "./TimeInterval.js";
+import {AxisSide} from "../chart/axisSide.js";
 
 class Metadata {
     initEndpoint;

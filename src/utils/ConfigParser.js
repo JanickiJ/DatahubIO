@@ -1,23 +1,29 @@
-import {Metadata} from "./Metadata";
+import {Metadata} from "./Metadata.js";
 
-export function parseConfig(config) {
-    const chartsMetadata = []
+function parseConfig(config) {
+    const groupedChartsMetadata = []
     const parsedConfig = JSON.parse(config)
-    for (const chart of parsedConfig.charts) {
-        const chartMetadata = new Metadata(
-            chart.dataDetails,
-            chart.timestampsPath,
-            chart.startDate,
-            chart.endDate,
-            chart.xLabel,
-            chart.yLabel,
-            chart.title,
-            chart.xUnit,
-            chart.yUnit,
-        )
+    for (const group of parsedConfig.groups){
+        const groupChartsMetadata = []
+        for (const chart of group.charts) {
+            const chartMetadata = new Metadata(
+                chart.dataDetails,
+                chart.timestampsPath,
+                chart.startDate,
+                chart.endDate,
+                chart.xLabel,
+                chart.yLabel,
+                chart.title,
+                chart.xUnit,
+                chart.yUnit,
+            )
 
-        chartsMetadata.push(chartMetadata)
+            groupChartsMetadata.push(chartMetadata)
+        }
+        groupedChartsMetadata.push([group.name, groupChartsMetadata])
     }
 
-    return chartsMetadata
+    return groupedChartsMetadata
 }
+
+export {parseConfig}
