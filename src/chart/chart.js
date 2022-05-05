@@ -17,6 +17,13 @@ class Chart {
     }
 
     addData(newData) {
+        newData.forEach(v =>
+            Object.entries(v.values).forEach(([name, value]) => {
+                const side = this.dataSeries[name].yAxisSide;
+                const axis = side === AxisSide.LEFT ? this.metadata.leftAxis : this.metadata.rightAxis;
+                const decimals = axis.decimals
+                v.values[name] = value.toFixed(decimals)
+            }))
         this.data = this.data.concat(newData);
     }
 
