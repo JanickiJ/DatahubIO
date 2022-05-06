@@ -1,4 +1,5 @@
 import {TimeInterval} from "./TimeInterval"
+import {AxisSide} from "../chart/axisSide";
 
 class Metadata {
     initEndpoint;
@@ -6,25 +7,36 @@ class Metadata {
     dataAccessPaths = [];
     timestampAccessPath = [];
     xLabel;
-    yLabel;
+    yLeftLabel;
+    yRightLabel;
     title;
     xUnit;
     yUnit;
+    leftAxis;
+    rightAxis;
     offset;
 
-    constructor(dataDetails, timestampAccessPath, startDate, endDate, xLabel, yLabel, title, xUnit, yUnit, offset = 0) {
+    constructor(dataDetails, timestampAccessPath, startDate, endDate, leftAxis, rightAxis, xLabel, yLeftLabel, yRightLabel, title, xUnit, yUnit, offset = 0) {
         this.timeInterval = new TimeInterval(startDate, endDate)
         this.initEndpoint = dataDetails.endpoint
-        this.offset = offset
+        this.leftAxis = leftAxis;
+        this.rightAxis = rightAxis;
         this.xLabel = xLabel;
-        this.yLabel = yLabel;
+        this.yLeftLabel = yLeftLabel;
+        this.yRightLabel = yRightLabel;
         this.title = title;
         this.xUnit = xUnit;
         this.yUnit = yUnit;
+        this.offset = offset
 
 
-        this.dataAccessPaths = dataDetails.data
         this.timestampAccessPath = timestampAccessPath
+        const dataAccessPaths = dataDetails.data
+        dataAccessPaths.forEach(v => {
+            const side = v.axis
+            v.axis = typeof side === 'undefined' ? AxisSide.LEFT : new AxisSide(side)
+        })
+        this.dataAccessPaths = dataAccessPaths
     }
 
 }
