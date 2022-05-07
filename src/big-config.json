@@ -1,11 +1,11 @@
-{
+  {
   "groups": [
     {
       "name": "group 1",
       "charts": [
         {
 
-          "startDate": "2022-03-14T20:49:03+01:00",
+          "startDate": "2022-03-14T20:49:03+01:00", 
 
           "endDate": "PRESENT",
 
