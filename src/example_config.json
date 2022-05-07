@@ -6,9 +6,18 @@
       "chartType": "lineGraph",
       "title": "graph of temperature versus time",
       "xLabel": "date",
-      "yLabel": "temperature from AGH/L09",
+      "yLeftLabel": "temperature from AGH/L09",
+      "yRightLabel": "temperature from AGH/L09",
       "xUnit": "date time",
       "yUnit": "date time",
+      "leftAxis": {
+        "unit": "µg/m3",
+        "decimals": "2"
+      },
+      "rightAxis": {
+        "unit": "kPa",
+        "decimals": "2"
+      },
       "timestampsPath": [
         "timestamp"
       ],

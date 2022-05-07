@@ -1,4 +1,5 @@
 import {Metadata} from "./Metadata.js";
+import {Axis} from "../chart/axis";
 
 function parseConfig(config) {
     const groupedChartsMetadata = []
@@ -11,13 +12,15 @@ function parseConfig(config) {
                 chart.timestampsPath,
                 chart.startDate,
                 chart.endDate,
+                chart.leftAxis == null ? new Axis(null, null) : new Axis(chart.leftAxis.unit, chart.leftAxis.decimals),
+                chart.rightAxis == null ? new Axis(null, null) : new Axis(chart.rightAxis.unit, chart.rightAxis.decimals),
                 chart.xLabel,
-                chart.yLabel,
+                chart.yLeftLabel,
+                chart.yRightLabel,
                 chart.title,
                 chart.xUnit,
                 chart.yUnit,
             )
-
             groupChartsMetadata.push(chartMetadata)
         }
         groupedChartsMetadata.push([group.name, groupChartsMetadata])

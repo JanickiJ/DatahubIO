@@ -5,7 +5,7 @@ class AxisSide {
     constructor(side) {
         side = side.toLowerCase()
         if (side !== "left" && side !== "right") {
-            throw new Error("side != left or right")
+            throw new Error("side != left and right")
         }
         this.value = side
     }
