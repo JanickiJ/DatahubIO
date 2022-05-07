@@ -1,9 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
+import { render } from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
+import GraphContainer from "./containers/GraphContainer";
+import { Box, Tabs, Input, Button } from "@mui/material";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const rootElement = document.getElementById("root");
+console.log("In routes");
+
+render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}></Route>
+      <Route path="/group1" element={<App />}></Route>
+      <Route path="/group2" element={<App />}></Route>
+      <Route path="/group3" element={<App />}></Route>
+    </Routes>
+  </BrowserRouter>,
+  rootElement
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
