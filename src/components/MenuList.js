@@ -16,16 +16,16 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 export default function MenuList({ onFileUpload }) {
   const handleClick = onFileUpload;
   return (
-    <List sx={{ pl: "5px" }}>
+    <List>
       <ListItem disablePadding>
-        <IconButton onClick={handleClick} component="label">
+        <IconButton sx={{ pr: "25px", pl: "25px" }} onClick={handleClick} component="label">
           <input type="file" hidden />
           <UploadFileIcon />
         </IconButton>
         <ListItemText primary="Upload config" />
       </ListItem>
       <ListItem disablePadding>
-        <IconButton component="label">
+        <IconButton sx={{ pr: "25px", pl: "25px" }} component="label">
           <VisibilityOffIcon />
         </IconButton>
         <ListItemText primary="Toggle widget" />
