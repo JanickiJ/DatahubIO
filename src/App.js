@@ -5,16 +5,15 @@ import Demo from "./components/AppBar";
 import store, { persistor } from "./store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import Dashboard from "./components/Dashboard";
+import DashboardContainer from "./containers/DashboardContainer";
 
+// //<PersistGate loading={null} persistor={persistor}> wyjebany cashing na czas developowania
 function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
         <React.Fragment>
-          <Dashboard />
+          <DashboardContainer />
         </React.Fragment>
-      </PersistGate>
     </Provider>
   );
 }

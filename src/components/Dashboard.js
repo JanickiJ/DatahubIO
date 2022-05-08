@@ -92,7 +92,7 @@ const Drawer = styled(MuiDrawer, {
 
 const mdTheme = createTheme();
 
-function DashboardContent() {
+function DashboardContent(configLoaded) {
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
@@ -104,7 +104,6 @@ function DashboardContent() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
@@ -147,9 +146,9 @@ function DashboardContent() {
                   DatahubIO
                 </Typography>
               </Grid>
-              <Grid item>
-                <CustomTabPanelContainer></CustomTabPanelContainer>
-              </Grid>
+                  <Grid item>
+                    <CustomTabPanelContainer></CustomTabPanelContainer>
+                  </Grid>
             </Grid>
           </Toolbar>
         </AppBar>
@@ -183,8 +182,7 @@ function DashboardContent() {
         >
           <Toolbar />
           <Widget />
-          <GraphContainer />
-
+          <GraphContainer/>
           <Copyright sx={{ pt: 4 }} />
         </Box>
       </Box>
@@ -192,6 +190,6 @@ function DashboardContent() {
   );
 }
 
-export default function Dashboard() {
-  return <DashboardContent />;
+export default function Dashboard(configLoaded) {
+  return <DashboardContent configLoaded/>;
 }

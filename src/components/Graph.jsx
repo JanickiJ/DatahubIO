@@ -4,12 +4,15 @@ import PropTypes from "prop-types";
 import { Container, Grid, Paper } from "@mui/material";
 import Deposits from "../components/Deposits";
 
-function Graph({ currentTab, graphs, sortIntoGrid }) {
+function Graph({ currentTab, graphs, sortIntoGrid, configLoaded }) {
   //tutaj w arg przekazac index grupy i zamiast graphs:
   //graphs = graphs[index].charts
   //dla testu mozna dac graphs = graphs[0].charts i powinno dzialac obecnie
-  console.log("inside composnent:");
-  console.log(graphs);
+  console.log("inside compdosnent:");
+  console.log(configLoaded);
+  if (!configLoaded){
+    return (<Grid/>);
+  }
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       {graphs.map((graph) => (

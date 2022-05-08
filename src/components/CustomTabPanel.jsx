@@ -8,6 +8,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
+import { Grid } from "@mui/material";
 
 function a11yProps(index) {
   return {
@@ -16,10 +17,15 @@ function a11yProps(index) {
   };
 }
 
-export default function CustomTabPanel({ graphs, changeTab }) {
+export default function CustomTabPanel({ configLoaded, graphs, changeTab }) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
+  console.log("in custom pasnel");
+  console.log(configLoaded);
+  if (!configLoaded){
+    return (<Grid/>);
+  }
 
   const handleChange = (event, newValue) => {
     const index = parseInt(newValue.charAt(newValue.length - 1)) - 1;
