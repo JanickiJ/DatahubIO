@@ -16,13 +16,13 @@ function a11yProps(index) {
   };
 }
 
-export default function CustomTabPanel({ graphs }) {
+export default function CustomTabPanel({ graphs, changeTab }) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
-    //tutaj dispatch index zakladki do store (i)
+    changeTab(newValue)
     setValue(newValue);
     navigate(newValue);
   };

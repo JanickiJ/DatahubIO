@@ -1,2 +1,3 @@
 export const LOAD_CONFIG = 'LOAD_CONFIG'
 export const LOAD_GRAPHS = 'LOAD_GRAPHS'
+export const SET_CURRENT_TAB = 'SET_CURRENT_TAB'

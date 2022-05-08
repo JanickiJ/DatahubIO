@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Container, Grid, Paper } from "@mui/material";
 import Deposits from "../components/Deposits";
 
-function Graph({ graphs, sortIntoGrid }) {
+function Graph({ currentTab, graphs, sortIntoGrid }) {
   //tutaj w arg przekazac index grupy i zamiast graphs:
   //graphs = graphs[index].charts
   //dla testu mozna dac graphs = graphs[0].charts i powinno dzialac obecnie

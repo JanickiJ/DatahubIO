@@ -4,6 +4,7 @@ import { readConfigFile } from "../utils/config";
 import { loadConfig } from "../actions/config";
 import { configNameSelector } from "../utils/selectors/config";
 import { graphsSelector } from "../utils/selectors/config";
+import {setCurrentTab} from  "../actions/appInfo";
 
 function mapStateToProps(state, ownProps) {
   const graphs = graphsSelector(state);
@@ -13,7 +14,11 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
-  return {};
+    return {
+        changeTab: (tab) => {
+            dispatch(setCurrentTab(tab));
+        }
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomTabPanel);
