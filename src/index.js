@@ -3,9 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import GraphContainer from "./containers/GraphContainer";
 import { Box, Tabs, Input, Button } from "@mui/material";
+import { graphsSelector } from "./utils/selectors/config";
 
 const rootElement = document.getElementById("root");
-console.log("In routes");
+const maxTabs = 10;
 
 render(
   <BrowserRouter>
@@ -14,6 +15,9 @@ render(
       <Route path="/group1" element={<App />}></Route>
       <Route path="/group2" element={<App />}></Route>
       <Route path="/group3" element={<App />}></Route>
+      <Route path="/group4" element={<App />}></Route>
+      <Route path="/group5" element={<App />}></Route>
+      <Route path="/group6" element={<App />}></Route>
     </Routes>
   </BrowserRouter>,
   rootElement

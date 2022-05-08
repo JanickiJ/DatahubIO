@@ -6,6 +6,7 @@ function mapStateToProps(state, ownProps) {
   console.log("In graph con");
   const graphs = graphsSelector(state);
   return {
+    //graphs: graphs[0].charts, <- to nie dziala nw czmeu
     graphs: graphs,
   };
 }

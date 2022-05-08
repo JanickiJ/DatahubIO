@@ -17,7 +17,7 @@ function mapDispatchToProps(dispatch, ownProps) {
   return {
     onFileUpload: async (e) => {
       const fileContent = await readConfigFile(e);
-      dispatch(loadConfig(fileContent.groups, e.target.files[0].name));
+      dispatch(loadConfig(fileContent, e.target.files[0].name));
     },
   };
 }

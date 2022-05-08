@@ -8,6 +8,7 @@ export async function readConfigFile(e) {
   const charts = await createGroups(metadata);
   console.log("readConfigFile returns:");
   console.log(charts);
+  //tu zamiast graph containera dostajesz liste grup
   return charts;
 }
 

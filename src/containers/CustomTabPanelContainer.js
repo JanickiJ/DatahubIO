@@ -1,19 +1,19 @@
-import {connect} from 'react-redux';
-import CustomTabPanel from '../components/CustomTabPanel'
-import {readConfigFile} from '../utils/config'
-import {loadConfig} from '../actions/config'
-import {configNameSelector} from '../utils/selectors/config'
+import { connect } from "react-redux";
+import CustomTabPanel from "../components/CustomTabPanel";
+import { readConfigFile } from "../utils/config";
+import { loadConfig } from "../actions/config";
+import { configNameSelector } from "../utils/selectors/config";
+import { graphsSelector } from "../utils/selectors/config";
 
 function mapStateToProps(state, ownProps) {
-    const tabs = ["graph1","graph2"];
-    return {
-        tabs
-    }
+  const graphs = graphsSelector(state);
+  return {
+    graphs: graphs,
+  };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
-    return {
-    }
+  return {};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomTabPanel)
+export default connect(mapStateToProps, mapDispatchToProps)(CustomTabPanel);

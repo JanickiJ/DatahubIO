@@ -16,16 +16,17 @@ function a11yProps(index) {
   };
 }
 
-export default function CustomTabPanel({ tabs }) {
+export default function CustomTabPanel({ graphs }) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
+    //tutaj dispatch index zakladki do store (i)
     setValue(newValue);
     navigate(newValue);
   };
-  console.log(tabs);
+  console.log(graphs);
 
   return (
     <Box sx={{ width: 500 }}>
@@ -37,10 +38,17 @@ export default function CustomTabPanel({ tabs }) {
         variant="fullWidth"
         aria-label="full width tabs example"
       >
-        <Tab label="Item One" value="/group1" {...a11yProps(0)} />
+        {/* <Tab label="Item One" value="/group1" {...a11yProps(0)} />
         <Tab label="Item Two" value="/group2" {...a11yProps(1)} />
-        <Tab label="Item Three" value="/group3" {...a11yProps(2)} />
+        <Tab label="Item Three" value="/group3" {...a11yProps(2)} /> */}
+        {graphs.map((group, i) => (
+          <Tab label={group.name} value={"/group" + (i + 1)} />
+        ))}
       </Tabs>
     </Box>
   );
 }
+
+CustomTabPanel.propTypes = {
+  graphs: PropTypes.array.isRequired,
+};
