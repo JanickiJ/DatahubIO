@@ -4,15 +4,15 @@ import { graphsSelector } from "../utils/selectors/config";
 
 function mapStateToProps(state, ownProps) {
   console.log("In graph con");
-  console.log(state)
-  console.log(graphs[0].charts)
-  console.log(state.currentTab)
   const graphs = graphsSelector(state);
-  const currentTab = state.currentTab;
+  const currentTab = state.appInfo.currentTab;
+  //console.log(state.appInfo.currentTab);
+  //console.log(graphs[0].charts);
+  //console.log(graphs[currentTab].charts);
   return {
     //graphs: graphs[0].charts, <- to nie dziala nw czmeu
     graphs: graphs[currentTab].charts,
-    currentTab: currentTab
+    currentTab: currentTab,
   };
 }
 

@@ -22,9 +22,12 @@ export default function CustomTabPanel({ graphs, changeTab }) {
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
-    changeTab(newValue)
-    setValue(newValue);
-    navigate(newValue);
+    const index = parseInt(newValue.charAt(newValue.length - 1)) - 1;
+    console.log("inside handle change");
+    console.log(index);
+    changeTab(index);
+    setValue(index);
+    navigate(index);
   };
   console.log(graphs);
 

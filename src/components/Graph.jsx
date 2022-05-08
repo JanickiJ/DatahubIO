@@ -8,12 +8,11 @@ function Graph({ currentTab, graphs, sortIntoGrid }) {
   //tutaj w arg przekazac index grupy i zamiast graphs:
   //graphs = graphs[index].charts
   //dla testu mozna dac graphs = graphs[0].charts i powinno dzialac obecnie
-  var first_group = graphs[0].charts;
   console.log("inside composnent:");
-  console.log(first_group);
+  console.log(graphs);
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      {first_group.map((graph) => (
+      {graphs.map((graph) => (
         <Grid container spacing={3} sx={{ m: 1 }}>
           <Grid item xs={12} md={8} lg={9}>
             <Paper
