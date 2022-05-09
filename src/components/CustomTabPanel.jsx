@@ -23,8 +23,8 @@ export default function CustomTabPanel({ configLoaded, graphs, changeTab }) {
   const navigate = useNavigate();
   console.log("in custom pasnel");
   console.log(configLoaded);
-  if (!configLoaded){
-    return (<Grid/>);
+  if (!configLoaded) {
+    return <Grid />;
   }
 
   const handleChange = (event, newValue) => {
@@ -33,7 +33,6 @@ export default function CustomTabPanel({ configLoaded, graphs, changeTab }) {
     console.log(index);
     changeTab(index);
     setValue(index);
-    navigate(index);
   };
   console.log(graphs);
 
