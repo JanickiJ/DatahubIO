@@ -2,7 +2,7 @@ import * as React from "react";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Title from "./Title";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { TextField } from "@mui/material";
@@ -13,9 +13,11 @@ function preventDefault(event) {
 }
 
 export default function Deposits() {
-  const [startValue, setStartValue] = React.useState(new Date("2005-04-02"));
+  const [startValue, setStartValue] = React.useState(
+    new Date("2022-05-10T21:37:54")
+  );
   const [endValue, setEndValue] = React.useState(
-    new Date().toISOString().slice(0, 10)
+    new Date("2022-05-11T21:11:54")
   );
 
   const handleStartChange = (newValue) => {
@@ -36,9 +38,8 @@ export default function Deposits() {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <DesktopDatePicker
-              label="Date desktop"
-              inputFormat="MM/dd/yyyy"
+            <DateTimePicker
+              label="Date&Time picker"
               value={startValue}
               onChange={handleStartChange}
               renderInput={(params) => <TextField {...params} />}
@@ -50,9 +51,8 @@ export default function Deposits() {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <DesktopDatePicker
-              label="Date desktop"
-              inputFormat="MM/dd/yyyy"
+            <DateTimePicker
+              label="Date&Time picker"
               value={endValue}
               onChange={handleEndChange}
               renderInput={(params) => <TextField {...params} />}

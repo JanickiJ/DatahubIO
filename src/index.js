@@ -6,7 +6,6 @@ import { Box, Tabs, Input, Button } from "@mui/material";
 import { graphsSelector } from "./utils/selectors/config";
 
 const rootElement = document.getElementById("root");
-const maxTabs = 10;
 
 render(
   <BrowserRouter>
