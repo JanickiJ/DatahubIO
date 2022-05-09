@@ -6,9 +6,6 @@ export async function readConfigFile(e) {
   const fileString = await loadFile(files[0]);
   const metadata = parseConfig(fileString);
   const charts = await createGroups(metadata);
-  console.log("readConfigFile returns:");
-  console.log(charts);
-  //tu zamiast graph containera dostajesz liste grup
   return charts;
 }
 

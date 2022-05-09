@@ -16,8 +16,12 @@ function a11yProps(index) {
   };
 }
 
-export default function CustomTabPanel({ configisLoading,configIndicated, graphs, changeTab }) {
-  const theme = useTheme();
+export default function CustomTabPanel({
+  configisLoading,
+  configIndicated,
+  graphs,
+  changeTab,
+}) {
   const [value, setValue] = React.useState("/group1");
   if (!configIndicated || configisLoading) {
     return <Grid />;
@@ -40,7 +44,11 @@ export default function CustomTabPanel({ configisLoading,configIndicated, graphs
         aria-label="full width tabs example"
       >
         {graphs.map((group, i) => (
-          <Tab label={group.name} value={"/group" + (i + 1)} {...a11yProps(i)}/>
+          <Tab
+            label={group.name}
+            value={"/group" + (i + 1)}
+            {...a11yProps(i)}
+          />
         ))}
       </Tabs>
     </Box>

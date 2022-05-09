@@ -2,30 +2,64 @@ import * as React from "react";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Title from "./Title";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { TextField } from "@mui/material";
+import { Grid } from "@mui/material";
 
 function preventDefault(event) {
   event.preventDefault();
 }
 
 export default function Deposits() {
+  const [startValue, setStartValue] = React.useState(new Date("2005-04-02"));
+  const [endValue, setEndValue] = React.useState(
+    new Date().toISOString().slice(0, 10)
+  );
+
+  const handleStartChange = (newValue) => {
+    setStartValue(newValue);
+  };
+
+  const handleEndChange = (newValue) => {
+    setEndValue(newValue);
+  };
+
   return (
     <React.Fragment>
-      <Title>Cos tam</Title>
-      <Typography component="p" variant="h4">
-        Cos tam
-      </Typography>
-      <Typography color="text.secondary" sx={{ flex: 1 }}>
-        Cos tam
-      </Typography>
-      <div>
-        <Link
-          color="primary"
-          href="https://www.youtube.com/watch?v=UjLluCCnR2o"
-          onClick={preventDefault}
-        >
-          Cos nie cos potrafie
-        </Link>
-      </div>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Typography component="p" variant="subtitle1">
+              Ustaw datę początkową
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <DesktopDatePicker
+              label="Date desktop"
+              inputFormat="MM/dd/yyyy"
+              value={startValue}
+              onChange={handleStartChange}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Typography component="p" variant="subtitle1">
+              Ustaw datę końcową
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <DesktopDatePicker
+              label="Date desktop"
+              inputFormat="MM/dd/yyyy"
+              value={endValue}
+              onChange={handleEndChange}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Grid>
+        </Grid>
+      </LocalizationProvider>
     </React.Fragment>
   );
 }
