@@ -1,7 +1,7 @@
-import {DataLoader} from "../utils/DataLoader"
+import {DataLoader} from "../utils/DataLoader.js"
 import async from 'async';
-import {ChartInfo} from "./chartInfo";
-import {AxisSide} from "./axisSide";
+import {ChartInfo} from "./chartInfo.js";
+import {AxisSide} from "./axisSide.js";
 
 class Chart {
     metadata;
@@ -46,11 +46,17 @@ class Chart {
     }
 }
 
-class ChartContainer {
+class Group {
+    name;
     charts;
 
-    constructor(charts) {
+    constructor(name, charts) {
+        this.name = name;
         this.charts = charts;
+    }
+
+    async updateCharts() {
+        this.charts = await Promise.resolve(async.concat(this.charts, loadDataToChart));
     }
 }
 
@@ -59,12 +65,17 @@ async function loadDataToChart(chart) {
     chart.addData(
         await dataLoader.loadData(chart)
     );
-    return chart
+    return chart;
 }
 
 function createCharts(metadataList) {
-    let charts = metadataList.map(metadata => new Chart(metadata));
-    return Promise.resolve(async.concat(charts, loadDataToChart))
+    return metadataList.map(metadata => new Chart(metadata));
 }
 
-export {Chart, ChartContainer, createCharts}
+function createGroups(groupsMetadataList) {
+    let groups = groupsMetadataList.map(group => new Group(group[0], createCharts(group[1])));
+    groups.forEach(group => group.updateCharts());
+    return groups;
+}
+
+export {Chart, Group, createGroups}

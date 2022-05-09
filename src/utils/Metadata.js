@@ -1,5 +1,5 @@
-import {TimeInterval} from "./TimeInterval"
-import {AxisSide} from "../chart/axisSide";
+import {TimeInterval} from "./TimeInterval.js";
+import {AxisSide} from "../chart/axisSide.js";
 
 class Metadata {
     initEndpoint;
