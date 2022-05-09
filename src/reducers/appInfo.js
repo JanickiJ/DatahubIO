@@ -1,8 +1,9 @@
-import {SET_CURRENT_TAB, SET_CONFIG_LOADED} from '../actions/types'
+import {SET_CURRENT_TAB, SET_CONFIG_INDICATED, SET_CONFIG_IS_LOADING} from '../actions/types'
 
 const initialState = {
     currentTab: 0,
-    configLoaded: false
+    configIndicated: false,
+    configIsLoading: false
 }
 
 export default function appInfoReducer(state = initialState, action) {
@@ -13,10 +14,16 @@ export default function appInfoReducer(state = initialState, action) {
                 currentTab: action.currentTab
             }
         }
-        case SET_CONFIG_LOADED: {
+        case SET_CONFIG_INDICATED: {
             return {
                 ...state,
-                configLoaded: action.configLoaded
+                configIndicated: action.configIndicated
+            }
+        }
+        case SET_CONFIG_IS_LOADING: {
+            return {
+                ...state,
+                configIsLoading: action.configIsLoading
             }
         }
         default:

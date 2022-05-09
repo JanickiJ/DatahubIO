@@ -7,7 +7,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 
 function a11yProps(index) {
@@ -17,24 +16,18 @@ function a11yProps(index) {
   };
 }
 
-export default function CustomTabPanel({ configLoaded, graphs, changeTab }) {
+export default function CustomTabPanel({ configisLoading,configIndicated, graphs, changeTab }) {
   const theme = useTheme();
-  const [value, setValue] = React.useState(0);
-  const navigate = useNavigate();
-  console.log("in custom pasnel");
-  console.log(configLoaded);
-  if (!configLoaded) {
+  const [value, setValue] = React.useState("/group1");
+  if (!configIndicated || configisLoading) {
     return <Grid />;
   }
 
   const handleChange = (event, newValue) => {
     const index = parseInt(newValue.charAt(newValue.length - 1)) - 1;
-    console.log("inside handle change");
-    console.log(index);
     changeTab(index);
-    setValue(index);
+    setValue(newValue);
   };
-  console.log(graphs);
 
   return (
     <Box sx={{ width: 500 }}>
@@ -46,11 +39,8 @@ export default function CustomTabPanel({ configLoaded, graphs, changeTab }) {
         variant="fullWidth"
         aria-label="full width tabs example"
       >
-        {/* <Tab label="Item One" value="/group1" {...a11yProps(0)} />
-        <Tab label="Item Two" value="/group2" {...a11yProps(1)} />
-        <Tab label="Item Three" value="/group3" {...a11yProps(2)} /> */}
         {graphs.map((group, i) => (
-          <Tab label={group.name} value={"/group" + (i + 1)} />
+          <Tab label={group.name} value={"/group" + (i + 1)} {...a11yProps(i)}/>
         ))}
       </Tabs>
     </Box>

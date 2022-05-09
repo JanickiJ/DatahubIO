@@ -1,4 +1,4 @@
-import {SET_CURRENT_TAB, SET_CONFIG_LOADED} from './types'
+import {SET_CURRENT_TAB, SET_CONFIG_INDICATED, SET_CONFIG_IS_LOADING} from './types'
 
 export function setCurrentTab(currentTab) {
     return {
@@ -7,9 +7,16 @@ export function setCurrentTab(currentTab) {
     }
 }
 
-export function setConfigLoaded(configLoaded) {
+export function setConfigIndicated(configIndicated) {
     return {
-        type: SET_CONFIG_LOADED,
-        configLoaded
+        type: SET_CONFIG_INDICATED,
+        configIndicated
+    }
+}
+
+export function setConfigIsLoading(configIsLoading) {
+    return {
+        type: SET_CONFIG_IS_LOADING,
+        configIsLoading
     }
 }

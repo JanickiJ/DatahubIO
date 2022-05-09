@@ -18,14 +18,14 @@ export default function MenuList({ onFileUpload }) {
   return (
     <List sx={{ pl: "5px" }}>
       <ListItem disablePadding>
-        <IconButton component="label">
+        <IconButton sx ={{pl:2.5, pr:3}} component="label">
           <input type="file" hidden onChange={handleClick} />
           <UploadFileIcon />
         </IconButton>
         <ListItemText primary="Upload config" />
       </ListItem>
       <ListItem disablePadding>
-        <IconButton component="label">
+        <IconButton sx ={{pl:2.5, pr:3}} component="label">
           <VisibilityOffIcon />
         </IconButton>
         <ListItemText primary="Toggle widget" />

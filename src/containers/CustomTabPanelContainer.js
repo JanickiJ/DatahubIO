@@ -1,17 +1,18 @@
 import { connect } from "react-redux";
 import CustomTabPanel from "../components/CustomTabPanel";
 import { readConfigFile } from "../utils/config";
-import { loadConfig } from "../actions/config";
 import { configNameSelector } from "../utils/selectors/config";
 import { graphsSelector } from "../utils/selectors/config";
 import {setCurrentTab} from  "../actions/appInfo";
 
 function mapStateToProps(state, ownProps) {
   const graphs = graphsSelector(state);
-  const configLoaded = state.appInfo.configLoaded;
+  const configIndicated = state.appInfo.configIndicated;
+  const configIsLoading = state.appInfo.configIsLoading;
   return {
     graphs: graphs,
-    configLoaded: configLoaded  
+      configIsLoading: configIsLoading,
+      configIndicated: configIndicated
   };
 }
 
