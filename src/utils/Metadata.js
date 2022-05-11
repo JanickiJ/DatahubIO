@@ -2,6 +2,7 @@ import {TimeInterval} from "./TimeInterval.js";
 import {AxisSide} from "../chart/axisSide.js";
 
 class Metadata {
+    description;
     initEndpoint;
     timeInterval;
     dataAccessPaths = [];
@@ -16,7 +17,8 @@ class Metadata {
     rightAxis;
     offset;
 
-    constructor(dataDetails, timestampAccessPath, startDate, endDate, leftAxis, rightAxis, xLabel, yLeftLabel, yRightLabel, title, xUnit, yUnit, offset = 0) {
+    constructor(description, dataDetails, timestampAccessPath, startDate, endDate, leftAxis, rightAxis, xLabel, yLeftLabel, yRightLabel, title, xUnit, yUnit, offset = 0) {
+        this.description = description
         this.timeInterval = new TimeInterval(startDate, endDate)
         this.initEndpoint = dataDetails.endpoint
         this.leftAxis = leftAxis;

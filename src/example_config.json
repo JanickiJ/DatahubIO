@@ -1,9 +1,11 @@
 {
   "groups": [
     {
-      "name": "group 1",
+      "name": "Grupa 1",
+      "description": "Przykładowa grupa nr 1",
       "charts": [
         {
+          "description": "Opis / tytuł",
 
           "startDate": "2022-03-14T20:49:03+01:00", 
 
@@ -63,9 +65,12 @@
       ]
     },
     {
-      "name": "group 2",
+      "name": "Grupa 2",
+      "description": "Grupa testowa nr 2",
       "charts": [
         {
+          "description": "Opis / tytuł",
+
           "startDate": "2022-03-14T20:49:03+01:00",
 
           "endDate": "PRESENT",

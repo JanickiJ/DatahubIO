@@ -13,7 +13,15 @@ class Chart {
         this.metadata = metadata;
         this.viewingTimeInterval = metadata.timeInterval;
         this.data = [];
-        this.chartInfoFromMetadata()
+        this.chartInfoFromMetadata();
+    }
+
+    getLatestValues() {
+        return this.data.slice(-1);
+    }
+
+    getSeriesColor(seriesName) {
+        return this.dataSeries[seriesName].color;
     }
 
     addData(newData) {
@@ -44,14 +52,20 @@ class Chart {
         return "#" + Math.floor(Math.random() * 16777215)
             .toString(16);
     }
+
+    summary() {
+
+    }
 }
 
 class Group {
     name;
+    description;
     charts;
 
-    constructor(name, charts) {
+    constructor(name, description, charts) {
         this.name = name;
+        this.description = description;
         this.charts = charts;
     }
 
@@ -73,7 +87,7 @@ function createCharts(metadataList) {
 }
 
 function createGroups(groupsMetadataList) {
-    let groups = groupsMetadataList.map(group => new Group(group[0], createCharts(group[1])));
+    let groups = groupsMetadataList.map(group => new Group(group[0], group[1], createCharts(group[2])));
     groups.forEach(group => group.updateCharts());
     return groups;
 }
