@@ -1,5 +1,4 @@
 import axios from 'axios'
-import async from 'async'
 
 function getNestedData(data, path) {
     if (path instanceof Array && path.length > 1)
