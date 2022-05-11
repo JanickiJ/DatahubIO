@@ -52,15 +52,13 @@ function merge(A, B){
         if(new Date(A[i]['timestamp']) < new Date(B[j]['timestamp'])) {
             C.push(A[i]);
             i++;
+        } else if(new Date(A[i]['timestamp']) > new Date(B[j]['timestamp'])){
+            C.push(B[j]);
+            j++;
         } else {
-            if(new Date(A[i]['timestamp']) > new Date(B[j]['timestamp'])){
-                C.push(B[j]);
-                j++;
-            } else {
-                C.push(A[i]);
-                i++;
-                j++;
-            }
+            C.push(A[i]);
+            i++;
+            j++;
         }
     }
     while(i<A.length) {
