@@ -2,6 +2,7 @@ import {DataLoader, merge} from "../utils/DataLoader.js"
 import async from 'async';
 import {ChartInfo} from "./chartInfo.js";
 import {AxisSide} from "./axisSide.js";
+import store from "../store/store";
 
 class Chart {
     metadata;
@@ -60,16 +61,34 @@ class Group {
     }
 
     async updateCharts() {
-        this.charts = await Promise.resolve(async.concat(this.charts, loadDataToChart));
+        this.charts = await Promise.resolve(async.concat(this.charts, loadInitDataToChart));
+    }
+
+    async refreshCharts() {
+        this.charts = await Promise.resolve(async.concat(this.charts, refreshChartData));
     }
 }
 
-async function loadDataToChart(chart) {
+
+
+async function refreshChartData(chart) {
+    const dataLoader = new DataLoader()
+    chart.updateData(
+        await dataLoader.refreshData(chart)
+    );
+    return chart;
+}
+
+async function loadInitDataToChart(chart) {
     const dataLoader = new DataLoader()
     chart.updateData(
         await dataLoader.loadInitData(chart)
     );
     return chart;
+}
+
+function refreshGroups(groups) {
+    groups.forEach(group => group.refreshCharts());
 }
 
 function createCharts(metadataList) {
@@ -82,4 +101,4 @@ function createGroups(groupsMetadataList) {
     return groups;
 }
 
-export {Chart, Group, createGroups}
+export {Chart, Group, createGroups, refreshGroups}

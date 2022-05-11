@@ -4,7 +4,7 @@
       "name": "group 1",
       "charts": [
         {
-          "startDate": "2022-05-02T20:49:03+01:00",
+          "startDate": "2022-04-20T20:49:03+01:00",
           "endDate": "PRESENT",
           "chartType": "lineGraph",
           "title": "graph of temperature versus time",
@@ -45,7 +45,63 @@
             }
           ]
         }
-      ]
+      ,{
+
+          "startDate": "2022-01-01T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLabel": "temperature from AGH/L09",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/65/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        }]
     }
   ]
 }

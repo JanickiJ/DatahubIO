@@ -43,19 +43,24 @@ async function load(metadata, offset=0) {
     return points;
 }
 
-
+// Merges two sorted arrays into one. Key is timestamp attribute
 function merge(A, B){
     let i = 0;
     let j = 0;
     let C = [];
     while(i < A.length && j < B.length) {
-        if(new Date(A[i]['timestamp'])>=new Date(B[j])) {
+        if(new Date(A[i]['timestamp']) < new Date(B[j]['timestamp'])) {
             C.push(A[i]);
             i++;
-        }
-        else {
-            C.push(B[j]);
-            j++;
+        } else {
+            if(new Date(A[i]['timestamp']) > new Date(B[j]['timestamp'])){
+                C.push(B[j]);
+                j++;
+            } else {
+                C.push(A[i]);
+                i++;
+                j++;
+            }
         }
     }
     while(i<A.length) {
@@ -71,14 +76,17 @@ function merge(A, B){
 
 class DataLoader {
 
+    // Starts at offset. Stop condition is meeting specified date
     async loadDataTo(chart, offset, dateTo) {
         let res = [];
         while(true) {
             let batch = await load(chart.metadata, offset)
-            res = merge(res, batch)
             offset += batch.length
+            res = merge(res, batch)
+
             if(new Date(batch[batch.length-1]['timestamp']) > dateTo){
                 console.log("GO GO GO");
+                continue
             } else {
                 break;
             }
@@ -90,17 +98,18 @@ class DataLoader {
     async loadLatestData(chart) {
         let dateTo = null;
         if(chart.data.length > 0) {
-            dateTo = chart.data[0].timestamp
+            dateTo = chart.data[chart.data.length-1].timestamp
         } else {
             dateTo = chart.metadata.timeInterval.getStart()
         }
         return await this.loadDataTo(chart, 0, dateTo);
     }
 
+    // latest data is on the left-hand side. To be sure
     async loadEarliestData(chart) {
         if(chart.data.length > 0) {
             let dateTo = chart.metadata.timeInterval.getStart();
-            let offset = chart.data.lenght
+            let offset = chart.data.length
             return await this.loadDataTo(chart, offset, dateTo);
         }
         return []
@@ -112,6 +121,11 @@ class DataLoader {
 
 
     async refreshData(chart) {
+        if(chart.data.length == 0){
+            console.log("not refreshing if data is empty")
+            return [];
+        }
+        console.log("refreshing data")
         return merge(await this.loadLatestData(chart), await this.loadEarliestData(chart))
     }
 
