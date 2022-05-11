@@ -1,4 +1,4 @@
-import {DataLoader} from "../utils/DataLoader.js"
+import {DataLoader, merge} from "../utils/DataLoader.js"
 import async from 'async';
 import {ChartInfo} from "./chartInfo.js";
 import {AxisSide} from "./axisSide.js";
@@ -16,7 +16,7 @@ class Chart {
         this.chartInfoFromMetadata()
     }
 
-    addData(newData) {
+    updateData(newData) {
         newData.forEach(v =>
             Object.entries(v.values).forEach(([name, value]) => {
                 const side = this.dataSeries[name].yAxisSide;
@@ -24,7 +24,11 @@ class Chart {
                 const decimals = axis.decimals
                 v.values[name] = value.toFixed(decimals)
             }))
-        this.data = this.data.concat(newData);
+        // this.data = this.data.concat(newData);
+        this.data = merge(this.data, newData)
+        //console.log(this.data)
+        this.data = this.data.filter(data_point => this.metadata.timeInterval.isIn(new Date(data_point['timestamp'])) )
+        //console.log(this.data)
     }
 
     chartInfoFromMetadata() {
@@ -62,8 +66,8 @@ class Group {
 
 async function loadDataToChart(chart) {
     const dataLoader = new DataLoader()
-    chart.addData(
-        await dataLoader.loadData(chart)
+    chart.updateData(
+        await dataLoader.loadInitData(chart)
     );
     return chart;
 }
