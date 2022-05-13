@@ -33,7 +33,6 @@ class Chart {
   // existing data and new data is always sorted
   updateData(newData) {
     newData.forEach(v => {
-        v.timestamp = formatDateTime(new Date(v.timestamp))
         Object.entries(v.values).forEach(([name, value]) => {
           const side = this.dataSeries[name].yAxisSide;
           const axis = side === AxisSide.LEFT ? this.metadata.leftAxis : this.metadata.rightAxis;
@@ -44,6 +43,10 @@ class Chart {
     )
     this.data = merge(this.data, newData)
     this.data = this.data.filter(data_point => this.metadata.timeInterval.isIn(new Date(data_point['timestamp'])))
+    this.data.forEach(v => {
+      console.log(v)
+      v.timestamp = formatDateTime(new Date(v.timestamp))
+    })
   }
 
   chartInfoFromMetadata() {
@@ -61,7 +64,7 @@ class Chart {
 
   static randomColor() {
     return "#" + Math.floor(Math.random() * 16777215)
-          .toString(16);
+      .toString(16);
   }
 }
 
@@ -74,15 +77,16 @@ class Group {
     this.charts = charts;
   }
 
-    async refreshCharts() {
-        this.charts = await async.concat(this.charts, refreshChartData);
+  async refreshCharts() {
+    this.charts = await async.concat(this.charts, refreshChartData);
   }
 }
 
 const dataLoader = new DataLoader()
+
 async function refreshChartData(chart) {
-    chart.updateData(
-       await dataLoader.refreshData(chart)
+  chart.updateData(
+    await dataLoader.refreshData(chart)
   );
   return chart;
 }
@@ -99,8 +103,8 @@ function createGroups(groupsMetadataList) {
 }
 
 async function refreshGroups(groups) {
-    const tasks = groups.map(group => cb => group.refreshCharts().then(()=>cb()))
-    await async.parallel(tasks);
+  const tasks = groups.map(group => cb => group.refreshCharts().then(() => cb()))
+  await async.parallel(tasks);
 }
 
 export {Chart, Group, createGroups, refreshGroups}
