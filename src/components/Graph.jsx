@@ -3,6 +3,7 @@ import Plot from "./Plot";
 import PropTypes from "prop-types";
 import { Container, Alert, AlertTitle, Grid, Paper } from "@mui/material";
 import Deposits from "../components/Deposits";
+import Start from "../components/Start";
 
 function Graph({
   currentTab,
@@ -11,7 +12,11 @@ function Graph({
   configIndicated,
   configIsLoading,
 }) {
-  if (!configIndicated) {
+    if(!configIndicated || configIsLoading){
+      return(<Start/>)
+    }
+    //I will need it
+/*  if (!configIndicated) {
     return (
       <Alert severity="warning">
         <AlertTitle fontSize={25}>Uwaga</AlertTitle>
@@ -26,7 +31,7 @@ function Graph({
         Plik konfiguracyjny się ładuje
       </Alert>
     );
-  }
+  }*/
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       {graphs.map((graph) => (

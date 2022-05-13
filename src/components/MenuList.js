@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState} from "react";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -12,24 +12,45 @@ import DraftsIcon from "@mui/icons-material/Drafts";
 import ListItemSecondaryAction from "@mui/material/ListItemSecondaryAction";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import DialogStart from './DialogStart';
 
-export default function MenuList({ onFileUpload }) {
-  const handleClick = onFileUpload;
-  return (
-    <List sx={{ pl: "5px" }}>
-      <ListItem disablePadding>
-        <IconButton sx ={{pl:2.5, pr:3}} component="label">
-          <input type="file" hidden onChange={handleClick} />
-          <UploadFileIcon />
-        </IconButton>
-        <ListItemText primary="Upload config" />
-      </ListItem>
-      <ListItem disablePadding>
-        <IconButton sx ={{pl:2.5, pr:3}} component="label">
-          <VisibilityOffIcon />
-        </IconButton>
-        <ListItemText primary="Toggle widget" />
-      </ListItem>
-    </List>
-  );
+export default function MenuList({onFileUpload}) {
+    const [isOpen, setIsOpen] = useState(false);
+    const onClickVisibilityOff = () => {
+        console.log("Nwm maciek po huj to zrobiłes");
+    }
+    const onClickMenuBook = () => {
+        setIsOpen(true);
+    }
+    const handleClose = () => {
+        setIsOpen(false);
+    }
+    const handleClick = onFileUpload;
+    return (
+        <React.Fragment>
+            <DialogStart handleCloseCallback={handleClose} defaultOpen={isOpen}/>
+            <List sx={{pl: "5px"}}>
+                <ListItem sx={{mt: 2, mb: 2}} disablePadding>
+                    <IconButton sx={{pl: 2.5, pr: 3}} component="label">
+                        <input type="file" hidden onChange={handleClick}/>
+                        <UploadFileIcon/>
+                    </IconButton>
+                    <ListItemText primary="Załaduj konfig"/>
+                </ListItem>
+                <ListItem sx={{mt: 2, mb: 2}} disablePadding>
+                    <IconButton sx={{pl: 2.5, pr: 3}} onClick={onClickVisibilityOff} component="label">
+                        <VisibilityOffIcon/>
+                    </IconButton>
+                    <ListItemText primary="Schowaj widget"/>
+                </ListItem>
+                <ListItem sx={{mt: 2, mb: 2}} disablePadding>
+                    <IconButton onClick={onClickMenuBook} sx={{pl: 2.5, pr: 3}} component="label">
+                        <MenuBookIcon/>
+                    </IconButton>
+                    <ListItemText primary="Przewodnik"/>
+                </ListItem>
+            </List>
+        </React.Fragment>
+    );
 }
