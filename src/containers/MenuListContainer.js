@@ -4,6 +4,7 @@ import {readConfigFile} from "../utils/config";
 import {loadConfig} from "../actions/config";
 import {refreshGroups} from "../chart/chart";
 import {setConfigIndicated,setConfigIsLoading, setCurrentTab} from "../actions/appInfo";
+import {checkVPN} from "../utils/DataLoader.js";
 
 function mapStateToProps(state, ownProps) {
     return {}
@@ -16,6 +17,7 @@ function mapDispatchToProps(dispatch, ownProps) {
             dispatch(setConfigIndicated(true));
             let fileContent = await readConfigFile(e);
             dispatch(loadConfig(fileContent, e.target.files[0].name));
+            await checkVPN();
 
             let refreshTimer = setTimeout(async function refresh() {
                 await refreshGroups(fileContent);                                   // load/refresh data

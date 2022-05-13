@@ -8,6 +8,24 @@ function getNestedData(data, path) {
     return data[path[0]]
 }
 
+export async function checkVPN(){
+    console.log("checking vpn")
+    await axios.get("/pl", {
+        headers:{
+        },
+    }).then((response) => {
+        store.dispatch(vpnEnabled(true));
+        console.log("dziala")
+    }).catch(error => {
+        if (error.response) { // In case of other errors doesn't change
+            if(error.response.status === 403){
+                store.dispatch(vpnEnabled(false));
+                console.log("nie dziala")
+            }
+        }
+    }).then();
+}
+
 async function load(metadata, offset=0) {
 
     let points = []
