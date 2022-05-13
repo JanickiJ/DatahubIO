@@ -17,6 +17,7 @@ class Chart {
         this.chartInfoFromMetadata()
     }
 
+    // existing data and new data is always sorted
     updateData(newData) {
         newData.forEach(v =>
             Object.entries(v.values).forEach(([name, value]) => {
@@ -25,11 +26,8 @@ class Chart {
                 const decimals = axis.decimals
                 v.values[name] = value.toFixed(decimals)
             }))
-        // this.data = this.data.concat(newData);
         this.data = merge(this.data, newData)
-        //console.log(this.data)
         this.data = this.data.filter(data_point => this.metadata.timeInterval.isIn(new Date(data_point['timestamp'])) )
-        //console.log(this.data)
     }
 
     chartInfoFromMetadata() {
@@ -60,45 +58,33 @@ class Group {
         this.charts = charts;
     }
 
-    async updateCharts() {
-        this.charts = await Promise.resolve(async.concat(this.charts, loadInitDataToChart));
-    }
-
     async refreshCharts() {
-        this.charts = await Promise.resolve(async.concat(this.charts, refreshChartData));
+        this.charts = await async.concat(this.charts, refreshChartData);
     }
 }
 
-
-
+const dataLoader = new DataLoader()
 async function refreshChartData(chart) {
-    const dataLoader = new DataLoader()
     chart.updateData(
-        await dataLoader.refreshData(chart)
+       await dataLoader.refreshData(chart)
     );
     return chart;
 }
 
-async function loadInitDataToChart(chart) {
-    const dataLoader = new DataLoader()
-    chart.updateData(
-        await dataLoader.loadInitData(chart)
-    );
-    return chart;
-}
-
-function refreshGroups(groups) {
-    groups.forEach(group => group.refreshCharts());
-}
 
 function createCharts(metadataList) {
     return metadataList.map(metadata => new Chart(metadata));
 }
 
+// Now creates empty charts
 function createGroups(groupsMetadataList) {
     let groups = groupsMetadataList.map(group => new Group(group[0], createCharts(group[1])));
-    groups.forEach(group => group.updateCharts());
     return groups;
+}
+
+async function refreshGroups(groups) {
+    const tasks = groups.map(group => cb => group.refreshCharts().then(()=>cb()))
+    await async.parallel(tasks);
 }
 
 export {Chart, Group, createGroups, refreshGroups}

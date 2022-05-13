@@ -11,17 +11,15 @@ async function load(metadata, offset=0) {
 
     let points = []
 
+    // cuts 'proxy prefix' from endpoint
     let endpoint = metadata.initEndpoint.slice("https://datahub.ki.agh.edu.pl".length) +
         "/?format=json&limit=100&offset=" + offset
-    //console.log(endpoint)
 
     await axios.get(endpoint, {
         headers:{
         },
     }).then((response) => {
         let json = response.data;
-
-        //console.log(json);
 
         for (const dataPoint of json["results"]) {
             let timestamp = getNestedData(dataPoint, metadata.timestampAccessPath);
@@ -37,6 +35,7 @@ async function load(metadata, offset=0) {
         }
     }).catch(e => {
         console.error(e);
+        return [];
     }).then();
 
     points.reverse();
@@ -82,10 +81,7 @@ class DataLoader {
             offset += batch.length
             res = merge(res, batch)
 
-            if(new Date(batch[batch.length-1]['timestamp']) > dateTo){
-                console.log("GO GO GO");
-                continue
-            } else {
+            if(batch.length > 0 && new Date(batch[batch.length-1]['timestamp']) <= dateTo){
                 break;
             }
         }
@@ -113,17 +109,8 @@ class DataLoader {
         return []
     }
 
-    async loadInitData(chart) {
-        return await this.loadLatestData(chart)
-    }
-
 
     async refreshData(chart) {
-        if(chart.data.length == 0){
-            console.log("not refreshing if data is empty")
-            return [];
-        }
-        console.log("refreshing data")
         return merge(await this.loadLatestData(chart), await this.loadEarliestData(chart))
     }
 

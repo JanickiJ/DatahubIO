@@ -17,14 +17,13 @@ function mapDispatchToProps(dispatch, ownProps) {
             let fileContent = await readConfigFile(e);
             dispatch(loadConfig(fileContent, e.target.files[0].name));
 
-            // działa chyba. jak sie odpali big config to niektore wykresy po jakims czasie powinny sie pojawic. pozniej tez jakies console log ze refresh
-            let displayTimer = setTimeout(function refreshTimer() {
-                refreshGroups(fileContent);
-                dispatch(loadConfig(fileContent, e.target.files[0].name));
-                displayTimer = setTimeout(refreshTimer, 20000);
+            let refreshTimer = setTimeout(async function refresh() {
+                await refreshGroups(fileContent);                                   // load/refresh data
+                await dispatch(loadConfig(fileContent, e.target.files[0].name));
+                refreshTimer = setTimeout(refresh, 120000);                  // set timeout for next load
             }, 10000);
 
-
+            // teraz chyba cos mozna pozmieniac, bo najpierw ładuja sie puste grafy, a potem dane sie dociagaja
             setTimeout(() => {
                 dispatch(setConfigIsLoading(false));
                 dispatch(setCurrentTab(0));
