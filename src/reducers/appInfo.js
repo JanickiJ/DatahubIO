@@ -1,9 +1,10 @@
-import {SET_CURRENT_TAB, SET_CONFIG_INDICATED, SET_CONFIG_IS_LOADING} from '../actions/types'
+import {SET_CURRENT_TAB, SET_CONFIG_INDICATED, SET_CONFIG_IS_LOADING, VPN_ENABLED} from '../actions/types'
 
 const initialState = {
     currentTab: 0,
     configIndicated: false,
-    configIsLoading: false
+    configIsLoading: false,
+    vpnEnabled: true
 }
 
 export default function appInfoReducer(state = initialState, action) {
@@ -24,6 +25,12 @@ export default function appInfoReducer(state = initialState, action) {
             return {
                 ...state,
                 configIsLoading: action.configIsLoading
+            }
+        }
+        case VPN_ENABLED: {
+            return {
+                ...state,
+                vpnEnabled: action.vpnEnabled
             }
         }
         default:
