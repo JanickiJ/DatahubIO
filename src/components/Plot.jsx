@@ -21,9 +21,9 @@ function Plot({key, chart}) {
   return (
     <Box display={'flex'} justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>
       <Typography display={'flex'} component="p" variant="h6" padding={1}>{chart.metadata.title}</Typography>
-      <Box display={'flex'} flexDirection={'row'} width={"99%"} height={300}>
-        <ResponsiveContainer width="99%">
-          <LineChart data={chart.data}>
+      <Box width={"99%"}>
+        <ResponsiveContainer width="99%" height={450}>
+          <LineChart data={chart.data} margin={{top: 5, right: 5, left: 50, bottom: 100}}>
             <YAxis yAxisId={AxisSide.LEFT.value}
                    orientation={AxisSide.LEFT.value}>
               <Label value={leftLabel} angle={-90} dx={-20}/>
@@ -33,7 +33,8 @@ function Plot({key, chart}) {
               <Label value={rightLabel} angle={-90}/>
             </YAxis>
             <CartesianGrid stroke='#91a7bd' strokeDasharray="4"/>
-            <XAxis dataKey={"timestamp"} hide={false}/>
+            <XAxis dataKey={"timestamp"} interval={Math.floor(chart.data.length / 20)} angle={-40} textAnchor={"end"}
+                   hide={false}/>
             {
               Object.entries(chart.dataSeries).map(dataSeries => {
                 const seriesName = dataSeries[0];
