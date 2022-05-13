@@ -17,11 +17,23 @@
 
           "xLabel": "date",
 
-          "yLabel": "temperature from AGH/L09",
+          "yLeftLabel": "label 1",
+
+          "yRightLabel": "label 2",
 
           "xUnit": "date time",
 
           "yUnit": "date time",
+
+          "leftAxis": {
+            "unit": "µg/m3",
+            "decimals": "2"
+          },
+
+          "rightAxis": {
+            "unit": "kPa",
+            "decimals": "2"
+          },
 
           "timestampsPath": [
             "timestamp"
@@ -65,7 +77,7 @@
         {
          "description": "Description",
 
-          "startDate": "2022-03-14T20:49:03+01:00",
+          "startDate": "2022-01-01T20:49:03+01:00",
 
           "endDate": "PRESENT",
 
@@ -123,7 +135,7 @@
         {
          "description": "Description",
 
-          "startDate": "2022-03-14T20:49:03+01:00",
+          "startDate": "2022-05-02T20:49:03+01:00",
 
           "endDate": "PRESENT",
 
@@ -181,7 +193,7 @@
         {
          "description": "Description",
 
-          "startDate": "2022-03-14T20:49:03+01:00",
+          "startDate": "2022-05-02T20:49:03+01:00",
 
           "endDate": "PRESENT",
 
@@ -239,7 +251,7 @@
         {
          "description": "Description",
 
-          "startDate": "2022-03-14T20:49:03+01:00",
+          "startDate": "2022-05-02T20:49:03+01:00",
 
           "endDate": "PRESENT",
 
@@ -297,7 +309,7 @@
         {
          "description": "Description",
 
-          "startDate": "2022-03-14T20:49:03+01:00",
+          "startDate": "2022-05-02T20:49:03+01:00",
 
           "endDate": "PRESENT",
 
@@ -355,7 +367,7 @@
         {
          "description": "Description",
 
-          "startDate": "2022-03-14T20:49:03+01:00",
+          "startDate": "2022-05-02T20:49:03+01:00",
 
           "endDate": "PRESENT",
 
@@ -413,7 +425,7 @@
         {
          "description": "Description",
 
-          "startDate": "2022-03-14T20:49:03+01:00",
+          "startDate": "2022-05-02T20:49:03+01:00",
 
           "endDate": "PRESENT",
 
@@ -471,7 +483,7 @@
         {
          "description": "Description",
 
-          "startDate": "2022-03-14T20:49:03+01:00",
+          "startDate": "2022-05-02T20:49:03+01:00",
 
           "endDate": "PRESENT",
 
@@ -533,7 +545,7 @@
       "description": "example group number 2",
       "charts": [
         {
-          "startDate": "2022-03-14T20:49:03+01:00",
+          "startDate": "2022-04-01T20:49:03+01:00",
 
           "endDate": "PRESENT",
 

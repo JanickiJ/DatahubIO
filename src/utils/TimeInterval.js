@@ -15,6 +15,10 @@ class TimeInterval {
   getEnd() {
     return ((this.endDate === Infinity) ? new Date() : this.endDate)
   }
+
+  isIn(date) {
+    return this.startDate < date && date < this.endDate;
+  }
 }
 
 export {TimeInterval}

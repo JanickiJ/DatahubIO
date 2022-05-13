@@ -19,7 +19,7 @@ export function mockedChart() {
     });
   }
 
-  chart.addData(points);
+  chart.updateData(points);
 
   return chart;
 }
