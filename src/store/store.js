@@ -14,6 +14,6 @@ const store = createStore(persistedReducer);
 export const persistor = persistStore(store);
 export default store;
 */
-//wyjebany cashing na czas developowania
+// removed data caching for easier development
 const store = createStore(rootReducer);
 export default store;
