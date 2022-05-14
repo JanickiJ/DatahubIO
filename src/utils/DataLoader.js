@@ -9,18 +9,18 @@ function getNestedData(data, path) {
 }
 
 export async function checkVPN(){
-    console.log("checking vpn")
+    //console.log("checking vpn")
     await axios.get("/pl", {
         headers:{
         },
     }).then((response) => {
         store.dispatch(vpnEnabled(true));
-        console.log("dziala")
+    //    console.log("dziala")
     }).catch(error => {
         if (error.response) { // In case of other errors doesn't change
             if(error.response.status === 403){
                 store.dispatch(vpnEnabled(false));
-                console.log("nie dziala")
+    //           console.log("nie dziala")
             }
         }
     }).then();
@@ -113,6 +113,7 @@ class DataLoader {
     async loadDataTo(chart, offset, dateTo) {
         let res = [];
         while(true) {
+           // console.log("load batch")
             let batch = await load(chart.metadata, offset)
             offset += batch.length
             res = merge(res, batch)
