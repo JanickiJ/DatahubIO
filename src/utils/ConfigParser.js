@@ -8,6 +8,7 @@ function parseConfig(config) {
     const groupChartsMetadata = [];
     for (const chart of group.charts) {
       const chartMetadata = new Metadata(
+        chart.description,
         chart.dataDetails,
         chart.timestampsPath,
         chart.startDate,
@@ -27,7 +28,7 @@ function parseConfig(config) {
       );
       groupChartsMetadata.push(chartMetadata);
     }
-    groupedChartsMetadata.push([group.name, groupChartsMetadata]);
+    groupedChartsMetadata.push([group.name, group.description, groupChartsMetadata]);
   }
 
   return groupedChartsMetadata;

@@ -1,6 +1,6 @@
 class TimeInterval {
   constructor(startDate, endDate) {
-    if (endDate.valueOf() == "PRESENT".valueOf()) {
+    if (endDate.valueOf() === "PRESENT".valueOf()) {
       this.endDate = Infinity
     } else {
       this.endDate = new Date(endDate)

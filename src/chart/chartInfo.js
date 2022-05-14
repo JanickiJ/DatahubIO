@@ -6,7 +6,6 @@ class ChartInfo {
         this.color = color;
         this.yAxisSide = axisSide;
     }
-
 }
 
 export {ChartInfo}

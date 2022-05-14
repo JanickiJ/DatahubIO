@@ -18,17 +18,26 @@ const formatDateTime = (datetime) => {
 }
 
 class Chart {
-  metadata;
-  viewingTimeInterval;
-  data;
-  dataSeries = {};
+    metadata;
+    viewingTimeInterval;
+    data;
+    dataSeries = {};
 
-  constructor(metadata) {
-    this.metadata = metadata;
-    this.viewingTimeInterval = metadata.timeInterval;
-    this.data = [];
-    this.chartInfoFromMetadata()
-  }
+    constructor(metadata) {
+        this.metadata = metadata;
+        this.viewingTimeInterval = metadata.timeInterval;
+        this.data = [];
+        this.chartInfoFromMetadata();
+    }
+
+    getLatestValues() {
+        return this.data.slice(-1);
+    }
+
+    getSeriesColor(seriesName) {
+        return this.dataSeries[seriesName].color;
+    }
+
 
   // existing data and new data is always sorted
   updateData(newData) {
@@ -69,13 +78,16 @@ class Chart {
 }
 
 class Group {
-  name;
-  charts;
+    name;
+    description;
+    charts;
 
-  constructor(name, charts) {
-    this.name = name;
-    this.charts = charts;
-  }
+    constructor(name, description, charts) {
+        this.name = name;
+        this.description = description;
+        this.charts = charts;
+    }
+
 
   async refreshCharts() {
     this.charts = await async.concat(this.charts, refreshChartData);
@@ -98,8 +110,9 @@ function createCharts(metadataList) {
 
 // Now creates empty charts
 function createGroups(groupsMetadataList) {
-  let groups = groupsMetadataList.map(group => new Group(group[0], createCharts(group[1])));
-  return groups;
+    let groups = groupsMetadataList.map(group => new Group(group[0], group[1], createCharts(group[2])));
+    return groups;
+
 }
 
 async function refreshGroups(groups) {
