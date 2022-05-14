@@ -26,6 +26,7 @@ const dd = `{
             }`;
 
 export const mockedMetadata = new Metadata(
+  "description",
   JSON.parse(dd),
   ["timestamp"],
   "2022-03-14T20:49:03+01:00",

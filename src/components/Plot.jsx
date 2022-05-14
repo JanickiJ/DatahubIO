@@ -10,6 +10,19 @@ const createAxisLabel = (chart, axis) => {
   return labelName + " " + labelUnit;
 }
 
+const formatDateTime = (datetime) => {
+  const withLeadingZeros = (value) => {
+    return ('0' + value).slice(-2)
+  }
+  return [
+    withLeadingZeros(datetime.getMonth() + 1),
+    withLeadingZeros(datetime.getDate()),
+    withLeadingZeros(datetime.getFullYear())].join('-') + ' ' + [
+    withLeadingZeros(datetime.getHours()),
+    withLeadingZeros(datetime.getMinutes()),
+    withLeadingZeros(datetime.getSeconds())].join(':');
+}
+
 
 function Plot({key, chart}) {
 
@@ -17,6 +30,8 @@ function Plot({key, chart}) {
   const rightAxis = chart.metadata.rightAxis;
   const leftLabel = createAxisLabel(chart, leftAxis)
   const rightLabel = createAxisLabel(chart, rightAxis)
+
+  chart.data.forEach(v => v.timestamp = formatDateTime(new Date(v.timestamp)))
 
   return (
     <Box display={'flex'} justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>

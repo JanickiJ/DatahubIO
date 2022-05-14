@@ -35,11 +35,12 @@ function mapDispatchToProps(dispatch, ownProps) {
             dispatch(setShowConfigLoaded(true));
             setTimeout(()=>dispatch(setShowConfigLoaded(false)), 10000)
 
-            let refreshTimer = setTimeout(() => async function refresh() {
+            let refreshTimer = setTimeout(async function refresh() {
+//                console.log("refreshuje")
                 await refreshGroups(fileContent);                                   // refresh data
                 await dispatch(loadConfig(fileContent, e.target.files[0].name));
-                refreshTimer = setTimeout(() => refresh, 120000);                  // set timeout for next load
-            }, 120000);
+                refreshTimer = setTimeout(refresh, 10000);     // set timeout for next load
+            }, 10000);
 
         },
     };

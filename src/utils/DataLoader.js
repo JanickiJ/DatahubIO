@@ -110,14 +110,15 @@ class DataLoader {
     async loadDataTo(chart, offset, dateTo) {
         let res = [];
         while (true) {
+            // console.log("load", offset)
             let batch = await load(chart.metadata, offset)
             offset += batch.length
             res = merge(res, batch)
 
             if (batch.length > 0 && new Date(batch[batch.length - 1]['timestamp']) <= dateTo) {
                 break;
-            } else if (batch.length == 0) {
-                await sleep(5000);
+            } else if (batch.length === 0) {
+                await sleep(1000);
             }
         }
         return res;
@@ -127,9 +128,9 @@ class DataLoader {
     async loadLatestData(chart) {
         let dateTo = null;
         if (chart.data.length > 0) {
-            dateTo = chart.data[chart.data.length - 1].timestamp
+            dateTo = new Date(chart.data[chart.data.length - 1].timestamp);
         } else {
-            dateTo = chart.metadata.timeInterval.getStart()
+            dateTo = chart.metadata.timeInterval.getStart();
         }
         return await this.loadDataTo(chart, 0, dateTo);
     }

@@ -2,20 +2,6 @@ import {DataLoader, merge} from "../utils/DataLoader.js"
 import async from 'async';
 import {ChartInfo} from "./chartInfo.js";
 import {AxisSide} from "./axisSide.js";
-import store from "../store/store";
-
-const formatDateTime = (datetime) => {
-  const withLeadingZeros = (value) => {
-    return ('0' + value).slice(-2)
-  }
-  return [
-    withLeadingZeros(datetime.getMonth() + 1),
-    withLeadingZeros(datetime.getDate()),
-    withLeadingZeros(datetime.getFullYear())].join('-') + ' ' + [
-    withLeadingZeros(datetime.getHours()),
-    withLeadingZeros(datetime.getMinutes()),
-    withLeadingZeros(datetime.getSeconds())].join(':');
-}
 
 class Chart {
     metadata;
@@ -52,10 +38,7 @@ class Chart {
     )
     this.data = merge(this.data, newData)
     this.data = this.data.filter(data_point => this.metadata.timeInterval.isIn(new Date(data_point['timestamp'])))
-    this.data.forEach(v => {
-      console.log(v)
-      v.timestamp = formatDateTime(new Date(v.timestamp))
-    })
+    // console.log(this.data);
   }
 
   chartInfoFromMetadata() {
