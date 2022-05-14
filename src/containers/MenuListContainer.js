@@ -19,17 +19,19 @@ function mapDispatchToProps(dispatch, ownProps) {
             dispatch(loadConfig(fileContent, e.target.files[0].name));
             await checkVPN();
 
-            let refreshTimer = setTimeout(async function refresh() {
-                await refreshGroups(fileContent);                                   // load/refresh data
-                await dispatch(loadConfig(fileContent, e.target.files[0].name));
-                refreshTimer = setTimeout(refresh, 120000);                  // set timeout for next load
-            }, 10000);
+            //console.log("started loading")
+            await refreshGroups(fileContent);                                       // load data
+            //console.log("finished loading")
+            await dispatch(loadConfig(fileContent, e.target.files[0].name));
+            dispatch(setConfigIsLoading(false));
+            dispatch(setCurrentTab(0));
 
-            // teraz chyba cos mozna pozmieniac, bo najpierw ładuja sie puste grafy, a potem dane sie dociagaja
-            setTimeout(() => {
-                dispatch(setConfigIsLoading(false));
-                dispatch(setCurrentTab(0));
-            }, 10000);
+            let refreshTimer = setTimeout(() => async function refresh() {
+                await refreshGroups(fileContent);                                   // refresh data
+                await dispatch(loadConfig(fileContent, e.target.files[0].name));
+                refreshTimer = setTimeout(() => refresh, 120000);                  // set timeout for next load
+            }, 120000);
+
         },
     };
 }
