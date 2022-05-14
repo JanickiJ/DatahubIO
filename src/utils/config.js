@@ -10,12 +10,18 @@ export async function readConfigFile(e) {
   return groups;
 }
 
-function loadFile(file) {
+async function loadFile(file) {
+  // return new Promise((resolve) => {
+  //   setTimeout(() => {
+  //     let fileReader = new FileReader();
+  //     fileReader.onload = (e) => resolve(fileReader.result);
+  //     fileReader.readAsText(file);
+  //   }, 3000);
+  // });
+
   return new Promise((resolve) => {
-    setTimeout(() => {
-      let fileReader = new FileReader();
-      fileReader.onload = (e) => resolve(fileReader.result);
-      fileReader.readAsText(file);
-    }, 3000);
+    let fileReader = new FileReader();
+    fileReader.onload = (e) => resolve(fileReader.result);
+    fileReader.readAsText(file);
   });
 }
