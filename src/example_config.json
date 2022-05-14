@@ -1,25 +1,41 @@
 {
   "groups": [
     {
-      "name": "group 1",
+      "name": "Grupa 1",
+      "description": "Przykładowa grupa nr 1",
       "charts": [
         {
-          "startDate": "2022-04-20T20:49:03+01:00",
+          "description": "Opis / tytuł",
+
+          "startDate": "2022-03-14T20:49:03+01:00", 
+
           "endDate": "PRESENT",
+
           "chartType": "lineGraph",
+
           "title": "graph of temperature versus time",
+
           "xLabel": "date",
+
           "yLabel": "temperature from AGH/L09",
+
           "xUnit": "date time",
+
           "yUnit": "date time",
+
           "timestampsPath": [
             "timestamp"
           ],
+
           "dataDetails": {
+
             "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+
             "data": [
               {
                 "name": "temperature set",
+
+
                 "from": [
                   "data",
                   "heater",
@@ -36,6 +52,71 @@
               }
             ]
           },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grupa 2",
+      "description": "Grupa testowa nr 2",
+      "charts": [
+        {
+          "description": "Opis / tytuł",
+
+          "startDate": "2022-03-14T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLabel": "temperature from AGH/L09",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
           "extraData": [
             {
               "key": "value"

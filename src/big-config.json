@@ -2,9 +2,12 @@
   "groups": [
     {
       "name": "group 1",
+      "description": "example group 1",
       "charts": [
         {
-          "startDate": "2022-04-01T20:49:03+01:00",
+         "description": "Description",
+
+          "startDate": "2022-03-14T20:49:03+01:00", 
 
           "endDate": "PRESENT",
 
@@ -72,6 +75,7 @@
           ]
         },
         {
+         "description": "Description",
 
           "startDate": "2022-01-01T20:49:03+01:00",
 
@@ -129,6 +133,7 @@
           ]
         },
         {
+         "description": "Description",
 
           "startDate": "2022-05-02T20:49:03+01:00",
 
@@ -186,6 +191,7 @@
           ]
         },
         {
+         "description": "Description",
 
           "startDate": "2022-05-02T20:49:03+01:00",
 
@@ -243,6 +249,7 @@
           ]
         },
         {
+         "description": "Description",
 
           "startDate": "2022-05-02T20:49:03+01:00",
 
@@ -300,6 +307,7 @@
           ]
         },
         {
+         "description": "Description",
 
           "startDate": "2022-05-02T20:49:03+01:00",
 
@@ -357,6 +365,7 @@
           ]
         },
         {
+         "description": "Description",
 
           "startDate": "2022-05-02T20:49:03+01:00",
 
@@ -414,6 +423,7 @@
           ]
         },
         {
+         "description": "Description",
 
           "startDate": "2022-05-02T20:49:03+01:00",
 
@@ -471,6 +481,7 @@
           ]
         },
         {
+         "description": "Description",
 
           "startDate": "2022-05-02T20:49:03+01:00",
 
@@ -531,6 +542,7 @@
     },
     {
       "name": "group 2",
+      "description": "example group number 2",
       "charts": [
         {
           "startDate": "2022-04-01T20:49:03+01:00",
