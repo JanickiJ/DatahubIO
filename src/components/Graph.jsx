@@ -3,6 +3,7 @@ import Plot from "./Plot";
 import PropTypes from "prop-types";
 import { Container, Alert, AlertTitle, Grid, Paper } from "@mui/material";
 import Deposits from "../components/Deposits";
+import Start from "../components/Start";
 
 function Graph({
   currentTab,
@@ -11,7 +12,7 @@ function Graph({
   configLoaded
 }) {
   if (!configLoaded) {
-    return (<Grid></Grid>)
+    return (<Start/>)
   }
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
