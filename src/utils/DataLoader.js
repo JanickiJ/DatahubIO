@@ -38,7 +38,6 @@ async function load(metadata, offset = 0) {
         headers: {},
     }).then((response) => {
         store.dispatch(setShowVPNDisabled(false));
-        store.dispatch(setShowVPNEnabled(false));
         let json = response.data;
         for (const dataPoint of json["results"]) {
             let timestamp = getNestedData(dataPoint, metadata.timestampAccessPath);

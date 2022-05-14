@@ -22,7 +22,7 @@ function Snackbars({
                     })
                 } else if(!flagValue && keys.hasOwnProperty(flagName)){
                     closeSnackbar(keys[flagName])
-                    delete keys.flagName;
+                    delete keys[flagName];
                 }
             }
             , [flagValue]
