@@ -9,29 +9,11 @@ function Graph({
   currentTab,
   graphs,
   sortIntoGrid,
-  configIndicated,
-  configIsLoading,
+  configLoaded
 }) {
-    if(!configIndicated || configIsLoading){
-      return(<Start/>)
-    }
-    //I will need it
-/*  if (!configIndicated) {
-    return (
-      <Alert severity="warning">
-        <AlertTitle fontSize={25}>Uwaga</AlertTitle>
-        Aby wyświetlić dane załaduj config korzystając z menu po lewej stronie
-      </Alert>
-    );
+  if (!configLoaded) {
+    return (<Start/>)
   }
-  if (configIsLoading) {
-    return (
-      <Alert severity="info">
-        <AlertTitle fontSize={25}>Informacja</AlertTitle>
-        Plik konfiguracyjny się ładuje
-      </Alert>
-    );
-  }*/
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       {graphs.map((graph) => (

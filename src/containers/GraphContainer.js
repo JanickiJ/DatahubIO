@@ -5,13 +5,9 @@ import { graphsSelector } from "../utils/selectors/config";
 function mapStateToProps(state, ownProps) {
   const graphs = graphsSelector(state);
   const currentTab = state.appInfo.currentTab;
-  const configIsLoading = state.appInfo.configIsLoading;
-  const configIndicated = state.appInfo.configIndicated;
-  console.log("state");
-  console.log(state);
+  const configLoaded = state.appInfo.configLoaded;
   return {
-    configIsLoading: configIsLoading,
-    configIndicated: configIndicated,
+    configLoaded: configLoaded,
     graphs: graphs[currentTab].charts,
     currentTab: currentTab,
   };

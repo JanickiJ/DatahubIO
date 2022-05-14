@@ -91,8 +91,6 @@ function DashboardContent(configLoaded) {
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
-    console.log(newValue);
-    console.log(event);
     navigate(newValue);
   };
   const [open, setOpen] = React.useState(true);

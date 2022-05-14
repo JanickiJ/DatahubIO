@@ -2,57 +2,65 @@ import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAx
 import React from "react";
 import PropTypes from 'prop-types';
 import {AxisSide} from "../chart/axisSide";
+import {Box, Typography} from '@mui/material';
 
-function Plot({key, chart, width, aspect}) {
+const createAxisLabel = (chart, axis) => {
+  const labelName = chart.metadata.yLeftLabel ?? "";
+  const labelUnit = axis.unit !== "" ? "[" + axis.unit + "]" : "";
+  return labelName + " " + labelUnit;
+}
 
-    const leftAxis = chart.metadata.leftAxis;
-    const rightAxis = chart.metadata.rightAxis;
-    const leftLabel = `${chart.metadata.yLeftLabel} [${leftAxis.unit}]`
-    const rightLabel = `${chart.metadata.yRightLabel} [${rightAxis.unit}]`
 
-    return (
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <ResponsiveContainer width={width} aspect={aspect}>
-                <LineChart data={chart.data}>
-                    <YAxis yAxisId={AxisSide.LEFT.value}
-                           orientation={AxisSide.LEFT.value}>
-                        <Label value={leftLabel} angle={-90}/>
-                    </YAxis>
-                    <YAxis yAxisId={AxisSide.RIGHT.value}
-                           orientation={AxisSide.RIGHT.value}>
-                        <Label value={rightLabel} angle={-90}/>
-                    </YAxis>
-                    <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-                    <XAxis dataKey={"timestamp"} hide={false}/>
-                    {
-                        Object.entries(chart.dataSeries).map(dataSeries => {
-                            const seriesName = dataSeries[0];
-                            const seriesInfo = dataSeries[1];
-                            const yAxisSide = seriesInfo.yAxisSide;
-                            const axis = yAxisSide.value === AxisSide.LEFT.value ? leftAxis : rightAxis;
-                            const unit = axis.unit
-                            return (<Line key={seriesName}
-                                          type="monotone"
-                                          dataKey={"values." + seriesName}
-                                          stroke={seriesInfo.color}
-                                          yAxisId={yAxisSide.value}
-                                          name={seriesName}
-                                          unit={` ${unit}`}
-                            />)
-                        })
-                    }
-                    <Tooltip/>
-                </LineChart>
-            </ResponsiveContainer>
-        </div>
-    );
+function Plot({key, chart}) {
+
+  const leftAxis = chart.metadata.leftAxis;
+  const rightAxis = chart.metadata.rightAxis;
+  const leftLabel = createAxisLabel(chart, leftAxis)
+  const rightLabel = createAxisLabel(chart, rightAxis)
+
+  return (
+    <Box display={'flex'} justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>
+      <Typography display={'flex'} component="p" variant="h6" padding={1}>{chart.metadata.title}</Typography>
+      <Box display={'flex'} flexDirection={'row'} width={"99%"} height={300}>
+        <ResponsiveContainer width="99%">
+          <LineChart data={chart.data}>
+            <YAxis yAxisId={AxisSide.LEFT.value}
+                   orientation={AxisSide.LEFT.value}>
+              <Label value={leftLabel} angle={-90} dx={-20}/>
+            </YAxis>
+            <YAxis yAxisId={AxisSide.RIGHT.value}
+                   orientation={AxisSide.RIGHT.value}>
+              <Label value={rightLabel} angle={-90}/>
+            </YAxis>
+            <CartesianGrid stroke='#91a7bd' strokeDasharray="4"/>
+            <XAxis dataKey={"timestamp"} hide={false}/>
+            {
+              Object.entries(chart.dataSeries).map(dataSeries => {
+                const seriesName = dataSeries[0];
+                const seriesInfo = dataSeries[1];
+                const yAxisSide = seriesInfo.yAxisSide;
+                const axis = yAxisSide.value === AxisSide.LEFT.value ? leftAxis : rightAxis;
+                const unit = axis.unit
+                return <Line key={seriesName}
+                             type="monotone"
+                             dataKey={"values." + seriesName}
+                             stroke={seriesInfo.color}
+                             yAxisId={yAxisSide.value}
+                             name={seriesName}
+                             unit={` ${unit}`}
+                />
+              })
+            }
+            <Tooltip/>
+          </LineChart>
+        </ResponsiveContainer>
+      </Box>
+    </Box>);
 }
 
 Plot.propTypes = {
-    key: PropTypes.string.isRequired,
-    chart: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    aspect: PropTypes.number.isRequired
+  key: PropTypes.string.isRequired,
+  chart: PropTypes.string.isRequired,
 };
 
 export default Plot

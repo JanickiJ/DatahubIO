@@ -1,9 +1,21 @@
-import {SET_CURRENT_TAB, SET_CONFIG_INDICATED, SET_CONFIG_IS_LOADING} from '../actions/types'
+import {
+    SET_SHOW_INDICATE_CONFIG,
+    SET_SHOW_VPN_DISABLED,
+    SET_SHOW_VPN_ENABLED,
+    SET_SHOW_CONFIG_LOADED,
+    SET_SHOW_CONFIG_IS_LOADING,
+    SET_CURRENT_TAB,
+    SET_CONFIG_LOADED,
+} from '../actions/types'
 
 const initialState = {
     currentTab: 0,
-    configIndicated: false,
-    configIsLoading: false
+    configLoaded: false,
+    showIndicateConfig: true,
+    showLoadingConfig: false,
+    showConfigLoaded: false,
+    showVPNEnabled: false,
+    showVPNDisabled: false,
 }
 
 export default function appInfoReducer(state = initialState, action) {
@@ -14,16 +26,40 @@ export default function appInfoReducer(state = initialState, action) {
                 currentTab: action.currentTab
             }
         }
-        case SET_CONFIG_INDICATED: {
+        case SET_SHOW_CONFIG_IS_LOADING: {
             return {
                 ...state,
-                configIndicated: action.configIndicated
+                showLoadingConfig: action.showLoadingConfig
             }
         }
-        case SET_CONFIG_IS_LOADING: {
+        case SET_SHOW_INDICATE_CONFIG: {
             return {
                 ...state,
-                configIsLoading: action.configIsLoading
+                showIndicateConfig: action.showIndicateConfig
+            }
+        }
+        case SET_SHOW_CONFIG_LOADED: {
+            return {
+                ...state,
+                showConfigLoaded: action.showConfigLoaded
+            }
+        }
+        case SET_SHOW_VPN_ENABLED: {
+            return {
+                ...state,
+                showVPNEnabled: action.showVPNEnabled
+            }
+        }
+        case SET_SHOW_VPN_DISABLED: {
+            return {
+                ...state,
+                showVPNDisabled: action.showVPNDisabled
+            }
+        }
+        case SET_CONFIG_LOADED: {
+            return {
+                ...state,
+                configLoaded: action.configLoaded
             }
         }
         default:

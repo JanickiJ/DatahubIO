@@ -14,9 +14,12 @@ import IconButton from "@mui/material/IconButton";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import DialogStart from './DialogStart';
+import VpnLockIcon from '@mui/icons-material/VpnLock';
 
-export default function MenuList({onFileUpload}) {
+export default function MenuList({onFileUpload, checkVPN}) {
     const [isOpen, setIsOpen] = useState(false);
+    const handleClick = onFileUpload;
+    const onClickVpnLock = checkVPN;
     const onClickVisibilityOff = () => {
         console.log("Nwm maciek po huj to zrobiłes");
     }
@@ -26,7 +29,6 @@ export default function MenuList({onFileUpload}) {
     const handleClose = () => {
         setIsOpen(false);
     }
-    const handleClick = onFileUpload;
     return (
         <React.Fragment>
             <DialogStart handleCloseCallback={handleClose} defaultOpen={isOpen}/>
@@ -50,7 +52,14 @@ export default function MenuList({onFileUpload}) {
                     </IconButton>
                     <ListItemText primary="Przewodnik"/>
                 </ListItem>
+                <ListItem disablePadding>
+                    <IconButton onClick={onClickVpnLock} sx={{pl: 2.5, pr: 3}} component="label">
+                        <VpnLockIcon/>
+                    </IconButton>
+                    <ListItemText primary="Sprawdź VPN"/>
+                </ListItem>
             </List>
         </React.Fragment>
-    );
+
+    )
 }

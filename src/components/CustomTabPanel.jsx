@@ -24,8 +24,7 @@ export default function CustomTabPanel({
   }
 
   const handleChange = (event, newValue) => {
-    const index = parseInt(newValue.charAt(newValue.length - 1)) - 1;
-    changeTab(index);
+    changeTab(newValue);
     setValue(newValue);
   };
 
@@ -40,11 +39,7 @@ export default function CustomTabPanel({
         aria-label="full width tabs example"
       >
         {graphs.map((group, i) => (
-          <Tab
-            label={group.name}
-            value={"/group" + (i + 1)}
-            {...a11yProps(i)}
-          />
+          <Tab label={group.name} value={i} {...a11yProps(i)} />
         ))}
       </Tabs>
     </Box>
