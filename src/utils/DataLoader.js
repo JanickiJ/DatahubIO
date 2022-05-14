@@ -1,10 +1,29 @@
 import axios from 'axios'
-import async from 'async'
+import store from "../store/store.js";
+import {vpnEnabled} from "../actions/appInfo.js";
 
 function getNestedData(data, path) {
     if (path instanceof Array && path.length > 1)
         return getNestedData(data[path[0]], path.slice(1))
     return data[path[0]]
+}
+
+export async function checkVPN(){
+    console.log("checking vpn")
+    await axios.get("/pl", {
+        headers:{
+        },
+    }).then((response) => {
+        store.dispatch(vpnEnabled(true));
+        console.log("dziala")
+    }).catch(error => {
+        if (error.response) { // In case of other errors doesn't change
+            if(error.response.status === 403){
+                store.dispatch(vpnEnabled(false));
+                console.log("nie dziala")
+            }
+        }
+    }).then();
 }
 
 async function load(metadata, offset=0) {
@@ -20,6 +39,7 @@ async function load(metadata, offset=0) {
         },
     }).then((response) => {
         let json = response.data;
+        store.dispatch(vpnEnabled(true));
 
         for (const dataPoint of json["results"]) {
             let timestamp = getNestedData(dataPoint, metadata.timestampAccessPath);
@@ -33,8 +53,18 @@ async function load(metadata, offset=0) {
                 "values": values
             });
         }
-    }).catch(e => {
-        console.error(e);
+    }).catch(error => {
+        if (error.response) {
+            // 403 Request forbidden by administrative rules. Most likely no VPN
+            if(error.response.status === 403){
+                store.dispatch(vpnEnabled(false));
+            }
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+        } else if (error.request) {
+            console.log(error.request);
+        }
         return [];
     }).then();
 
@@ -71,6 +101,12 @@ function merge(A, B){
     return C;
 }
 
+function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+}
+
 class DataLoader {
 
     // Starts at offset. Stop condition is meeting specified date
@@ -83,6 +119,8 @@ class DataLoader {
 
             if(batch.length > 0 && new Date(batch[batch.length-1]['timestamp']) <= dateTo){
                 break;
+            } else if(batch.length == 0){
+                await sleep(5000);
             }
         }
         return res;

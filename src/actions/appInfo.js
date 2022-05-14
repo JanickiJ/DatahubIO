@@ -1,4 +1,4 @@
-import {SET_CURRENT_TAB, SET_CONFIG_INDICATED, SET_CONFIG_IS_LOADING} from './types'
+import {SET_CURRENT_TAB, SET_CONFIG_INDICATED, SET_CONFIG_IS_LOADING, VPN_ENABLED} from './types'
 
 export function setCurrentTab(currentTab) {
     return {
@@ -18,5 +18,12 @@ export function setConfigIsLoading(configIsLoading) {
     return {
         type: SET_CONFIG_IS_LOADING,
         configIsLoading
+    }
+}
+
+export function vpnEnabled(vpnEnabled) {
+    return {
+        type: VPN_ENABLED,
+        vpnEnabled
     }
 }
