@@ -7,12 +7,10 @@ import {setCurrentTab} from  "../actions/appInfo";
 
 function mapStateToProps(state, ownProps) {
   const graphs = graphsSelector(state);
-  const configIndicated = state.appInfo.configIndicated;
-  const configIsLoading = state.appInfo.configIsLoading;
+  const configLoaded = state.appInfo.configLoaded;
   return {
     graphs: graphs,
-      configIsLoading: configIsLoading,
-      configIndicated: configIndicated
+      configLoaded: configLoaded
   };
 }
 

@@ -17,13 +17,12 @@ function a11yProps(index) {
 }
 
 export default function CustomTabPanel({
-  configisLoading,
-  configIndicated,
+  configLoaded,
   graphs,
   changeTab,
 }) {
   const [value, setValue] = React.useState("/group1");
-  if (!configIndicated || configisLoading) {
+  if (!configLoaded) {
     return <Grid />;
   }
 
