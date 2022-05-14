@@ -9,7 +9,6 @@ function getNestedData(data, path) {
 }
 
 export async function checkVPN() {
-    console.log("checking vpn")
     await axios.get("/pl", {
         headers: {},
     }).then((response) => {

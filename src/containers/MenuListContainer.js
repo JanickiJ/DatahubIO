@@ -25,22 +25,24 @@ function mapDispatchToProps(dispatch, ownProps) {
             let fileContent = await readConfigFile(e);
             dispatch(loadConfig(fileContent, e.target.files[0].name));
 
-            let refreshTimer = setTimeout(async function refresh() {
-                await refreshGroups(fileContent);                                   // load/refresh data
-                await dispatch(loadConfig(fileContent, e.target.files[0].name));
-                refreshTimer = setTimeout(refresh, 120000);                  // set timeout for next load
-            }, 10000);
+            //console.log("started loading")
+            await refreshGroups(fileContent);                                       // load data
+            //console.log("finished loading")
+            await dispatch(loadConfig(fileContent, e.target.files[0].name));
+            dispatch(setCurrentTab(0));
+            dispatch(setConfigLoaded(true));
+            dispatch(setShowLoadingConfig(false));
+            dispatch(setShowConfigLoaded(true));
+            setTimeout(()=>dispatch(setShowConfigLoaded(false)), 10000)
 
-            // teraz chyba cos mozna pozmieniac, bo najpierw ładuja sie puste grafy, a potem dane sie dociagaja
-            setTimeout(() => {
-                dispatch(setCurrentTab(0));
-                dispatch(setConfigLoaded(true));
-                dispatch(setShowLoadingConfig(false));
-                dispatch(setShowConfigLoaded(true));
-                setTimeout(()=>dispatch(setShowConfigLoaded(false)), 10000)
-            }, 10000);
-        }
-    }
+            let refreshTimer = setTimeout(() => async function refresh() {
+                await refreshGroups(fileContent);                                   // refresh data
+                await dispatch(loadConfig(fileContent, e.target.files[0].name));
+                refreshTimer = setTimeout(() => refresh, 120000);                  // set timeout for next load
+            }, 120000);
+
+        },
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuList);
