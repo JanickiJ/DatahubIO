@@ -16,12 +16,8 @@ function a11yProps(index) {
   };
 }
 
-export default function CustomTabPanel({
-  configLoaded,
-  graphs,
-  changeTab,
-}) {
-  const [value, setValue] = React.useState("/group1");
+export default function CustomTabPanel({ configLoaded, graphs, changeTab }) {
+  const [value, setValue] = React.useState(0);
   if (!configLoaded) {
     return <Grid />;
   }

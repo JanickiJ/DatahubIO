@@ -31,9 +31,9 @@ const generateRows = (chart) => {
   return resultRows;
 };
 
-export default function GraphDetails({ chart, datesVisibility }) {
+export default function GraphDetails({ chart, datesToggled }) {
   console.log("inside comp");
-  console.log(datesVisibility);
+  console.log(datesToggled);
 
   const rows = generateRows(chart);
   return (

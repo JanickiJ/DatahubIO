@@ -6,13 +6,13 @@ import {
   SET_SHOW_CONFIG_IS_LOADING,
   SET_CURRENT_TAB,
   SET_CONFIG_LOADED,
-  SET_DATES_VISIBILITY,
+  TOGGLE_DATES,
 } from "../actions/types";
 
-export function setDatesVisibility(datesVisibility) {
+export function toggleDateVisibility(datesToggled) {
   return {
-    type: SET_DATES_VISIBILITY,
-    datesVisibility,
+    type: TOGGLE_DATES,
+    datesToggled,
   };
 }
 

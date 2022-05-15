@@ -3,10 +3,10 @@ import GraphDetails from "../components/GraphDetails";
 
 function mapStateToProps(state, ownProps) {
   console.log("inside con");
-  const datesVisibility = state.appInfo.showDatesVisibility;
-  console.log(state.appInfo.showDatesVisibility);
+  const datesToggled = state.appInfo.datesToggled;
+  console.log(state.appInfo.datesVisibility);
   return {
-    datesVisibility: datesVisibility,
+    datesToggled: datesToggled,
   };
 }
 

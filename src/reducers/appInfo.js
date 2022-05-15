@@ -6,7 +6,7 @@ import {
   SET_SHOW_CONFIG_IS_LOADING,
   SET_CURRENT_TAB,
   SET_CONFIG_LOADED,
-  SET_DATES_VISIBILITY,
+  TOGGLE_DATES,
 } from "../actions/types";
 
 const initialState = {
@@ -17,15 +17,15 @@ const initialState = {
   showConfigLoaded: false,
   showVPNEnabled: false,
   showVPNDisabled: false,
-  showDatesVisibility: true,
+  datesToggled: true,
 };
 
 export default function appInfoReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_DATES_VISIBILITY: {
+    case TOGGLE_DATES: {
       return {
         ...state,
-        datesVisibility: action.showDatesVisibility,
+        datesToggled: action.datesToggled,
       };
     }
     case SET_CURRENT_TAB: {
