@@ -25,7 +25,8 @@ const generateRows = (chart) => {
     var row = new Object();
     row.dataSeries = keys[i].charAt(0).toUpperCase() + keys[i].slice(1);
     row.color = chart.dataSeries[keys[i]].color;
-    row.value = chart.data[chart.data.length - 1].values[keys[i]];
+    if (chart.data.length != 0)
+      row.value = chart.data[chart.data.length - 1].values[keys[i]];
     resultRows.push(row);
   }
   return resultRows;
