@@ -46,6 +46,7 @@ function Graph({
               sx={{
                 visibility: datesToggled ? "hidden" : "block",
                 p: 3,
+                mt: 3,
                 display: "flex",
                 flexDirection: "column",
               }}
