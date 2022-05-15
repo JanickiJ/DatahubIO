@@ -139,9 +139,9 @@ function DashboardContent(configLoaded) {
                   DatahubIO
                 </Typography>
               </Grid>
-                  <Grid item>
-                    <CustomTabPanelContainer></CustomTabPanelContainer>
-                  </Grid>
+              <Grid item>
+                <CustomTabPanelContainer></CustomTabPanelContainer>
+              </Grid>
             </Grid>
           </Toolbar>
         </AppBar>
@@ -174,8 +174,7 @@ function DashboardContent(configLoaded) {
           }}
         >
           <Toolbar />
-          <Widget />
-          <GraphContainer/>
+          <GraphContainer />
           <Copyright sx={{ pt: 4 }} />
         </Box>
       </Box>
@@ -184,5 +183,5 @@ function DashboardContent(configLoaded) {
 }
 
 export default function Dashboard(configLoaded) {
-  return <DashboardContent configLoaded/>;
+  return <DashboardContent configLoaded />;
 }

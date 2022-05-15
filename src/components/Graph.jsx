@@ -21,10 +21,10 @@ function Graph({ currentTab, graphs, sortIntoGrid, configLoaded }) {
                 flexDirection: "column",
               }}
             >
-              <GraphDetails chart={graph} />
+              <GraphDetails chart={graph} configLoaded={configLoaded} />
             </Paper>
           </Grid>
-          <Grid item xs={12} md={7} lg={7}>
+          <Grid item xs={12} md={8} lg={7}>
             <Paper
               sx={{
                 p: 3,

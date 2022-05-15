@@ -12,33 +12,36 @@ import DraftsIcon from "@mui/icons-material/Drafts";
 import ListItemSecondaryAction from "@mui/material/ListItemSecondaryAction";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import VpnLockIcon from '@mui/icons-material/VpnLock';
+import VpnLockIcon from "@mui/icons-material/VpnLock";
 
-export default function MenuList({onFileUpload, checkVPN}) {
-    const handleClick = onFileUpload;
-    const onClickVpnLock = checkVPN;
-    return (
-        <List sx={{pl: "5px"}}>
-            <ListItem disablePadding>
-                <IconButton sx={{pl: 2.5, pr: 3}} component="label">
-                    <input type="file" hidden onChange={handleClick}/>
-                    <UploadFileIcon/>
-                </IconButton>
-                <ListItemText primary="Upload config"/>
-            </ListItem>
-            <ListItem disablePadding>
-                <IconButton sx={{pl: 2.5, pr: 3}} component="label">
-                    <VisibilityOffIcon/>
-                </IconButton>
-                <ListItemText primary="Toggle widget"/>
-            </ListItem>
-            <ListItem disablePadding>
-                <IconButton onClick={onClickVpnLock} sx={{pl: 2.5, pr: 3}} component="label">
-                    <VpnLockIcon/>
-                </IconButton>
-                <ListItemText primary="Sprawdź VPN"/>
-            </ListItem>
-        </List>
-)
-    ;
+export default function MenuList({ onFileUpload, checkVPN }) {
+  const handleClick = onFileUpload;
+  const onClickVpnLock = checkVPN;
+  return (
+    <List sx={{ pl: "5px" }}>
+      <ListItem disablePadding>
+        <IconButton sx={{ pl: 2.5, pr: 3 }} component="label">
+          <input type="file" hidden onChange={handleClick} />
+          <UploadFileIcon />
+        </IconButton>
+        <ListItemText primary="Upload config" />
+      </ListItem>
+      <ListItem disablePadding>
+        <IconButton sx={{ pl: 2.5, pr: 3 }} component="label">
+          <VisibilityOffIcon />
+        </IconButton>
+        <ListItemText primary="Toggle dates" />
+      </ListItem>
+      <ListItem disablePadding>
+        <IconButton
+          onClick={onClickVpnLock}
+          sx={{ pl: 2.5, pr: 3 }}
+          component="label"
+        >
+          <VpnLockIcon />
+        </IconButton>
+        <ListItemText primary="Sprawdź VPN" />
+      </ListItem>
+    </List>
+  );
 }

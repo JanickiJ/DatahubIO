@@ -19,7 +19,6 @@ function preventDefault(event) {
 }
 
 const generateRows = (chart) => {
-  console.log(chart.data[chart.data.length - 1].values["temperature read"]);
   let keys = Object.keys(chart.dataSeries);
   var resultRows = [];
   for (let i = 0; i < keys.length; i++) {
@@ -32,9 +31,11 @@ const generateRows = (chart) => {
   return resultRows;
 };
 
-export default function GraphDetails({ chart }) {
-  const rows = generateRows(chart);
+export default function GraphDetails({ chart, datesVisibility }) {
+  console.log("inside comp");
+  console.log(datesVisibility);
 
+  const rows = generateRows(chart);
   return (
     <React.Fragment>
       <TableContainer>
