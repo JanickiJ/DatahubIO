@@ -31,10 +31,7 @@ const generateRows = (chart) => {
   return resultRows;
 };
 
-export default function GraphDetails({ chart, datesToggled }) {
-  console.log("inside comp");
-  console.log(datesToggled);
-
+export default function GraphDetails({ chart }) {
   const rows = generateRows(chart);
   return (
     <React.Fragment>

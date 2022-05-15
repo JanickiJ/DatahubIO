@@ -2,13 +2,20 @@ import React from "react";
 import Plot from "./Plot";
 import PropTypes from "prop-types";
 import { Container, Alert, AlertTitle, Grid, Paper } from "@mui/material";
-import Deposits from "../components/Deposits";
 import GraphDetails from "./GraphDetails.js";
+import Deposits from "./Deposits";
 
-function Graph({ currentTab, graphs, sortIntoGrid, configLoaded }) {
+function Graph({
+  currentTab,
+  graphs,
+  sortIntoGrid,
+  configLoaded,
+  datesToggled,
+}) {
   if (!configLoaded) {
     return <Grid></Grid>;
   }
+
   return (
     <Container maxWidth="false" sx={{ mt: 4, mb: 4 }}>
       {graphs.map((graph) => (
@@ -24,7 +31,7 @@ function Graph({ currentTab, graphs, sortIntoGrid, configLoaded }) {
               <GraphDetails chart={graph} configLoaded={configLoaded} />
             </Paper>
           </Grid>
-          <Grid item xs={12} md={8} lg={7}>
+          <Grid item xs={12} md={8} lg={datesToggled ? 9 : 7}>
             <Paper
               sx={{
                 p: 3,
@@ -38,6 +45,7 @@ function Graph({ currentTab, graphs, sortIntoGrid, configLoaded }) {
           <Grid item xs={12} md={2} lg={2}>
             <Paper
               sx={{
+                visibility: datesToggled ? "hidden" : "block",
                 p: 3,
                 display: "flex",
                 flexDirection: "column",

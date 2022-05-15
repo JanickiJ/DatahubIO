@@ -9,15 +9,22 @@ import {
   setShowIndicateConfig,
   setShowLoadingConfig,
   setCurrentTab,
+  toggleDateVisibility,
 } from "../actions/appInfo";
 import { checkVPN } from "../utils/DataLoader.js";
 
 function mapStateToProps(state, ownProps) {
-  return {};
+  const datesToggled = state.appInfo.datesToggled;
+  return {
+    datesToggled: datesToggled,
+  };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
+    toggleDate: (flag) => {
+      dispatch(toggleDateVisibility(!flag));
+    },
     checkVPN: checkVPN,
     onFileUpload: async (e) => {
       dispatch(setShowIndicateConfig(false));

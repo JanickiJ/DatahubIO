@@ -14,9 +14,17 @@ import IconButton from "@mui/material/IconButton";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VpnLockIcon from "@mui/icons-material/VpnLock";
 
-export default function MenuList({ onFileUpload, checkVPN }) {
+export default function MenuList({
+  onFileUpload,
+  checkVPN,
+  toggleDate,
+  datesToggled,
+}) {
   const handleClick = onFileUpload;
   const onClickVpnLock = checkVPN;
+  const onToggleDate = (event) => {
+    toggleDate(datesToggled);
+  };
   return (
     <List sx={{ pl: "5px" }}>
       <ListItem disablePadding>
@@ -27,7 +35,11 @@ export default function MenuList({ onFileUpload, checkVPN }) {
         <ListItemText primary="Upload config" />
       </ListItem>
       <ListItem disablePadding>
-        <IconButton sx={{ pl: 2.5, pr: 3 }} component="label">
+        <IconButton
+          onClick={onToggleDate}
+          sx={{ pl: 2.5, pr: 3 }}
+          component="label"
+        >
           <VisibilityOffIcon />
         </IconButton>
         <ListItemText primary="Toggle dates" />
