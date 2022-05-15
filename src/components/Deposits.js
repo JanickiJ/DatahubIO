@@ -12,7 +12,7 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function Deposits() {
+export default function Deposits({ datesToggled }) {
   const [startValue, setStartValue] = React.useState(
     new Date("2022-05-10T21:37:54")
   );
