@@ -45,7 +45,7 @@ function Plot({key, chart}) {
             </YAxis>
             <YAxis yAxisId={AxisSide.RIGHT.value}
                    orientation={AxisSide.RIGHT.value}>
-              <Label value={rightLabel} angle={-90}/>
+              <Label value={rightLabel} angle={-90} dx={20}/>
             </YAxis>
             <CartesianGrid stroke='#91a7bd' strokeDasharray="4"/>
             <XAxis dataKey={"timestamp"} interval={Math.floor(chart.data.length / 20)} angle={-40} textAnchor={"end"}
