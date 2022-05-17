@@ -19,6 +19,11 @@ class TimeInterval {
   isIn(date) {
     return this.startDate < date && date < this.endDate;
   }
+
+  expandToMatch(other){
+    this.startDate = this.startDate < other.startDate ? this.startDate : other.startDate;
+    this.endDate = this.endDate > other.endDate ? this.endDate : other.endDate;
+  }
 }
 
 export {TimeInterval}

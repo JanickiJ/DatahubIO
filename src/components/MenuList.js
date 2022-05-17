@@ -22,7 +22,7 @@ export default function MenuList({
   datesToggled,
   toggleDate,
 }) {
-  console.log(datesToggled);
+  //console.log(datesToggled);
 
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = onFileUpload;

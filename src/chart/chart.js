@@ -58,6 +58,12 @@ class Chart {
     return "#" + Math.floor(Math.random() * 16777215)
       .toString(16);
   }
+
+  updateInterval(){
+    console.log(this.metadata.timeInterval);
+    this.metadata.timeInterval.expandToMatch(this.viewingTimeInterval);
+    console.log(this.metadata.timeInterval);
+  }
 }
 
 class Group {
@@ -80,6 +86,7 @@ class Group {
 const dataLoader = new DataLoader()
 
 async function refreshChartData(chart) {
+  chart.updateInterval();
   chart.updateData(
     await dataLoader.refreshData(chart)
   );
