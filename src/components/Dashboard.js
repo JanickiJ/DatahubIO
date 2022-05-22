@@ -13,13 +13,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import MenuListContainer from "../containers/MenuListContainer";
 import GraphContainer from "../containers/GraphContainer";
-import Widget from "./Widget";
-import { TabPanel, TabList } from "@mui/lab";
 import CustomTabPanelContainer from "../containers/CustomTabPanelContainer";
-import Tab from "@material-ui/core/Tab";
-import { withRouter } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { Box, Tabs, Input, Button, Menu, MenuItem } from "@mui/material";
+import { Box } from "@mui/material";
 
 function Copyright(props) {
   return (
@@ -88,11 +83,7 @@ const Drawer = styled(MuiDrawer, {
 const mdTheme = createTheme();
 
 function DashboardContent(configLoaded) {
-  const navigate = useNavigate();
 
-  const handleChange = (event, newValue) => {
-    navigate(newValue);
-  };
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
