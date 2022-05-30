@@ -7,6 +7,7 @@ function Snackbars({
                        showIndicateConfig,
                        showLoadingConfig,
                        showConfigLoaded,
+                       showConfigLoadedError,
                        showVPNEnabled,
                        showVPNDisabled
                    }) {
@@ -33,6 +34,7 @@ function Snackbars({
     SetSnackbar(showConfigLoaded, "showConfigLoaded", "success", 'Plik konfiguracyjny został załadowany pomyślnie');
     SetSnackbar(showVPNEnabled, "showVPNEnabled", "success", 'Łączność VPN została nawiązana');
     SetSnackbar(showVPNDisabled, "showVPNDisabled", "error", 'Błąd nawiązania łączności VPN');
+    SetSnackbar(showConfigLoadedError, "showConfigLoadedError", "error", 'Nieprawidłwy plik konfiguracyjny');
     return (
         <React.Fragment/>
     );

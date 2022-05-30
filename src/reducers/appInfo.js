@@ -4,6 +4,7 @@ import {
   SET_SHOW_VPN_ENABLED,
   SET_SHOW_CONFIG_LOADED,
   SET_SHOW_CONFIG_IS_LOADING,
+  SET_SHOW_CONFIG_LOADED_ERROR,
   SET_CURRENT_TAB,
   SET_CONFIG_LOADED,
   TOGGLE_DATES,
@@ -17,6 +18,7 @@ const initialState = {
   showConfigLoaded: false,
   showVPNEnabled: false,
   showVPNDisabled: false,
+  showLoadingConfigError: false,
   datesToggled: true,
 };
 
@@ -68,6 +70,12 @@ export default function appInfoReducer(state = initialState, action) {
       return {
         ...state,
         configLoaded: action.configLoaded,
+      };
+    }
+    case SET_SHOW_CONFIG_LOADED_ERROR: {
+      return {
+        ...state,
+        showConfigLoadedError: action.showConfigLoadedError,
       };
     }
     default:

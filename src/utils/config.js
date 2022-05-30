@@ -1,6 +1,7 @@
-import { parseConfig } from "./ConfigParser.js";
-import { createGroups, ChartContainer } from "../chart/chart.js";
+import {parseConfig} from "./ConfigParser.js";
+import {createGroups, ChartContainer} from "../chart/chart.js";
 import store from "../store/store.js";
+import {setShowConfigLoadedError} from "../actions/appInfo.js";
 
 export async function readConfigFile(e) {
   const files = e.target.files;
@@ -11,17 +12,17 @@ export async function readConfigFile(e) {
 }
 
 async function loadFile(file) {
-  // return new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     let fileReader = new FileReader();
-  //     fileReader.onload = (e) => resolve(fileReader.result);
-  //     fileReader.readAsText(file);
-  //   }, 3000);
-  // });
+    // return new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     let fileReader = new FileReader();
+    //     fileReader.onload = (e) => resolve(fileReader.result);
+    //     fileReader.readAsText(file);
+    //   }, 3000);
+    // });
 
-  return new Promise((resolve) => {
-    let fileReader = new FileReader();
-    fileReader.onload = (e) => resolve(fileReader.result);
-    fileReader.readAsText(file);
-  });
+    return new Promise((resolve) => {
+        let fileReader = new FileReader();
+        fileReader.onload = (e) => resolve(fileReader.result);
+        fileReader.readAsText(file);
+    });
 }

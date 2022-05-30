@@ -3,6 +3,7 @@ import {
   SET_SHOW_VPN_DISABLED,
   SET_SHOW_VPN_ENABLED,
   SET_SHOW_CONFIG_LOADED,
+  SET_SHOW_CONFIG_LOADED_ERROR,
   SET_SHOW_CONFIG_IS_LOADING,
   SET_CURRENT_TAB,
   SET_CONFIG_LOADED,
@@ -48,6 +49,13 @@ export function setShowConfigLoaded(showConfigLoaded) {
   return {
     type: SET_SHOW_CONFIG_LOADED,
     showConfigLoaded,
+  };
+}
+
+export function setShowConfigLoadedError(showConfigLoadedError) {
+  return {
+    type: SET_SHOW_CONFIG_LOADED_ERROR,
+    showConfigLoadedError,
   };
 }
 
