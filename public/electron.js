@@ -14,6 +14,8 @@ function createWindow() {
     },
   });
   mainWindow.maximize();
+  mainWindow.setMenu(null);
+  mainWindow.setIcon(path.join(__dirname,"app_icon.png"));
 
   mainWindow.webContents.session.webRequest.onBeforeSendHeaders(
       (details, callback) => {
