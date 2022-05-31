@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import Notification from '../components/Notification'
-
+import {setShowInternetConnectionError} from "../actions/appInfo"
 function mapStateToProps(state, ownProps) {
     const showIndicateConfig = state.appInfo.showIndicateConfig;
     const showLoadingConfig = state.appInfo.showLoadingConfig;
@@ -8,18 +8,25 @@ function mapStateToProps(state, ownProps) {
     const showVPNEnabled = state.appInfo.showVPNEnabled;
     const showVPNDisabled = state.appInfo.showVPNDisabled;
     const showConfigLoadedError = state.appInfo.showConfigLoadedError;
+    const showInternetConnectionError = state.appInfo.showInternetConnectionError;
     return {
         showIndicateConfig: showIndicateConfig,
         showLoadingConfig: showLoadingConfig,
         showConfigLoaded: showConfigLoaded,
         showVPNEnabled: showVPNEnabled,
         showVPNDisabled: showVPNDisabled,
-        showConfigLoadedError: showConfigLoadedError
+        showConfigLoadedError: showConfigLoadedError,
+        showInternetConnectionError: showInternetConnectionError
     };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
-    return {};
+    const setShowInternetConnectionErrorProp = (flag) => {
+        dispatch(setShowInternetConnectionError(flag))
+    }
+    return {
+        setShowInternetConnectionError: setShowInternetConnectionErrorProp
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);

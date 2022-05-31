@@ -8,6 +8,7 @@ import {
   SET_CURRENT_TAB,
   SET_CONFIG_LOADED,
   TOGGLE_DATES,
+  SET_SHOW_INTERNET_CONNECTION_ERROR,
 } from "../actions/types";
 
 export function toggleDateVisibility(datesToggled) {
@@ -70,5 +71,12 @@ export function setShowVPNDisabled(showVPNDisabled) {
   return {
     type: SET_SHOW_VPN_DISABLED,
     showVPNDisabled,
+  };
+}
+
+export function setShowInternetConnectionError(showInternetConnectionError) {
+  return {
+    type: SET_SHOW_INTERNET_CONNECTION_ERROR,
+    showInternetConnectionError,
   };
 }

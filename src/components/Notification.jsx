@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import Button from '@mui/material/Button';
 import {SnackbarProvider, useSnackbar} from 'notistack';
 import {checkVPN} from '../utils/DataLoader.js'
 
@@ -9,7 +8,8 @@ function Snackbars({
                        showConfigLoaded,
                        showConfigLoadedError,
                        showVPNEnabled,
-                       showVPNDisabled
+                       showVPNDisabled,
+                       showInternetConnectionError
                    }) {
     const [keys, setKeys] = useState({});
     const {enqueueSnackbar, closeSnackbar} = useSnackbar();
@@ -21,7 +21,7 @@ function Snackbars({
                     setKeys({
                         ...keys, [flagName]: key
                     })
-                } else if(!flagValue && keys.hasOwnProperty(flagName)){
+                } else if (!flagValue && keys.hasOwnProperty(flagName)) {
                     closeSnackbar(keys[flagName])
                     delete keys[flagName];
                 }
@@ -35,15 +35,23 @@ function Snackbars({
     SetSnackbar(showVPNEnabled, "showVPNEnabled", "success", 'Łączność VPN została nawiązana');
     SetSnackbar(showVPNDisabled, "showVPNDisabled", "error", 'Błąd nawiązania łączności VPN');
     SetSnackbar(showConfigLoadedError, "showConfigLoadedError", "error", 'Nieprawidłwy plik konfiguracyjny');
+    SetSnackbar(showInternetConnectionError, "showInternetConnectionError", "error", 'Utracono łączność z internetem');
     return (
         <React.Fragment/>
     );
 }
 
-export default function Notification(props) {
-    useEffect(() => checkVPN(),[])
+export default function Notification({setShowInternetConnectionError,...props}) {
+    useEffect(() => checkVPN(), [])
+    window.addEventListener('offline', () => {
+        setShowInternetConnectionError(true)
+    });
+    window.addEventListener('online', () => {
+        setShowInternetConnectionError(false)
+    });
+
     return (
-        <SnackbarProvider autoHideDuration={null} style={{width: 1000,fontSize: 17}} maxSnack={3}>
+        <SnackbarProvider autoHideDuration={null} style={{width: 1000, fontSize: 17}} maxSnack={3}>
             <Snackbars {...props}/>
         </SnackbarProvider>
     );
