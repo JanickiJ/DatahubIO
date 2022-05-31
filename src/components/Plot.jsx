@@ -23,6 +23,32 @@ const formatDateTime = (datetime) => {
     withLeadingZeros(datetime.getSeconds())].join(':');
 }
 
+const calculateValuesDomain = (chart, axisSide) => {
+  let domainMin = Number.MAX_VALUE
+  let domainMax = Number.MIN_VALUE
+  chart.data.forEach(t => {
+    Object.entries(t.values).forEach(v => {
+      const seriesName = v[0]
+      if (chart.dataSeries[seriesName].yAxisSide.value === axisSide.value) {
+        domainMin = Math.min(domainMin, v[1]);
+        domainMax = Math.max(domainMax, v[1]);
+      }
+    })
+  })
+
+  return [domainMin, domainMax];
+}
+
+const calculateTicks = (chart, axisSide) => {
+  const valuesDomain = calculateValuesDomain(chart, axisSide)
+  const tickGap = (valuesDomain[1] - valuesDomain[0]) / 10
+  const ticks = []
+  for (let tick = valuesDomain[0]; tick <= valuesDomain[1]; tick += tickGap) {
+    ticks.push(tick.toFixed(2));
+  }
+  return ticks;
+}
+
 
 function Plot({key, chart}) {
 
@@ -40,12 +66,20 @@ function Plot({key, chart}) {
         <ResponsiveContainer width="99%" height={450}>
           <LineChart data={chart.data} margin={{top: 5, right: 5, left: 50, bottom: 100}}>
             <YAxis yAxisId={AxisSide.LEFT.value}
-                   orientation={AxisSide.LEFT.value}>
-              <Label value={leftLabel} angle={-90} dx={-20}/>
+                   orientation={AxisSide.LEFT.value}
+                   domain={calculateValuesDomain(chart, AxisSide.LEFT)}
+                   ticks={calculateTicks(chart, AxisSide.LEFT)}
+                   interval={"preserveStart"}
+            >
+              <Label value={leftLabel} angle={-90} dx={-25}/>
             </YAxis>
             <YAxis yAxisId={AxisSide.RIGHT.value}
-                   orientation={AxisSide.RIGHT.value}>
-              <Label value={rightLabel} angle={-90} dx={20}/>
+                   orientation={AxisSide.RIGHT.value}
+                   domain={calculateValuesDomain(chart, AxisSide.RIGHT)}
+                   ticks={calculateTicks(chart, AxisSide.RIGHT)}
+                   interval={"preserveStart"}
+            >
+              <Label value={rightLabel} angle={-90} dx={25}/>
             </YAxis>
             <CartesianGrid stroke='#91a7bd' strokeDasharray="4"/>
             <XAxis dataKey={"timestamp"} interval={Math.floor(chart.data.length / 20)} angle={-40} textAnchor={"end"}

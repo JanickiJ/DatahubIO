@@ -32,7 +32,7 @@ function Snackbars({
     SetSnackbar(showLoadingConfig, "showLoadingConfig", "info", 'Plik konfiguracyjny ładuje się');
     SetSnackbar(showConfigLoaded, "showConfigLoaded", "success", 'Plik konfiguracyjny został załadowany pomyślnie');
     SetSnackbar(showVPNEnabled, "showVPNEnabled", "success", 'Łączność VPN została nawiązana');
-    SetSnackbar(showVPNDisabled, "showVPNDisabled", "error", 'Błąd nawiązania łączności VPN');
+    SetSnackbar(showVPNDisabled, "showVPNDisabled", "error", 'Błąd nawiązania łączności VPN, wyświetlane dane mogą być nieaktualne\'');
     return (
         <React.Fragment/>
     );
