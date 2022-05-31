@@ -8,10 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Start from './Start'
 
 export default function DialogStart({defaultOpen, handleCloseCallback}) {
-    console.log("meeee")
-    console.log(defaultOpen)
     const [open, setOpen] = useState(defaultOpen);
-    console.log(open)
     const handleClickOpen = () => {
         setOpen(true);
     };
