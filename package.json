@@ -4,8 +4,8 @@
   "private": true,
   "proxy": "https://datahub.ki.agh.edu.pl",
   "author": {
-    "name": "Mietek Żul",
-    "email": "garek@agh.edu.pl"
+    "name": "Jakub Janicki, Dawid Pastuszka, Maciej Kazalski, Michał Stencel, Bartłomiej Zapart",
+    "email": "noone@agh.edu.pl"
   },
   "description": "Aplikacja do wizualizacji danych z datahub",
   "homepage": "./",
