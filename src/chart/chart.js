@@ -60,9 +60,7 @@ class Chart {
   }
 
   updateInterval(){
-    console.log(this.metadata.timeInterval);
     this.metadata.timeInterval.expandToMatch(this.viewingTimeInterval);
-    console.log(this.metadata.timeInterval);
   }
 }
 
@@ -110,4 +108,4 @@ async function refreshGroups(groups) {
   await async.parallel(tasks);
 }
 
-export {Chart, Group, createGroups, refreshGroups}
+export {Chart, Group, createGroups, refreshGroups, refreshChartData}

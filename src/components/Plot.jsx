@@ -31,11 +31,8 @@ function Plot({key, chart}) {
   const leftLabel = createAxisLabel(chart, leftAxis)
   const rightLabel = createAxisLabel(chart, rightAxis)
 
-  console.log(chart.data.filter(v => chart.viewingTimeInterval.isIn(new Date(v.timestamp))))
   const displayData = chart.data.filter(v => chart.viewingTimeInterval.isIn(new Date(v.timestamp)))
-  console.log(displayData)
   displayData.forEach(v => v.timestamp = formatDateTime(new Date(v.timestamp)))
-  console.log(displayData)
 
   return (
     <Box display={'flex'} justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>

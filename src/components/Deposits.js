@@ -7,6 +7,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { TextField } from "@mui/material";
 import { Grid } from "@mui/material";
+import {refreshGroups} from "../chart/chart";
+import store from "../store/store.js"
 
 
 function preventDefault(event) {
@@ -15,22 +17,18 @@ function preventDefault(event) {
 
 export default function Deposits({ chart }) {
   const [startValue, setStartValue] = React.useState(
-    //new Date("2022-05-10T21:37:54")
     chart.viewingTimeInterval.getStart()
   );
   const [endValue, setEndValue] = React.useState(
-    //new Date("2022-05-11T21:11:54")
     chart.viewingTimeInterval.getEnd()
   );
 
   const handleStartChange = (newValue) => {
-    console.log(newValue)
     chart.viewingTimeInterval.startDate = new Date(newValue);
     setStartValue(newValue);
   };
 
   const handleEndChange = (newValue) => {
-    console.log(newValue)
     chart.viewingTimeInterval.endDate = new Date(newValue);
     setEndValue(newValue);
   };

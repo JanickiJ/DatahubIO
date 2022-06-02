@@ -9,6 +9,9 @@ import {
   TOGGLE_DATES,
 } from "../actions/types";
 
+import {refreshGroups} from "../chart/chart";
+import store from "../store/store";
+
 const initialState = {
   currentTab: 0,
   configLoaded: false,
@@ -18,6 +21,7 @@ const initialState = {
   showVPNEnabled: false,
   showVPNDisabled: false,
   datesToggled: true,
+  refreshTimer: null
 };
 
 export default function appInfoReducer(state = initialState, action) {
@@ -56,12 +60,6 @@ export default function appInfoReducer(state = initialState, action) {
       return {
         ...state,
         showVPNEnabled: action.showVPNEnabled,
-      };
-    }
-    case SET_SHOW_VPN_DISABLED: {
-      return {
-        ...state,
-        showVPNDisabled: action.showVPNDisabled,
       };
     }
     case SET_CONFIG_LOADED: {

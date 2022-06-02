@@ -63,7 +63,7 @@ async function load(metadata, offset = 0) {
         } else if (error.request) {
             console.log(error.request);
         }
-        return [];
+        return error.response.status;
     }).then();
     points.reverse();
     return points;
@@ -110,15 +110,17 @@ class DataLoader {
     async loadDataTo(chart, offset, dateTo) {
         let res = [];
         while (true) {
-            // console.log("load", offset)
+            console.log("load", offset)
             let batch = await load(chart.metadata, offset)
-            offset += batch.length
-            res = merge(res, batch)
 
-            if (batch.length > 0 && new Date(batch[batch.length - 1]['timestamp']) <= dateTo) {
-                break;
-            } else if (batch.length === 0) {
-                await sleep(1000);
+            if (batch instanceof Array) {
+                offset += batch.length
+                res = merge(res, batch)
+                if (batch.length === 0 || new Date(batch[batch.length - 1]['timestamp']) <= dateTo) {
+                    break;
+                }
+            } else {
+                await sleep(3000);
             }
         }
         return res;
