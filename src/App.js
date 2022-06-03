@@ -8,14 +8,14 @@ import NotificationContainer from './containers/NotificationContainer'
 
 function App() {
     return (
-        /*<PersistGate loading={null} persistor={persistor}>*/
+        <PersistGate loading={null} persistor={persistor}>
             <Provider store={store}>
                 <React.Fragment>
                     <DashboardContainer/>
                     <NotificationContainer/>
                 </React.Fragment>
             </Provider>
-        /*</PersistGate>*/
+        </PersistGate>
     );
 }
 

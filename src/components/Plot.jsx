@@ -36,7 +36,7 @@ const calculateValuesDomain = (chart, axisSide) => {
     })
   })
 
-  return [domainMin, domainMax];
+  return [domainMin-10, domainMax+10];
 }
 
 const calculateTicks = (chart, axisSide) => {
