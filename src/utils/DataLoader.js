@@ -9,7 +9,7 @@ function getNestedData(data, path) {
 }
 
 export async function checkVPN() {
-    await axios.get("/pl", {
+    await axios.get("https://datahub.ki.agh.edu.pl/pl", {
         headers: {},
     }).then((response) => {
         store.dispatch(setShowVPNDisabled(false));
@@ -31,7 +31,7 @@ async function load(metadata, offset = 0) {
     let points = []
 
     // cuts 'proxy prefix' from endpoint
-    let endpoint = metadata.initEndpoint.slice("https://datahub.ki.agh.edu.pl".length) +
+    let endpoint = metadata.initEndpoint +
         "/?format=json&limit=100&offset=" + offset
 
     await axios.get(endpoint, {

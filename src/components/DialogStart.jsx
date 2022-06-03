@@ -2,15 +2,10 @@ import React, {useState, useEffect, useRef} from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Start from './Start'
 
 export default function DialogStart({defaultOpen, handleCloseCallback}) {
-    //console.log(defaultOpen)
     const [open, setOpen] = useState(defaultOpen);
-    //console.log(open)
     const handleClickOpen = () => {
         setOpen(true);
     };
