@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Button from '@mui/material/Button';
 import {SnackbarProvider, useSnackbar} from 'notistack';
 import {checkVPN} from '../utils/DataLoader.js'
 
@@ -33,9 +34,9 @@ function Snackbars({
     SetSnackbar(showLoadingConfig, "showLoadingConfig", "info", 'Plik konfiguracyjny ładuje się');
     SetSnackbar(showConfigLoaded, "showConfigLoaded", "success", 'Plik konfiguracyjny został załadowany pomyślnie');
     SetSnackbar(showVPNEnabled, "showVPNEnabled", "success", 'Łączność VPN została nawiązana');
-    SetSnackbar(showVPNDisabled, "showVPNDisabled", "error", 'Błąd nawiązania łączności VPN');
     SetSnackbar(showConfigLoadedError, "showConfigLoadedError", "error", 'Nieprawidłwy plik konfiguracyjny');
     SetSnackbar(showInternetConnectionError, "showInternetConnectionError", "error", 'Utracono łączność z internetem');
+    SetSnackbar(showVPNDisabled, "showVPNDisabled", "error", 'Błąd nawiązania łączności VPN, wyświetlane dane mogą być nieaktualne\'');
     return (
         <React.Fragment/>
     );
