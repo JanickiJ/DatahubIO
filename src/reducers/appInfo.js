@@ -72,6 +72,12 @@ export default function appInfoReducer(state = initialState, action) {
         configLoaded: action.configLoaded,
       };
     }
+    case SET_SHOW_VPN_DISABLED: {
+      return {
+        ...state,
+        showVPNDisabled: action.showVPNDisabled,
+      };
+    }
     case SET_SHOW_CONFIG_LOADED_ERROR: {
       return {
         ...state,

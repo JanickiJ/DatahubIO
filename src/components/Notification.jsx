@@ -36,7 +36,7 @@ function Snackbars({
     SetSnackbar(showVPNEnabled, "showVPNEnabled", "success", 'Łączność VPN została nawiązana');
     SetSnackbar(showConfigLoadedError, "showConfigLoadedError", "error", 'Nieprawidłwy plik konfiguracyjny');
     SetSnackbar(showInternetConnectionError, "showInternetConnectionError", "error", 'Utracono łączność z internetem');
-    SetSnackbar(showVPNDisabled, "showVPNDisabled", "error", 'Błąd nawiązania łączności VPN, wyświetlane dane mogą być nieaktualne\'');
+    SetSnackbar(showVPNDisabled, "showVPNDisabled", "error", 'Błąd nawiązania łączności VPN, wyświetlane dane mogą być nieaktualne');
     return (
         <React.Fragment/>
     );
@@ -50,7 +50,7 @@ export default function Notification({setShowInternetConnectionError,...props}) 
     window.addEventListener('online', () => {
         setShowInternetConnectionError(false)
     });
-
+    console.log(props)
     return (
         <SnackbarProvider autoHideDuration={null} style={{width: 1000, fontSize: 17}} maxSnack={3}>
             <Snackbars {...props}/>

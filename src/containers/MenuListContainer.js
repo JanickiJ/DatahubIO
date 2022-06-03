@@ -66,6 +66,9 @@ function mapDispatchToProps(dispatch, ownProps) {
                         dispatch(setRefreshTimer(setTimeout(r, 10000))); // set timeout for next load
                     }, 10000)
                 ));
+            }).catch(()=>{
+                dispatch(setShowConfigLoadedError(true));
+                setTimeout(() => dispatch(setShowConfigLoadedError(false)), 10000);
             });
         }
     }
