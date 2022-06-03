@@ -4,6 +4,8 @@ import {
   SET_SHOW_VPN_ENABLED,
   SET_SHOW_CONFIG_LOADED,
   SET_SHOW_CONFIG_IS_LOADING,
+  SET_SHOW_CONFIG_LOADED_ERROR,
+  SET_SHOW_INTERNET_CONNECTION_ERROR,
   SET_CURRENT_TAB,
   SET_CONFIG_LOADED,
   TOGGLE_DATES,
@@ -17,6 +19,8 @@ const initialState = {
   showConfigLoaded: false,
   showVPNEnabled: false,
   showVPNDisabled: false,
+  showConfigLoadedError: false,
+  showInternetConnectionError: false,
   datesToggled: true,
 };
 
@@ -68,6 +72,18 @@ export default function appInfoReducer(state = initialState, action) {
       return {
         ...state,
         configLoaded: action.configLoaded,
+      };
+    }
+    case SET_SHOW_CONFIG_LOADED_ERROR: {
+      return {
+        ...state,
+        showConfigLoadedError: action.showConfigLoadedError,
+      };
+    }
+    case SET_SHOW_INTERNET_CONNECTION_ERROR: {
+      return {
+        ...state,
+        showInternetConnectionError: action.showInternetConnectionError,
       };
     }
     default:
