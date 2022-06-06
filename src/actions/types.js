@@ -15,4 +15,5 @@ export const TOGGLE_DATES = "TOGGLE_DATES";
 
 export const SET_REFRESH_TIMER = "SET_REFRESH_TIMER";
 export const CLEAR_TIMER = "CLEAR_TIMER";
+export const CLEAR_MUTEX = "CLEAR_MUTEX";
 export const REFRESH = "REFRESH";

@@ -7,15 +7,16 @@ import DashboardContainer from "./containers/DashboardContainer";
 import NotificationContainer from './containers/NotificationContainer'
 
 function App() {
+
     return (
-        <PersistGate loading={null} persistor={persistor}>
-            <Provider store={store}>
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
                 <React.Fragment>
                     <DashboardContainer/>
                     <NotificationContainer/>
                 </React.Fragment>
-            </Provider>
-        </PersistGate>
+            </PersistGate>
+        </Provider>
     );
 }
 

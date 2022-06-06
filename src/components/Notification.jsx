@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Button from '@mui/material/Button';
 import {SnackbarProvider, useSnackbar} from 'notistack';
 import {checkVPN} from '../utils/DataLoader.js'
-
+import store from "../store/store"
 function Snackbars({
                        showIndicateConfig,
                        showLoadingConfig,
@@ -50,7 +50,6 @@ export default function Notification({setShowInternetConnectionError,...props}) 
     window.addEventListener('online', () => {
         setShowInternetConnectionError(false)
     });
-    console.log(props)
     return (
         <SnackbarProvider autoHideDuration={null} style={{width: 1000, fontSize: 17}} maxSnack={3}>
             <Snackbars {...props}/>

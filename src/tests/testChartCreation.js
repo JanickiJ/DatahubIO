@@ -586,5 +586,4 @@ const config = `{
 
 let metadata = parseConfig(config);
 charts.createGroups(metadata).forEach((result) => {
-    console.log(result)
 });

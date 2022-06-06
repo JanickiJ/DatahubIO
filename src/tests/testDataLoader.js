@@ -4,5 +4,4 @@ const mm = require("./testMetadata")
 
 let dl = new DataLoader();
 dl.loadData(mm).then((result) => {
-    console.log(result)
 })

@@ -8,11 +8,9 @@ import {
   SET_SHOW_INTERNET_CONNECTION_ERROR,
   SET_CURRENT_TAB,
   SET_CONFIG_LOADED,
-  TOGGLE_DATES,
+  TOGGLE_DATES
 } from "../actions/types";
 
-import {refreshGroups} from "../chart/chart";
-import store from "../store/store";
 
 const initialState = {
   currentTab: 0,
