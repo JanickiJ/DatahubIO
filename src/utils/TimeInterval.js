@@ -27,7 +27,8 @@ class TimeInterval {
 }
 
 function isIn(ti, date) {
-  ti = new TimeInterval(ti.startDate, ti.endDate)
+  if (!ti instanceof TimeInterval)
+    ti = new TimeInterval(ti.startDate, ti.endDate)
   return ti.startDate < date && date < ti.endDate;
 }
 

@@ -37,9 +37,12 @@ class Chart {
         })
       }
     )
+    console.log(this.data)
     this.data = merge(this.data, newData)
+    console.log(this.data)
     this.data = this.data.filter(data_point => isIn(this.metadata.timeInterval, new Date(data_point['timestamp'])))
-  }
+    console.log(this.data)
+    }
 
   chartInfoFromMetadata() {
     for (const data of this.metadata.dataAccessPaths) {
