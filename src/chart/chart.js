@@ -2,6 +2,7 @@ import {DataLoader, merge} from "../utils/DataLoader.js"
 import async from 'async';
 import {ChartInfo} from "./chartInfo.js";
 import {AxisSide} from "./axisSide.js";
+import {isIn} from "../utils/TimeInterval.js"
 
 class Chart {
     metadata;
@@ -37,7 +38,7 @@ class Chart {
       }
     )
     this.data = merge(this.data, newData)
-    this.data = this.data.filter(data_point => this.metadata.timeInterval.isIn(new Date(data_point['timestamp'])))
+    this.data = this.data.filter(data_point => isIn(this.metadata.timeInterval, new Date(data_point['timestamp'])))
   }
 
   chartInfoFromMetadata() {

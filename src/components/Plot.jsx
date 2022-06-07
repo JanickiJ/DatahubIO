@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {AxisSide} from "../chart/axisSide";
 import {Box, Typography} from '@mui/material';
+import {isIn} from "../utils/TimeInterval.js"
 
 const createAxisLabel = (chart, axis) => {
   const labelName = chart.metadata.yLeftLabel ?? "";
@@ -57,8 +58,9 @@ function Plot({key, chart}) {
   const leftLabel = createAxisLabel(chart, leftAxis)
   const rightLabel = createAxisLabel(chart, rightAxis)
 
-  const displayData = chart.data.filter(v => chart.viewingTimeInterval.isIn(new Date(v.timestamp)))
+  const displayData = chart.data.filter(v => isIn(chart.viewingTimeInterval, new Date(v.timestamp)))
   displayData.forEach(v => v.timestamp = formatDateTime(new Date(v.timestamp)))
+
 
   return (
     <Box display={'flex'} justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>
