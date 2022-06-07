@@ -1,4 +1,4 @@
-import { Chart } from "./chart.js";
+import {Chart, updateData} from "./chart.js";
 
 import { mockedMetadata } from "../tests/testMetadata.js";
 
@@ -19,7 +19,7 @@ export function mockedChart() {
     });
   }
 
-  chart.updateData(points);
+  updateData(chart,points);
 
   return chart;
 }

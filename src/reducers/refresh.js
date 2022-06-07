@@ -1,9 +1,9 @@
 import
-{CLEAR_TIMER,CLEAR_MUTEX, REFRESH, RESET_APP, SET_REFRESH_TIMER} from '../actions/types'
-import {refreshGroups} from "../chart/chart";
+{CLEAR_TIMER,CLEAR_MUTEX, REFRESH, SET_REFRESH_TIMER} from '../actions/types'
 import { Mutex } from 'async-mutex';
 import store from "../store/store"
 import {loadConfig} from "../actions/config";
+import {refreshGroups} from "../chart/group";
 
 const initialState = {
     dataLoading: new Mutex(),

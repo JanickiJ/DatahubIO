@@ -4,7 +4,7 @@ import {ChartInfo} from "./chartInfo.js";
 import {AxisSide} from "./axisSide.js";
 import {expandToMatch, isIn} from "../utils/TimeInterval.js"
 
-class Chart {
+export class Chart {
     metadata;
     viewingTimeInterval;
     data;
@@ -14,75 +14,54 @@ class Chart {
         this.metadata = metadata;
         this.viewingTimeInterval = metadata.timeInterval;
         this.data = [];
-        this.chartInfoFromMetadata();
+        chartInfoFromMetadata(this);
     }
-
-    getLatestValues() {
-        return this.data.slice(-1);
-    }
-
-    getSeriesColor(seriesName) {
-        return this.dataSeries[seriesName].color;
-    }
+}
 
 
-  // existing data and new data is always sorted
-  updateData(newData) {
+// existing data and new data is always sorted
+export function updateData(chart,newData) {
     newData.forEach(v => {
-        Object.entries(v.values).forEach(([name, value]) => {
-          const side = this.dataSeries[name].yAxisSide;
-          const axis = side === AxisSide.LEFT ? this.metadata.leftAxis : this.metadata.rightAxis;
-          const decimals = axis.decimals
-          v.values[name] = value.toFixed(decimals)
-        })
-      }
+            Object.entries(v.values).forEach(([name, value]) => {
+                const side = chart.dataSeries[name].yAxisSide;
+                const axis = side === AxisSide.LEFT ? chart.metadata.leftAxis : chart.metadata.rightAxis;
+                const decimals = axis.decimals
+                v.values[name] = value.toFixed(decimals)
+            })
+        }
     )
-    console.log(this.data)
-    this.data = merge(this.data, newData)
-    console.log(this.data)
-    this.data = this.data.filter(data_point => isIn(this.metadata.timeInterval, new Date(data_point['timestamp'])))
-    console.log(this.data)
-    }
+    console.log(chart.data)
+    chart.data = merge(chart.data, newData)
+    console.log(chart.data)
+    chart.data = chart.data.filter(data_point => isIn(chart.metadata.timeInterval, new Date(data_point['timestamp'])))
+    console.log(chart.data)
+}
 
-  chartInfoFromMetadata() {
-    for (const data of this.metadata.dataAccessPaths) {
-      this.addChartInfo(data.name, data.axis);
+export function chartInfoFromMetadata(chart) {
+    for (const data of chart.metadata.dataAccessPaths) {
+        addChartInfo(chart,data.name, data.axis);
     }
-  }
+}
 
-  addChartInfo(name, yAxisSide = AxisSide.LEFT, color = null) {
+export function addChartInfo(chart,name, yAxisSide = AxisSide.LEFT, color = null) {
     if (color == null) {
-      color = Chart.randomColor();
+        color = randomColor();
     }
-    this.dataSeries[name] = new ChartInfo(color, yAxisSide)
-  }
+    chart.dataSeries[name] = new ChartInfo(color, yAxisSide)
+}
 
-  static randomColor() {
-      var color = '#';
-      for (var i = 0; i < 6; i++) {
+export function randomColor() {
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
         color += Math.floor(Math.random() * 10);
-      }
-      return color;
-  }
-
-  updateInterval(){
-      this.metadata.timeInterval = expandToMatch(this.metadata.timeInterval,this.viewingTimeInterval);
-  }
-}
-
-class Group {
-    name;
-    description;
-    charts;
-
-    constructor(name, description, charts) {
-        this.name = name;
-        this.description = description;
-        this.charts = charts;
     }
-
-
+    return color;
 }
+
+export function updateInterval(chart){
+    chart.metadata.timeInterval = expandToMatch(chart.metadata.timeInterval,chart.viewingTimeInterval);
+}
+
 
 export async function refreshCharts(group) {
     group.charts = await async.concat(group.charts, refreshChartData);
@@ -91,29 +70,15 @@ export async function refreshCharts(group) {
 const dataLoader = new DataLoader()
 
 async function refreshChartData(chart) {
-  chart.updateInterval();
-  chart.updateData(
-    await dataLoader.refreshData(chart)
+  updateInterval(chart);
+  updateData(
+      chart,
+      await dataLoader.refreshData(chart)
   );
   return chart;
 }
 
 
-function createCharts(metadataList) {
+export function createCharts(metadataList) {
   return metadataList.map(metadata => new Chart(metadata));
 }
-
-// Now creates empty charts
-function createGroups(groupsMetadataList) {
-    let groups = groupsMetadataList.map(group => new Group(group[0], group[1], createCharts(group[2])));
-    return groups;
-
-}
-
-async function refreshGroups(groups) {
-  const tasks = groups.map(group => cb => refreshCharts(group).then(() => cb()))
-  await async.parallel(tasks);
-  return groups
-}
-
-export {Chart, Group, createGroups, refreshGroups, refreshChartData}

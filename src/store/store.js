@@ -8,6 +8,7 @@ const logger = createLogger({
     diff: true,
     collapsed: true
 });
+
 const persistConfig = {
     key: 'root',
     storage,

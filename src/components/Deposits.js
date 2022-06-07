@@ -7,8 +7,6 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { TextField } from "@mui/material";
 import { Grid } from "@mui/material";
-import {refreshGroups} from "../chart/chart";
-import store from "../store/store.js"
 
 
 function preventDefault(event) {

@@ -1,7 +1,5 @@
 import {CLEAR_TIMER, LOAD_CONFIG, REFRESH, SET_REFRESH_TIMER} from '../actions/types'
 import {mockedChart} from "../chart/mockedChart"
-import {refreshGroups} from "../chart/chart";
-import { Mutex } from 'async-mutex';
 
 const initialState = {
     graphs: [mockedChart(), mockedChart(), mockedChart()],
