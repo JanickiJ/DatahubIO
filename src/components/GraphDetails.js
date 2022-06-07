@@ -40,9 +40,9 @@ export default function GraphDetails({ chart }) {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ fontWeight: "bold" }}>DataSeries</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Color</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Value</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Seria danych</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Kolor</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Wartość</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
