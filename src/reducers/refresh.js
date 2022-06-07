@@ -2,6 +2,8 @@ import
 {CLEAR_TIMER,CLEAR_MUTEX, REFRESH, RESET_APP, SET_REFRESH_TIMER} from '../actions/types'
 import {refreshGroups} from "../chart/chart";
 import { Mutex } from 'async-mutex';
+import store from "../store/store"
+import {loadConfig} from "../actions/config";
 
 const initialState = {
     dataLoading: new Mutex(),
@@ -31,15 +33,16 @@ export default function refreshReducer(state = initialState, action) {
                 clearTimeout(state.refreshTimer)
             }).then(() => {
 
-            }).catch((e)=>{console.log("AAAAAAAAAAAAAAAAAAAA");console.log(e)})
+            }).catch((e)=>{console.log("AAAAAAAAasdAAAAAAAAAAAAA");console.log(e)})
              return state;
         }
         case REFRESH: {
             state.dataLoading.runExclusive(async () => {
-                await refreshGroups(state.graphs)
+                var res = await refreshGroups(store.getState().config.graphs); // load data
+                store.dispatch(loadConfig(res, store.getState().config.name));
             }).then(() => {
                 return state;
-            }).catch((e)=>{console.log("AAAAAAAAAAAAAAAAAAAA");
+            }).catch((e)=>{console.log("AAAAAAAAAAsAAAAAAAAAAA");
             console.log(e)})
         }
         default:

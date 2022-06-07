@@ -2,7 +2,7 @@ import {DataLoader, merge} from "../utils/DataLoader.js"
 import async from 'async';
 import {ChartInfo} from "./chartInfo.js";
 import {AxisSide} from "./axisSide.js";
-import {isIn} from "../utils/TimeInterval.js"
+import {expandToMatch, isIn} from "../utils/TimeInterval.js"
 
 class Chart {
     metadata;
@@ -66,7 +66,7 @@ class Chart {
   }
 
   updateInterval(){
-    this.metadata.timeInterval.expandToMatch(this.viewingTimeInterval);
+      this.metadata.timeInterval = expandToMatch(this.metadata.timeInterval,this.viewingTimeInterval);
   }
 }
 
@@ -82,9 +82,10 @@ class Group {
     }
 
 
-  async refreshCharts() {
-    this.charts = await async.concat(this.charts, refreshChartData);
-  }
+}
+
+export async function refreshCharts(group) {
+    group.charts = await async.concat(group.charts, refreshChartData);
 }
 
 const dataLoader = new DataLoader()
@@ -110,7 +111,7 @@ function createGroups(groupsMetadataList) {
 }
 
 async function refreshGroups(groups) {
-  const tasks = groups.map(group => cb => group.refreshCharts().then(() => cb()))
+  const tasks = groups.map(group => cb => refreshCharts(group).then(() => cb()))
   await async.parallel(tasks);
   return groups
 }

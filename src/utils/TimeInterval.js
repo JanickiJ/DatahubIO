@@ -13,23 +13,25 @@ class TimeInterval {
   }
 
   getEnd() {
-    return ((this.endDate === Infinity) ? new Date() : this.endDate)
+    return ((this.endDate === Infinity || this.endDate == null) ? new Date() : this.endDate)
   }
 
   // isIn(date) {
   //   return this.startDate < date && date < this.endDate;
   // }
 
-  expandToMatch(other){
-    this.startDate = this.startDate < other.startDate ? this.startDate : other.startDate;
-    this.endDate = this.endDate > other.endDate ? this.endDate : other.endDate;
-  }
+}
+
+function expandToMatch(dupa,other){
+  dupa.startDate = dupa.startDate < other.startDate ? dupa.startDate : other.startDate;
+  dupa.endDate = dupa.endDate > other.endDate ? dupa.endDate : other.endDate;
+  return dupa;
 }
 
 function isIn(ti, date) {
-  if (!ti instanceof TimeInterval)
+  if (!(ti instanceof TimeInterval))
     ti = new TimeInterval(ti.startDate, ti.endDate)
   return ti.startDate < date && date < ti.endDate;
 }
 
-export {TimeInterval, isIn}
+export {TimeInterval, isIn, expandToMatch}

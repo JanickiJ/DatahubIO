@@ -36,21 +36,19 @@ function mapDispatchToProps(dispatch, ownProps) {
         checkVPN: checkVPN,
         onFileUpload: async (e) => {
             await readConfigFile(e).then(async (fileContent) => {
-                //await store.getState().refresh.dataLoading.waitForUnlock()
-                //dispatch(clearTimer());
-                //await store.getState().refresh.dataLoading.waitForUnlock()
+                await store.getState().refresh.dataLoading.waitForUnlock()
+                dispatch(clearTimer());
+                await store.getState().refresh.dataLoading.waitForUnlock()
 
                 dispatch(setShowIndicateConfig(false));
                 dispatch(setShowLoadingConfig(true));
                 dispatch(setShowConfigLoadedError(false));
 
                 dispatch(loadConfig(fileContent, e.target.files[0].name));
-                var res = await refreshGroups(fileContent); // load data
-                dispatch(loadConfig(res, e.target.files[0].name));
-                //await store.getState().refresh.dataLoading.waitForUnlock()
-                //dispatch(refresh())
-                //await store.getState().refresh.dataLoading.waitForUnlock()
-                console.log("finished loading")
+                await store.getState().refresh.dataLoading.waitForUnlock()
+                dispatch(refresh())
+                await store.getState().refresh.dataLoading.waitForUnlock()
+                console.log("finished loadding")
 
                 dispatch(setCurrentTab(0));
                 dispatch(setConfigLoaded(true));
@@ -58,16 +56,9 @@ function mapDispatchToProps(dispatch, ownProps) {
                 dispatch(setShowConfigLoaded(true));
                 setTimeout(() => dispatch(setShowConfigLoaded(false)), 10000);
 
-                /*dispatch(setRefreshTimer(setTimeout(async function r() {
-                        console.log("started refresh")
-                        await store.getState().refresh.dataLoading.waitForUnlock()
-                        await dispatch(refresh())
-                        await store.getState().refresh.dataLoading.waitForUnlock()
-                        console.log("finished refresh")
-                        dispatch(setRefreshTimer(setTimeout(r, 10000))); // set timeout for next load
-                    }, 10000)
-                ));*/
-            }).catch(()=>{
+            }).catch((e)=>{
+                console.log("e");
+                console.log(e);
                 dispatch(setShowConfigLoadedError(true));
                 setTimeout(() => dispatch(setShowConfigLoadedError(false)), 10000);
             });

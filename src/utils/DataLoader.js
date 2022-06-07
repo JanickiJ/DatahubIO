@@ -105,7 +105,7 @@ class DataLoader {
     async loadDataTo(chart, offset, dateTo) {
         let res = [];
         while (true) {
-            console.log("load", offset)
+            console.log("loadddd", offset)
             let batch = await load(chart.metadata, offset)
 
             if (batch instanceof Array) {
@@ -127,7 +127,7 @@ class DataLoader {
         if (chart.data.length > 0) {
             dateTo = new Date(chart.data[chart.data.length - 1].timestamp);
         } else {
-            dateTo = chart.metadata.timeInterval.getStart();
+            dateTo = chart.metadata.timeInterval.startDate;
         }
         return await this.loadDataTo(chart, 0, dateTo);
     }
@@ -135,7 +135,7 @@ class DataLoader {
     // latest data is on the left-hand side. To be sure
     async loadEarliestData(chart) {
         if (chart.data.length > 0) {
-            let dateTo = chart.metadata.timeInterval.getStart();
+            let dateTo = chart.metadata.timeInterval.startDate;
             let offset = chart.data.length
             return await this.loadDataTo(chart, offset, dateTo);
         }

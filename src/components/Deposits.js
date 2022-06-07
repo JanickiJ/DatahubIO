@@ -17,10 +17,10 @@ function preventDefault(event) {
 
 export default function Deposits({ chart }) {
   const [startValue, setStartValue] = React.useState(
-    chart.viewingTimeInterval.getStart()
+    chart.viewingTimeInterval.startDate
   );
   const [endValue, setEndValue] = React.useState(
-    chart.viewingTimeInterval.getEnd()
+      ((chart.viewingTimeInterval.endDate === Infinity || chart.viewingTimeInterval.endDate == null) ? new Date() : chart.viewingTimeInterval.endDate)
   );
 
   const handleStartChange = (newValue) => {
