@@ -9,6 +9,7 @@ import {
   SET_CONFIG_LOADED,
   TOGGLE_DATES,
   SET_SHOW_INTERNET_CONNECTION_ERROR,
+  SET_SHOW_DATA_IS_LOADING,
 } from "../actions/types";
 
 export function toggleDateVisibility(datesToggled) {
@@ -78,5 +79,12 @@ export function setShowInternetConnectionError(showInternetConnectionError) {
   return {
     type: SET_SHOW_INTERNET_CONNECTION_ERROR,
     showInternetConnectionError,
+  };
+}
+
+export function setShowLoadingData(showLoadingData) {
+  return {
+    type: SET_SHOW_DATA_IS_LOADING,
+    showLoadingData,
   };
 }

@@ -10,7 +10,8 @@ function Snackbars({
                        showConfigLoadedError,
                        showVPNEnabled,
                        showVPNDisabled,
-                       showInternetConnectionError
+                       showInternetConnectionError,
+                       showLoadingData
                    }) {
     const [keys, setKeys] = useState({});
     const {enqueueSnackbar, closeSnackbar} = useSnackbar();
@@ -37,6 +38,7 @@ function Snackbars({
     SetSnackbar(showConfigLoadedError, "showConfigLoadedError", "error", 'Nieprawidłwy plik konfiguracyjny');
     SetSnackbar(showInternetConnectionError, "showInternetConnectionError", "error", 'Utracono łączność z internetem');
     SetSnackbar(showVPNDisabled, "showVPNDisabled", "error", 'Błąd nawiązania łączności VPN, wyświetlane dane mogą być nieaktualne');
+    SetSnackbar(showLoadingData, "showLoadingData", "info", 'Dane do wykresów ładują się');
     return (
         <React.Fragment/>
     );

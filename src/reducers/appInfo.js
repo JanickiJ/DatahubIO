@@ -8,7 +8,8 @@ import {
   SET_SHOW_INTERNET_CONNECTION_ERROR,
   SET_CURRENT_TAB,
   SET_CONFIG_LOADED,
-  TOGGLE_DATES
+  TOGGLE_DATES,
+  SET_SHOW_DATA_IS_LOADING
 } from "../actions/types";
 
 
@@ -16,6 +17,7 @@ const initialState = {
   currentTab: 0,
   configLoaded: false,
   showIndicateConfig: true,
+  showLoadingData: false,
   showLoadingConfig: false,
   showConfigLoaded: false,
   showVPNEnabled: false,
@@ -86,6 +88,12 @@ export default function appInfoReducer(state = initialState, action) {
       return {
         ...state,
         showInternetConnectionError: action.showInternetConnectionError,
+      };
+    }
+    case SET_SHOW_DATA_IS_LOADING: {
+      return {
+        ...state,
+        showLoadingData: action.showLoadingData,
       };
     }
     default:

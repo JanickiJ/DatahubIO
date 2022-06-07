@@ -4,6 +4,7 @@ import { Mutex } from 'async-mutex';
 import store from "../store/store"
 import {loadConfig} from "../actions/config";
 import {refreshGroups} from "../chart/group";
+import {setShowLoadingData} from "../actions/appInfo";
 
 const initialState = {
     dataLoading: new Mutex(),
@@ -38,8 +39,10 @@ export default function refreshReducer(state = initialState, action) {
         }
         case REFRESH: {
             state.dataLoading.runExclusive(async () => {
+                store.dispatch(setShowLoadingData(true))
                 var res = await refreshGroups(store.getState().config.graphs); // load data
                 store.dispatch(loadConfig(res, store.getState().config.name));
+                store.dispatch(setShowLoadingData(false))
             }).then(() => {
                 return state;
             }).catch((e)=>{console.log("AAAAAAAAAAsAAAAAAAAAAA");
