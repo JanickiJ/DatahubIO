@@ -129,6 +129,8 @@ class DataLoader {
         } else {
             dateTo = chart.metadata.timeInterval.startDate;
         }
+        if(!(dateTo instanceof Date))
+            dateTo = new Date(dateTo)
         return await this.loadDataTo(chart, 0, dateTo);
     }
 
@@ -137,6 +139,8 @@ class DataLoader {
         if (chart.data.length > 0) {
             let dateTo = chart.metadata.timeInterval.startDate;
             let offset = chart.data.length
+            if(!(dateTo instanceof Date))
+                dateTo = new Date(dateTo)
             return await this.loadDataTo(chart, offset, dateTo);
         }
         return []

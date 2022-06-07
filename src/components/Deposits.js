@@ -7,6 +7,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { TextField } from "@mui/material";
 import { Grid } from "@mui/material";
+import store, {persistor} from "../store/store";
+import {refresh} from "../actions/refresh";
 
 
 function preventDefault(event) {
@@ -21,14 +23,24 @@ export default function Deposits({ chart }) {
       ((chart.viewingTimeInterval.endDate === Infinity || chart.viewingTimeInterval.endDate == null) ? new Date() : chart.viewingTimeInterval.endDate)
   );
 
-  const handleStartChange = (newValue) => {
+  const handleStartChange = async (newValue) => {
     chart.viewingTimeInterval.startDate = new Date(newValue);
     setStartValue(newValue);
+    console.log("started on-demand refresh")
+    await store.getState().refresh.dataLoading.waitForUnlock()
+    store.dispatch(refresh())
+    await store.getState().refresh.dataLoading.waitForUnlock()
+    console.log("finished on-demand refresh")
   };
 
-  const handleEndChange = (newValue) => {
+  const handleEndChange = async (newValue) => {
     chart.viewingTimeInterval.endDate = new Date(newValue);
     setEndValue(newValue);
+    console.log("started on-demand refresh")
+    await store.getState().refresh.dataLoading.waitForUnlock()
+    store.dispatch(refresh())
+    await store.getState().refresh.dataLoading.waitForUnlock()
+    console.log("finished on-demand refresh")
   };
 
   return (

@@ -18,11 +18,14 @@ class TimeInterval {
 
   // isIn(date) {
   //   return this.startDate < date && date < this.endDate;
-  // }
-
+  // }aaaa
 }
 
 function expandToMatch(dupa,other){
+  if (!(dupa instanceof TimeInterval))
+    dupa = new TimeInterval(dupa.startDate, dupa.endDate)
+  if (!(other instanceof TimeInterval))
+    other = new TimeInterval(other.startDate, other.endDate)
   dupa.startDate = dupa.startDate < other.startDate ? dupa.startDate : other.startDate;
   dupa.endDate = dupa.endDate > other.endDate ? dupa.endDate : other.endDate;
   return dupa;
