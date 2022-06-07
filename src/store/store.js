@@ -10,7 +10,7 @@ const logger = createLogger({
 });
 const persistConfig = {
     key: 'root',
-    storage,
+    storage
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

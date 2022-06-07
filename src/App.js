@@ -7,7 +7,8 @@ import DashboardContainer from "./containers/DashboardContainer";
 import NotificationContainer from './containers/NotificationContainer'
 
 function App() {
-
+    //jak sie zjebie to odkomentuj i kliknij reload
+    //persistor.purge()
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>

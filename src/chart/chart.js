@@ -108,6 +108,7 @@ function createGroups(groupsMetadataList) {
 async function refreshGroups(groups) {
   const tasks = groups.map(group => cb => group.refreshCharts().then(() => cb()))
   await async.parallel(tasks);
+  return groups
 }
 
 export {Chart, Group, createGroups, refreshGroups, refreshChartData}

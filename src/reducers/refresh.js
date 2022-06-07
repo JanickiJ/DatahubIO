@@ -30,21 +30,15 @@ export default function refreshReducer(state = initialState, action) {
             state.dataLoading.runExclusive(() => {
                 clearTimeout(state.refreshTimer)
             }).then(() => {
-                return {
-                    ...state
-                };
+
             }).catch((e)=>{console.log("AAAAAAAAAAAAAAAAAAAA");console.log(e)})
-             return {
-                 ...state
-             };
+             return state;
         }
         case REFRESH: {
             state.dataLoading.runExclusive(async () => {
                 await refreshGroups(state.graphs)
             }).then(() => {
-                return {
-                    ...state
-                };
+                return state;
             }).catch((e)=>{console.log("AAAAAAAAAAAAAAAAAAAA");
             console.log(e)})
         }

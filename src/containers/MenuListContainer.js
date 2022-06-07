@@ -45,7 +45,8 @@ function mapDispatchToProps(dispatch, ownProps) {
                 dispatch(setShowConfigLoadedError(false));
 
                 dispatch(loadConfig(fileContent, e.target.files[0].name));
-                await refreshGroups(fileContent); // load data
+                var res = await refreshGroups(fileContent); // load data
+                dispatch(loadConfig(res, e.target.files[0].name));
                 //await store.getState().refresh.dataLoading.waitForUnlock()
                 //dispatch(refresh())
                 //await store.getState().refresh.dataLoading.waitForUnlock()
