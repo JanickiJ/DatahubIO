@@ -1,29 +1,21 @@
 import React, { useState } from "react";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import InboxIcon from "@mui/icons-material/Inbox";
-import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import ListItemSecondaryAction from "@mui/material/ListItemSecondaryAction";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import DialogStart from "./DialogStart";
 import VpnLockIcon from "@mui/icons-material/VpnLock";
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 
 export default function MenuList({
   onFileUpload,
   checkVPN,
   datesToggled,
-  toggleDate,
+  toggleDate, resetApp
 }) {
-  console.log(datesToggled);
-
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = onFileUpload;
   const onClickVpnLock = checkVPN;
@@ -36,6 +28,10 @@ export default function MenuList({
   const handleClose = () => {
     setIsOpen(false);
   };
+  const onReset = () =>{
+    resetApp()
+    window.location.reload(true);
+  }
   return (
     <React.Fragment>
       <DialogStart handleCloseCallback={handleClose} defaultOpen={isOpen} />
@@ -77,6 +73,16 @@ export default function MenuList({
           </IconButton>
           <ListItemText primary="Sprawdź VPN" />
         </ListItem>
+          <ListItem sx={{ mt: 2, mb: 2 }} disablePadding>
+              <IconButton
+                  sx={{ pl: 2.5, pr: 3 }}
+                  onClick={onReset}
+                  component="label"
+              >
+                  <RestartAltIcon />
+              </IconButton>
+              <ListItemText primary="Zrestartuj aplikacje" />
+          </ListItem>
       </List>
     </React.Fragment>
   );

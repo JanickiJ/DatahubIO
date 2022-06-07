@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Button from '@mui/material/Button';
 import {SnackbarProvider, useSnackbar} from 'notistack';
 import {checkVPN} from '../utils/DataLoader.js'
-
+import store from "../store/store"
 function Snackbars({
                        showIndicateConfig,
                        showLoadingConfig,
@@ -10,7 +10,8 @@ function Snackbars({
                        showConfigLoadedError,
                        showVPNEnabled,
                        showVPNDisabled,
-                       showInternetConnectionError
+                       showInternetConnectionError,
+                       showLoadingData
                    }) {
     const [keys, setKeys] = useState({});
     const {enqueueSnackbar, closeSnackbar} = useSnackbar();
@@ -36,7 +37,8 @@ function Snackbars({
     SetSnackbar(showVPNEnabled, "showVPNEnabled", "success", 'Łączność VPN została nawiązana');
     SetSnackbar(showConfigLoadedError, "showConfigLoadedError", "error", 'Nieprawidłwy plik konfiguracyjny');
     SetSnackbar(showInternetConnectionError, "showInternetConnectionError", "error", 'Utracono łączność z internetem');
-    SetSnackbar(showVPNDisabled, "showVPNDisabled", "error", 'Błąd nawiązania łączności VPN, wyświetlane dane mogą być nieaktualne\'');
+    SetSnackbar(showVPNDisabled, "showVPNDisabled", "error", 'Błąd nawiązania łączności VPN, wyświetlane dane mogą być nieaktualne');
+    SetSnackbar(showLoadingData, "showLoadingData", "info", 'Dane do wykresów ładują się');
     return (
         <React.Fragment/>
     );
@@ -50,9 +52,8 @@ export default function Notification({setShowInternetConnectionError,...props}) 
     window.addEventListener('online', () => {
         setShowInternetConnectionError(false)
     });
-
     return (
-        <SnackbarProvider autoHideDuration={null} style={{width: 1000, fontSize: 17}} maxSnack={3}>
+        <SnackbarProvider autoHideDuration={null} style={{width: 1000, fontSize: 17}} maxSnack={4}>
             <Snackbars {...props}/>
         </SnackbarProvider>
     );

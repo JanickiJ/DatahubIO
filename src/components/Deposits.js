@@ -7,24 +7,37 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { TextField } from "@mui/material";
 import { Grid } from "@mui/material";
+import store, {persistor} from "../store/store";
+import {refresh} from "../actions/refresh";
+
 
 function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function Deposits({ datesToggled }) {
+export default function Deposits({ chart }) {
   const [startValue, setStartValue] = React.useState(
-    new Date("2022-05-10T21:37:54")
+    chart.viewingTimeInterval.startDate
   );
   const [endValue, setEndValue] = React.useState(
-    new Date("2022-05-11T21:11:54")
+      ((chart.viewingTimeInterval.endDate === Infinity || chart.viewingTimeInterval.endDate == null) ? new Date() : chart.viewingTimeInterval.endDate)
   );
 
-  const handleStartChange = (newValue) => {
+  const handleAccept = async (newValue) => {
+    console.log("started on-demand refresh")
+    await store.getState().refresh.dataLoading.waitForUnlock()
+    store.dispatch(refresh())
+    await store.getState().refresh.dataLoading.waitForUnlock()
+    console.log("finished on-demand refresh")
+  }
+
+  const handleStartChange = async (newValue) => {
+    chart.viewingTimeInterval.startDate = new Date(newValue);
     setStartValue(newValue);
   };
 
-  const handleEndChange = (newValue) => {
+  const handleEndChange = async (newValue) => {
+    chart.viewingTimeInterval.endDate = new Date(newValue);
     setEndValue(newValue);
   };
 
@@ -42,6 +55,7 @@ export default function Deposits({ datesToggled }) {
               label="Date&Time picker"
               value={startValue}
               onChange={handleStartChange}
+              onAccept={handleAccept}
               renderInput={(params) => <TextField {...params} />}
             />
           </Grid>
@@ -55,6 +69,7 @@ export default function Deposits({ datesToggled }) {
               label="Date&Time picker"
               value={endValue}
               onChange={handleEndChange}
+              onAccept={handleAccept}
               renderInput={(params) => <TextField {...params} />}
             />
           </Grid>

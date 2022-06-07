@@ -9,12 +9,15 @@ import {
   SET_CURRENT_TAB,
   SET_CONFIG_LOADED,
   TOGGLE_DATES,
+  SET_SHOW_DATA_IS_LOADING
 } from "../actions/types";
+
 
 const initialState = {
   currentTab: 0,
   configLoaded: false,
   showIndicateConfig: true,
+  showLoadingData: false,
   showLoadingConfig: false,
   showConfigLoaded: false,
   showVPNEnabled: false,
@@ -22,6 +25,7 @@ const initialState = {
   showConfigLoadedError: false,
   showInternetConnectionError: false,
   datesToggled: true,
+  refreshTimer: null
 };
 
 export default function appInfoReducer(state = initialState, action) {
@@ -62,16 +66,16 @@ export default function appInfoReducer(state = initialState, action) {
         showVPNEnabled: action.showVPNEnabled,
       };
     }
-    case SET_SHOW_VPN_DISABLED: {
-      return {
-        ...state,
-        showVPNDisabled: action.showVPNDisabled,
-      };
-    }
     case SET_CONFIG_LOADED: {
       return {
         ...state,
         configLoaded: action.configLoaded,
+      };
+    }
+    case SET_SHOW_VPN_DISABLED: {
+      return {
+        ...state,
+        showVPNDisabled: action.showVPNDisabled,
       };
     }
     case SET_SHOW_CONFIG_LOADED_ERROR: {
@@ -84,6 +88,12 @@ export default function appInfoReducer(state = initialState, action) {
       return {
         ...state,
         showInternetConnectionError: action.showInternetConnectionError,
+      };
+    }
+    case SET_SHOW_DATA_IS_LOADING: {
+      return {
+        ...state,
+        showLoadingData: action.showLoadingData,
       };
     }
     default:

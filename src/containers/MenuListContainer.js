@@ -1,61 +1,65 @@
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import MenuList from "../components/MenuList";
-import { readConfigFile } from "../utils/config";
-import { loadConfig } from "../actions/config";
-import { refreshGroups } from "../chart/chart";
+import {readConfigFile} from "../utils/config";
+import {loadConfig} from "../actions/config";
 import {
-  setShowConfigLoaded,
-  setConfigLoaded,
-  setShowIndicateConfig,
-  setShowLoadingConfig,
-  setCurrentTab,
-  toggleDateVisibility, setShowConfigLoadedError,
+    setShowConfigLoaded,
+    setConfigLoaded,
+    setShowIndicateConfig,
+    setShowLoadingConfig,
+    setCurrentTab,
+    toggleDateVisibility,
+    setShowConfigLoadedError,
 } from "../actions/appInfo";
-import { checkVPN } from "../utils/DataLoader.js";
+import {checkVPN} from "../utils/DataLoader.js";
+import store, {persistor} from "../store/store.js"
+import {clearTimer, refresh, setRefreshTimer} from "../actions/refresh";
 
 function mapStateToProps(state, ownProps) {
-  const datesToggled = state.appInfo.datesToggled;
-  return {
-    datesToggled: datesToggled,
-  };
+    const datesToggled = state.appInfo.datesToggled;
+    return {
+        datesToggled: datesToggled,
+    };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
-  return {
-    toggleDate: (flag) => {
-      dispatch(toggleDateVisibility(!flag));
-    },
-    checkVPN: checkVPN,
-    onFileUpload: async (e) => {
-      await readConfigFile(e).then(async (fileContent)=>{
-        dispatch(setShowIndicateConfig(false));
-        dispatch(setShowLoadingConfig(true));
-        dispatch(setShowConfigLoadedError(false));
-        dispatch(loadConfig(fileContent, e.target.files[0].name));
+    const resetAppProp = () => {
+        dispatch({type: "RESET_STATE"})
+        persistor.purge()
+    }
+    return {
+        toggleDate: (flag) => {
+            dispatch(toggleDateVisibility(!flag));
+        },
+        resetApp: resetAppProp,
+        checkVPN: checkVPN,
+        onFileUpload: async (e) => {
+            await readConfigFile(e).then(async (fileContent) => {
+                await store.getState().refresh.dataLoading.waitForUnlock()
+                dispatch(clearTimer());
+                await store.getState().refresh.dataLoading.waitForUnlock()
 
-        //console.log("started loading")
-        await refreshGroups(fileContent); // load data
-        //console.log("finished loading")
-        await dispatch(loadConfig(fileContent, e.target.files[0].name));
-        dispatch(setCurrentTab(0));
-        dispatch(setConfigLoaded(true));
-        dispatch(setShowLoadingConfig(false));
-        dispatch(setShowConfigLoaded(true));
-        setTimeout(() => dispatch(setShowConfigLoaded(false)), 10000);
+                dispatch(setShowIndicateConfig(false));
+                dispatch(setShowLoadingConfig(true));
+                dispatch(setShowConfigLoadedError(false));
 
-        let refreshTimer = setTimeout(async function refresh() {
-          //                console.log("refreshuje")
-          await refreshGroups(fileContent); // refresh data
-          await dispatch(loadConfig(fileContent, e.target.files[0].name));
-          refreshTimer = setTimeout(refresh, 10000); // set timeout for next load
-        }, 10000);
-      }).catch(() => {
-        dispatch(setShowConfigLoadedError(true))
-        setTimeout(()=>dispatch(setShowConfigLoadedError(false)),10000)
-    });
+                dispatch(loadConfig(fileContent, e.target.files[0].name));
+                await store.getState().refresh.dataLoading.waitForUnlock()
+                dispatch(refresh())
+                await store.getState().refresh.dataLoading.waitForUnlock()
+                console.log("finished loadding")
 
-    },
-  };
+                dispatch(setCurrentTab(0));
+                dispatch(setConfigLoaded(true));
+                dispatch(setShowLoadingConfig(false));
+                dispatch(setShowConfigLoaded(true));
+                setTimeout(() => dispatch(setShowConfigLoaded(false)), 10000);
+            }).catch((e)=>{
+                dispatch(setShowConfigLoadedError(true));
+                setTimeout(() => dispatch(setShowConfigLoadedError(false)), 10000);
+            });
+        }
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuList);

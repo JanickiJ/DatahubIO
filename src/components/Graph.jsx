@@ -51,7 +51,7 @@ function Graph({
                   flexDirection: "column",
                 }}
               >
-                <Deposits />
+                <Deposits chart = {graph}/>
               </Paper>
             </Grid>
           )}

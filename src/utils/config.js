@@ -1,14 +1,11 @@
 import {parseConfig} from "./ConfigParser.js";
-import {createGroups, ChartContainer} from "../chart/chart.js";
-import store from "../store/store.js";
-import {setShowConfigLoadedError} from "../actions/appInfo.js";
+import {createGroups} from "../chart/group.js";
 
 export async function readConfigFile(e) {
   const files = e.target.files;
   const fileString = await loadFile(files[0]);
   const metadata = parseConfig(fileString);
-  const groups = await createGroups(metadata);
-  return groups;
+  return await createGroups(metadata);
 }
 
 async function loadFile(file) {

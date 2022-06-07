@@ -12,8 +12,8 @@ function a11yProps(index) {
   };
 }
 
-export default function CustomTabPanel({ configLoaded, graphs, changeTab }) {
-  const [value, setValue] = React.useState(0);
+export default function CustomTabPanel({ configLoaded, graphs, changeTab, currentTab }) {
+  const [value, setValue] = React.useState(currentTab);
   if (!configLoaded) {
     return <Grid />;
   }

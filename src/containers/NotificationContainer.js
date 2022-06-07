@@ -9,6 +9,7 @@ function mapStateToProps(state, ownProps) {
     const showVPNDisabled = state.appInfo.showVPNDisabled;
     const showConfigLoadedError = state.appInfo.showConfigLoadedError;
     const showInternetConnectionError = state.appInfo.showInternetConnectionError;
+    const showLoadingData = state.appInfo.showLoadingData;
     return {
         showIndicateConfig: showIndicateConfig,
         showLoadingConfig: showLoadingConfig,
@@ -16,7 +17,8 @@ function mapStateToProps(state, ownProps) {
         showVPNEnabled: showVPNEnabled,
         showVPNDisabled: showVPNDisabled,
         showConfigLoadedError: showConfigLoadedError,
-        showInternetConnectionError: showInternetConnectionError
+        showInternetConnectionError: showInternetConnectionError,
+        showLoadingData: showLoadingData
     };
 }
 

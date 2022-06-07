@@ -1,4 +1,4 @@
-import {LOAD_CONFIG} from './types'
+import {LOAD_CONFIG, REFRESH, SET_REFRESH_TIMER, CLEAR_MUTEX} from './types'
 
 export function loadConfig(config, name) {
     return {

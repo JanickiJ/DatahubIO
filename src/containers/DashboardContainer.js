@@ -3,7 +3,6 @@ import Dashboard from "../components/Dashboard";
 
 function mapStateToProps(state, ownProps) {
   const configLoaded = state.appInfo.configLoaded;
-  //console.log(state);
   return {
     configLoaded: configLoaded,
   };

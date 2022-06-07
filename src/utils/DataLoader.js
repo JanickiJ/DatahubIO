@@ -9,7 +9,7 @@ function getNestedData(data, path) {
 }
 
 export async function checkVPN() {
-    await axios.get("https://datahub.ki.agh.edu.pl/pl", {
+    await axios.get("/pl", {
         headers: {},
     }).then((response) => {
         store.dispatch(setShowVPNDisabled(false));
@@ -31,7 +31,7 @@ async function load(metadata, offset = 0) {
     let points = []
 
     // cuts 'proxy prefix' from endpoint
-    let endpoint = metadata.initEndpoint +
+    let endpoint = metadata.initEndpoint.slice("https://datahub.ki.agh.edu.pl".length) +
         "/?format=json&limit=100&offset=" + offset
 
     await axios.get(endpoint, {
@@ -57,13 +57,8 @@ async function load(metadata, offset = 0) {
             if (error.response.status === 403) {
                 store.dispatch(setShowVPNDisabled(true));
             }
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-        } else if (error.request) {
-            console.log(error.request);
         }
-        return [];
+        return error.response.status;
     }).then();
     points.reverse();
     return points;
@@ -110,15 +105,17 @@ class DataLoader {
     async loadDataTo(chart, offset, dateTo) {
         let res = [];
         while (true) {
-            // console.log("load", offset)
+            console.log("load", offset)
             let batch = await load(chart.metadata, offset)
-            offset += batch.length
-            res = merge(res, batch)
 
-            if (batch.length > 0 && new Date(batch[batch.length - 1]['timestamp']) <= dateTo) {
-                break;
-            } else if (batch.length === 0) {
-                await sleep(1000);
+            if (batch instanceof Array) {
+                offset += batch.length
+                res = merge(res, batch)
+                if (batch.length === 0 || new Date(batch[batch.length - 1]['timestamp']) <= dateTo) {
+                    break;
+                }
+            } else {
+                await sleep(3000);
             }
         }
         return res;
@@ -130,16 +127,20 @@ class DataLoader {
         if (chart.data.length > 0) {
             dateTo = new Date(chart.data[chart.data.length - 1].timestamp);
         } else {
-            dateTo = chart.metadata.timeInterval.getStart();
+            dateTo = chart.metadata.timeInterval.startDate;
         }
+        if(!(dateTo instanceof Date))
+            dateTo = new Date(dateTo)
         return await this.loadDataTo(chart, 0, dateTo);
     }
 
     // latest data is on the left-hand side. To be sure
     async loadEarliestData(chart) {
         if (chart.data.length > 0) {
-            let dateTo = chart.metadata.timeInterval.getStart();
+            let dateTo = chart.metadata.timeInterval.startDate;
             let offset = chart.data.length
+            if(!(dateTo instanceof Date))
+                dateTo = new Date(dateTo)
             return await this.loadDataTo(chart, offset, dateTo);
         }
         return []

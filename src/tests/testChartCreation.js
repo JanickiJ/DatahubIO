@@ -1,5 +1,5 @@
 import {parseConfig} from '../utils/ConfigParser.js';
-import * as charts from "../chart/chart.js";
+import {createGroups} from "../chart/group"
 const config = `{
     "groups": [
       {
@@ -585,6 +585,5 @@ const config = `{
   }`;
 
 let metadata = parseConfig(config);
-charts.createGroups(metadata).forEach((result) => {
-    console.log(result)
+createGroups(metadata).forEach((result) => {
 });
