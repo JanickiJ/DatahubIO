@@ -30,11 +30,8 @@ export function updateData(chart,newData) {
             })
         }
     )
-    // console.log(chart.data)
     chart.data = merge(chart.data, newData)
-    // console.log(chart.data)
     chart.data = chart.data.filter(data_point => isIn(chart.metadata.timeInterval, new Date(data_point['timestamp'])))
-    // console.log(chart.data)
 }
 
 export function chartInfoFromMetadata(chart) {

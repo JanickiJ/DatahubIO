@@ -105,7 +105,7 @@ class DataLoader {
     async loadDataTo(chart, offset, dateTo) {
         let res = [];
         while (true) {
-            console.log("loadddd", offset)
+            console.log("load", offset)
             let batch = await load(chart.metadata, offset)
 
             if (batch instanceof Array) {

@@ -23,24 +23,22 @@ export default function Deposits({ chart }) {
       ((chart.viewingTimeInterval.endDate === Infinity || chart.viewingTimeInterval.endDate == null) ? new Date() : chart.viewingTimeInterval.endDate)
   );
 
-  const handleStartChange = async (newValue) => {
-    chart.viewingTimeInterval.startDate = new Date(newValue);
-    setStartValue(newValue);
+  const handleAccept = async (newValue) => {
     console.log("started on-demand refresh")
     await store.getState().refresh.dataLoading.waitForUnlock()
     store.dispatch(refresh())
     await store.getState().refresh.dataLoading.waitForUnlock()
     console.log("finished on-demand refresh")
+  }
+
+  const handleStartChange = async (newValue) => {
+    chart.viewingTimeInterval.startDate = new Date(newValue);
+    setStartValue(newValue);
   };
 
   const handleEndChange = async (newValue) => {
     chart.viewingTimeInterval.endDate = new Date(newValue);
     setEndValue(newValue);
-    console.log("started on-demand refresh")
-    await store.getState().refresh.dataLoading.waitForUnlock()
-    store.dispatch(refresh())
-    await store.getState().refresh.dataLoading.waitForUnlock()
-    console.log("finished on-demand refresh")
   };
 
   return (
@@ -57,6 +55,7 @@ export default function Deposits({ chart }) {
               label="Date&Time picker"
               value={startValue}
               onChange={handleStartChange}
+              onAccept={handleAccept}
               renderInput={(params) => <TextField {...params} />}
             />
           </Grid>
@@ -70,6 +69,7 @@ export default function Deposits({ chart }) {
               label="Date&Time picker"
               value={endValue}
               onChange={handleEndChange}
+              onAccept={handleAccept}
               renderInput={(params) => <TextField {...params} />}
             />
           </Grid>

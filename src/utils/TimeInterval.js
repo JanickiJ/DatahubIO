@@ -21,14 +21,14 @@ class TimeInterval {
   // }aaaa
 }
 
-function expandToMatch(dupa,other){
-  if (!(dupa instanceof TimeInterval))
-    dupa = new TimeInterval(dupa.startDate, dupa.endDate)
+function expandToMatch(ti,other){
+  if (!(ti instanceof TimeInterval))
+    ti = new TimeInterval(ti.startDate, ti.endDate)
   if (!(other instanceof TimeInterval))
     other = new TimeInterval(other.startDate, other.endDate)
-  dupa.startDate = dupa.startDate < other.startDate ? dupa.startDate : other.startDate;
-  dupa.endDate = dupa.endDate > other.endDate ? dupa.endDate : other.endDate;
-  return dupa;
+  ti.startDate = ti.startDate < other.startDate ? ti.startDate : other.startDate;
+  ti.endDate = ti.endDate > other.endDate ? ti.endDate : other.endDate;
+  return ti;
 }
 
 function isIn(ti, date) {

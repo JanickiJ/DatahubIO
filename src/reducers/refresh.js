@@ -34,7 +34,7 @@ export default function refreshReducer(state = initialState, action) {
                 clearTimeout(state.refreshTimer)
             }).then(() => {
 
-            }).catch((e)=>{console.log("AAAAAAAAasdAAAAAAAAAAAAA");console.log(e)})
+            }).catch((e)=>{console.log(e)})
              return state;
         }
         case REFRESH: {
@@ -45,8 +45,7 @@ export default function refreshReducer(state = initialState, action) {
                 store.dispatch(setShowLoadingData(false))
             }).then(() => {
                 return state;
-            }).catch((e)=>{console.log("AAAAAAAAAAsAAAAAAAAAAA");
-            console.log(e)})
+            }).catch((e)=>{console.log(e)})
         }
         default:
             return state

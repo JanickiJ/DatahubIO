@@ -53,7 +53,7 @@ export default function Notification({setShowInternetConnectionError,...props}) 
         setShowInternetConnectionError(false)
     });
     return (
-        <SnackbarProvider autoHideDuration={null} style={{width: 1000, fontSize: 17}} maxSnack={3}>
+        <SnackbarProvider autoHideDuration={null} style={{width: 1000, fontSize: 17}} maxSnack={4}>
             <Snackbars {...props}/>
         </SnackbarProvider>
     );
