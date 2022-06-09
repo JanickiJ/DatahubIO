@@ -1,6 +1,6 @@
 class TimeInterval {
   constructor(startDate, endDate) {
-    if (endDate===null || endDate.valueOf() === "PRESENT".valueOf()) {
+    if (endDate===null || endDate===Infinity || endDate.valueOf() === "PRESENT".valueOf()) {
       this.endDate = Infinity
     } else {
       this.endDate = new Date(endDate)
@@ -16,9 +16,6 @@ class TimeInterval {
     return ((this.endDate === Infinity || this.endDate == null) ? new Date() : this.endDate)
   }
 
-  // isIn(date) {
-  //   return this.startDate < date && date < this.endDate;
-  // }aaaa
 }
 
 function expandToMatch(ti,other){
