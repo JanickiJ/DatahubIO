@@ -51,7 +51,7 @@ export default function MenuList({
           >
             <VisibilityOffIcon />
           </IconButton>
-          <ListItemText primary="Schowaj widget" />
+          <ListItemText primary={datesToggled ? "Pokaż legendę" : "Ukryj legendę"} />
         </ListItem>
         <ListItem sx={{ mt: 2, mb: 2 }} disablePadding>
           <IconButton

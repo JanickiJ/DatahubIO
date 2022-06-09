@@ -24,20 +24,39 @@ export default function CustomTabPanel({ configLoaded, graphs, changeTab, curren
   };
 
   return (
-    <Box sx={{ width: 500 }}>
       <Tabs
         value={value}
         onChange={handleChange}
         indicatorColor="secondary"
         textColor="inherit"
-        variant="fullWidth"
+        variant="scrollable"
         aria-label="full width tabs example"
       >
         {graphs.map((group, i) => (
           <Tab label={group.name} value={i} {...a11yProps(i)} />
         ))}
+        {graphs.map((group, i) => (
+          <Tab label={group.name} value={i} {...a11yProps(i)} />
+        ))}
+        {graphs.map((group, i) => (
+          <Tab label={group.name} value={i} {...a11yProps(i)} />
+        ))}
+        {graphs.map((group, i) => (
+          <Tab label={group.name} value={i} {...a11yProps(i)} />
+        ))}
+        {graphs.map((group, i) => (
+          <Tab label={group.name} value={i} {...a11yProps(i)} />
+        ))}
+        {graphs.map((group, i) => (
+          <Tab label={group.name} value={i} {...a11yProps(i)} />
+        ))}
+        {graphs.map((group, i) => (
+          <Tab label={group.name} value={i} {...a11yProps(i)} />
+        ))}
+        {graphs.map((group, i) => (
+          <Tab label={group.name} value={i} {...a11yProps(i)} />
+        ))}
       </Tabs>
-    </Box>
   );
 }
 

@@ -10,6 +10,7 @@ function mapStateToProps(state, ownProps) {
   return {
     configLoaded: configLoaded,
     graphs: graphs[currentTab].charts,
+    name: graphs[currentTab].description,
     currentTab: currentTab,
     datesToggled: datesToggled,
   };

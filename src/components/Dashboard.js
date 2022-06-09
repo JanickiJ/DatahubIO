@@ -105,7 +105,7 @@ function DashboardContent(configLoaded) {
               justifyContent="flex-start"
               alignItems="center"
             >
-              <Grid item>
+              <Grid item xs={1}>
                 <IconButton
                   edge="start"
                   color="inherit"
@@ -119,7 +119,7 @@ function DashboardContent(configLoaded) {
                   <MenuIcon />
                 </IconButton>
               </Grid>
-              <Grid item>
+              <Grid item xs={1}>
                 <Typography
                   component="h1"
                   variant="h6"
@@ -130,7 +130,7 @@ function DashboardContent(configLoaded) {
                   DatahubIO
                 </Typography>
               </Grid>
-              <Grid item>
+              <Grid item xs={10}>
                 <CustomTabPanelContainer></CustomTabPanelContainer>
               </Grid>
             </Grid>

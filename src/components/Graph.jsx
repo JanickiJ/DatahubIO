@@ -5,10 +5,12 @@ import { Container, Alert, AlertTitle, Grid, Paper } from "@mui/material";
 import Start from "../components/Start";
 import GraphDetails from "./GraphDetails.js";
 import Deposits from "./Deposits.js";
+import Typography from "@mui/material/Typography";
 
 function Graph({
   currentTab,
   graphs,
+  name,
   sortIntoGrid,
   configLoaded,
   datesToggled,
@@ -16,9 +18,22 @@ function Graph({
   if (!configLoaded) {
     return <Start />;
   }
+  console.log(graphs);
 
   return (
-    <Container maxWidth="false" sx={{ mt: 4, mb: 4 }}>
+    
+    <Container maxWidth="false" sx={{ mt: 1, mb: 1 }}>
+       <Grid container spacing={1} sx={{ m: 1 }}>
+          <Grid item xs={12} md={8} lg={12}>
+          <Paper sx={{m:5,p:5} }>
+            <Typography variant="h3" align="center" gutterBottom component="div">
+              {name}
+            </Typography>
+        </Paper>
+          </Grid>
+      
+        </Grid>
+
       {graphs.map((graph) => (
         <Grid container spacing={3} sx={{ m: 1 }}>
           <Grid item xs={12} md={8} lg={datesToggled ? 12 : 9}>
