@@ -1,0 +1,417 @@
+{
+  "groups": [
+    {
+      "name": "Wykresy A",
+      "description": "Przykładowa grupa",
+      "charts": [
+        {
+          "description": "Opis / tytuł",
+          "startDate": "2022-05-22T20:49:03+01:00",
+          "endDate": "PRESENT",
+          "chartType": "lineGraph",
+          "title": "graph of temperature versus time",
+          "xLabel": "date",
+          "yLeftLabel": "label 1",
+          "yRightLabel": "label 2",
+          "xUnit": "date time",
+          "yUnit": "date time",
+          "leftAxis": {
+            "unit": "µg/m3",
+            "decimals": "2"
+          },
+          "rightAxis": {
+            "unit": "kPa",
+            "decimals": "2"
+          },
+          "timestampsPath": [
+            "timestamp"
+          ],
+          "dataDetails": {
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+            "data": [
+              {
+                "name": "temperature set",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ],
+                "axis": "left"
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ],
+                "axis": "right"
+              }
+            ]
+          },
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wykresy B",
+      "description": "Przykładowa grupa",
+      "charts": [
+        {
+          "description": "Opis / tytuł",
+          "startDate": "2022-05-22T20:49:03+01:00",
+          "endDate": "PRESENT",
+          "chartType": "lineGraph",
+          "title": "graph of temperature versus time",
+          "xLabel": "date",
+          "yLeftLabel": "label 1",
+          "yRightLabel": "label 2",
+          "xUnit": "date time",
+          "yUnit": "date time",
+          "leftAxis": {
+            "unit": "µg/m3",
+            "decimals": "2"
+          },
+          "rightAxis": {
+            "unit": "kPa",
+            "decimals": "2"
+          },
+          "timestampsPath": [
+            "timestamp"
+          ],
+          "dataDetails": {
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+            "data": [
+              {
+                "name": "temperature set",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ],
+                "axis": "left"
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ],
+                "axis": "right"
+              }
+            ]
+          },
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wykresy C",
+      "description": "Przykładowa grupa",
+      "charts": [
+        {
+          "description": "Opis / tytuł",
+          "startDate": "2022-05-22T20:49:03+01:00",
+          "endDate": "PRESENT",
+          "chartType": "lineGraph",
+          "title": "graph of temperature versus time",
+          "xLabel": "date",
+          "yLeftLabel": "label 1",
+          "yRightLabel": "label 2",
+          "xUnit": "date time",
+          "yUnit": "date time",
+          "leftAxis": {
+            "unit": "µg/m3",
+            "decimals": "2"
+          },
+          "rightAxis": {
+            "unit": "kPa",
+            "decimals": "2"
+          },
+          "timestampsPath": [
+            "timestamp"
+          ],
+          "dataDetails": {
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+            "data": [
+              {
+                "name": "temperature set",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ],
+                "axis": "left"
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ],
+                "axis": "right"
+              }
+            ]
+          },
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nowe wykresy",
+      "description": "Przykładowa grupa",
+      "charts": [
+        {
+          "description": "Opis / tytuł",
+          "startDate": "2022-05-22T20:49:03+01:00",
+          "endDate": "PRESENT",
+          "chartType": "lineGraph",
+          "title": "graph of temperature versus time",
+          "xLabel": "date",
+          "yLeftLabel": "label 1",
+          "yRightLabel": "label 2",
+          "xUnit": "date time",
+          "yUnit": "date time",
+          "leftAxis": {
+            "unit": "µg/m3",
+            "decimals": "2"
+          },
+          "rightAxis": {
+            "unit": "kPa",
+            "decimals": "2"
+          },
+          "timestampsPath": [
+            "timestamp"
+          ],
+          "dataDetails": {
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+            "data": [
+              {
+                "name": "temperature set",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ],
+                "axis": "left"
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ],
+                "axis": "right"
+              }
+            ]
+          },
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kolejna grupa",
+      "description": "Przykładowa grupa",
+      "charts": [
+        {
+          "description": "Opis / tytuł",
+          "startDate": "2022-05-22T20:49:03+01:00",
+          "endDate": "PRESENT",
+          "chartType": "lineGraph",
+          "title": "graph of temperature versus time",
+          "xLabel": "date",
+          "yLeftLabel": "label 1",
+          "yRightLabel": "label 2",
+          "xUnit": "date time",
+          "yUnit": "date time",
+          "leftAxis": {
+            "unit": "µg/m3",
+            "decimals": "2"
+          },
+          "rightAxis": {
+            "unit": "kPa",
+            "decimals": "2"
+          },
+          "timestampsPath": [
+            "timestamp"
+          ],
+          "dataDetails": {
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+            "data": [
+              {
+                "name": "temperature set",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ],
+                "axis": "left"
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ],
+                "axis": "right"
+              }
+            ]
+          },
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wykresy Omega",
+      "description": "Ostatnia przykładowa grupa",
+      "charts": [
+        {
+          "description": "Opis / tytuł",
+          "startDate": "2022-05-22T20:49:03+01:00",
+          "endDate": "PRESENT",
+          "chartType": "lineGraph",
+          "title": "graph of temperature versus time",
+          "xLabel": "date",
+          "yLeftLabel": "label 1",
+          "yRightLabel": "label 2",
+          "xUnit": "date time",
+          "yUnit": "date time",
+          "leftAxis": {
+            "unit": "µg/m3",
+            "decimals": "2"
+          },
+          "rightAxis": {
+            "unit": "kPa",
+            "decimals": "2"
+          },
+          "timestampsPath": [
+            "timestamp"
+          ],
+          "dataDetails": {
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+            "data": [
+              {
+                "name": "temperature set",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ],
+                "axis": "left"
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ],
+                "axis": "right"
+              }
+            ]
+          },
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        },
+        {
+          "startDate": "2022-01-09T20:49:03+01:00",
+          "endDate": "PRESENT",
+          "chartType": "lineGraph",
+          "title": "graph of temperature versus time",
+          "xLabel": "date",
+          "yLeftLabel": "label 1",
+          "yRightLabel": "label 2",
+          "xUnit": "date time",
+          "yUnit": "date time",
+          "leftAxis": {
+            "unit": "µg/m3",
+            "decimals": "2"
+          },
+          "rightAxis": {
+            "unit": "kPa",
+            "decimals": "2"
+          },
+          "timestampsPath": [
+            "timestamp"
+          ],
+          "dataDetails": {
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/65/data",
+            "data": [
+              {
+                "name": "temperature set",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ],
+                "axis": "left"
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ],
+                "axis": "right"
+              }
+            ]
+          },
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

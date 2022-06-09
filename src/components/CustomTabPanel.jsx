@@ -35,27 +35,6 @@ export default function CustomTabPanel({ configLoaded, graphs, changeTab, curren
         {graphs.map((group, i) => (
           <Tab label={group.name} value={i} {...a11yProps(i)} />
         ))}
-        {graphs.map((group, i) => (
-          <Tab label={group.name} value={i} {...a11yProps(i)} />
-        ))}
-        {graphs.map((group, i) => (
-          <Tab label={group.name} value={i} {...a11yProps(i)} />
-        ))}
-        {graphs.map((group, i) => (
-          <Tab label={group.name} value={i} {...a11yProps(i)} />
-        ))}
-        {graphs.map((group, i) => (
-          <Tab label={group.name} value={i} {...a11yProps(i)} />
-        ))}
-        {graphs.map((group, i) => (
-          <Tab label={group.name} value={i} {...a11yProps(i)} />
-        ))}
-        {graphs.map((group, i) => (
-          <Tab label={group.name} value={i} {...a11yProps(i)} />
-        ))}
-        {graphs.map((group, i) => (
-          <Tab label={group.name} value={i} {...a11yProps(i)} />
-        ))}
       </Tabs>
   );
 }

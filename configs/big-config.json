@@ -1,0 +1,606 @@
+  {
+  "groups": [
+    {
+      "name": "group 1",
+      "description": "example group 1",
+      "charts": [
+        {
+         "description": "Description",
+
+          "startDate": "2022-05-24T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLeftLabel": "label 1",
+
+          "yRightLabel": "label 2",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "leftAxis": {
+            "unit": "µg/m3",
+            "decimals": "2"
+          },
+
+          "rightAxis": {
+            "unit": "kPa",
+            "decimals": "2"
+          },
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        },
+        {
+         "description": "Description",
+
+          "startDate": "2022-01-01T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLabel": "temperature from AGH/L09",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/65/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        },
+        {
+         "description": "Description",
+
+          "startDate": "2022-05-28T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLabel": "temperature from AGH/L09",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        },
+        {
+         "description": "Description",
+
+          "startDate": "2022-05-28T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLabel": "temperature from AGH/L09",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        },
+        {
+         "description": "Description",
+
+          "startDate": "2022-05-28T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLabel": "temperature from AGH/L09",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        },
+        {
+         "description": "Description",
+
+          "startDate": "2022-05-28T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLabel": "temperature from AGH/L09",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        },
+        {
+         "description": "Description",
+
+          "startDate": "2022-05-28T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLabel": "temperature from AGH/L09",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        },
+        {
+         "description": "Description",
+
+          "startDate": "2022-05-28T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLabel": "temperature from AGH/L09",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        },
+        {
+         "description": "Description",
+
+          "startDate": "2022-05-28T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLabel": "temperature from AGH/L09",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "group 2",
+      "description": "example group number 2",
+      "charts": [
+        {
+          "startDate": "2022-05-26T20:49:03+01:00",
+
+          "endDate": "PRESENT",
+
+          "chartType": "lineGraph",
+
+          "title": "graph of temperature versus time",
+
+          "xLabel": "date",
+
+          "yLabel": "temperature from AGH/L09",
+
+          "xUnit": "date time",
+
+          "yUnit": "date time",
+
+          "timestampsPath": [
+            "timestamp"
+          ],
+
+          "dataDetails": {
+
+            "endpoint": "https://datahub.ki.agh.edu.pl/pl/datasets/env-mon-agh/endpoints/55/data",
+
+            "data": [
+              {
+                "name": "temperature set",
+
+                "from": [
+                  "data",
+                  "heater",
+                  "tempSet"
+                ]
+              },
+              {
+                "name": "temperature read",
+                "from": [
+                  "data",
+                  "heater",
+                  "tempRead"
+                ]
+              }
+            ]
+          },
+
+
+          "extraData": [
+            {
+              "key": "value"
+            },
+            {
+              "mean temperature": "16"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
