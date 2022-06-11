@@ -25,13 +25,13 @@ function Graph({
     <Container maxWidth="false" sx={{ mt: 1, mb: 1 }}>
        <Grid container spacing={1} sx={{ m: 1 }}>
           <Grid item xs={12} md={8} lg={12}>
-          <Paper sx={{m:5,p:5} }>
-            <Typography variant="h3" align="center" gutterBottom component="div">
+          <Paper sx={{m:2,p:2} }>
+            <Typography variant="h4" align="center" gutterBottom component="div">
               {name}
             </Typography>
         </Paper>
           </Grid>
-      
+
         </Grid>
 
       {graphs.map((graph) => (
