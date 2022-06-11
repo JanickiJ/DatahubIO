@@ -11,8 +11,6 @@ class Metadata {
     yLeftLabel;
     yRightLabel;
     title;
-    xUnit;
-    yUnit;
     leftAxis;
     rightAxis;
     offset;
@@ -27,8 +25,6 @@ class Metadata {
         this.yLeftLabel = yLeftLabel;
         this.yRightLabel = yRightLabel;
         this.title = title;
-        this.xUnit = xUnit;
-        this.yUnit = yUnit;
         this.offset = offset
 
 
