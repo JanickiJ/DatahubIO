@@ -1,8 +1,6 @@
 package-lock.json
 .idea/
 node_modules
-/dist/linux-unpacked/
-/dist/builder-debug.yml
-/dist/builder-effective-config.yaml
+/dist/*
 /build/
 yarn.lock
