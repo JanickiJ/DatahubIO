@@ -23,17 +23,6 @@ function Graph({
   return (
     
     <Container maxWidth="false" sx={{ mt: 1, mb: 1 }}>
-       <Grid container spacing={1} sx={{ m: 1 }}>
-          <Grid item xs={12} md={8} lg={12}>
-          <Paper sx={{m:2,p:2} }>
-            <Typography variant="h4" align="center" gutterBottom component="div">
-              {name}
-            </Typography>
-        </Paper>
-          </Grid>
-
-        </Grid>
-
       {graphs.map((graph) => (
         <Grid container spacing={3} sx={{ m: 1 }}>
           <Grid item xs={12} md={8} lg={datesToggled ? 12 : 9}>
