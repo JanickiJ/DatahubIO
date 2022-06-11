@@ -44,15 +44,19 @@ function mapDispatchToProps(dispatch, ownProps) {
                 dispatch(setShowConfigLoadedError(false));
 
                 dispatch(loadConfig(fileContent, e.target.files[0].name));
+
+
+                dispatch(setShowLoadingConfig(false));
+                dispatch(setShowConfigLoaded(true));
+
                 await store.getState().refresh.dataLoading.waitForUnlock()
                 dispatch(refresh())
                 await store.getState().refresh.dataLoading.waitForUnlock()
                 console.log("finished loadding")
 
-                dispatch(setCurrentTab(0));
                 dispatch(setConfigLoaded(true));
-                dispatch(setShowLoadingConfig(false));
-                dispatch(setShowConfigLoaded(true));
+                dispatch(setCurrentTab(0));
+
                 setTimeout(() => dispatch(setShowConfigLoaded(false)), 10000);
             }).catch((e)=>{
                 dispatch(setShowConfigLoadedError(true));

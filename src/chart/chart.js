@@ -2,7 +2,7 @@ import {DataLoader, merge} from "../utils/DataLoader.js"
 import async from 'async';
 import {ChartInfo} from "./chartInfo.js";
 import {AxisSide} from "./axisSide.js";
-import {expandToMatch, isIn} from "../utils/TimeInterval.js"
+import {expandToMatch, isIn, TimeInterval} from "../utils/TimeInterval.js"
 
 export class Chart {
     metadata;
@@ -12,7 +12,7 @@ export class Chart {
 
     constructor(metadata) {
         this.metadata = metadata;
-        this.viewingTimeInterval = metadata.timeInterval;
+        this.viewingTimeInterval = new TimeInterval(metadata.timeInterval.startDate, metadata.timeInterval.endDate);
         this.data = [];
         chartInfoFromMetadata(this);
     }
@@ -58,7 +58,6 @@ export function randomColor() {
 export function updateInterval(chart){
     chart.metadata.timeInterval = expandToMatch(chart.metadata.timeInterval,chart.viewingTimeInterval);
 }
-
 
 export async function refreshCharts(group) {
     group.charts = await async.concat(group.charts, refreshChartData);
