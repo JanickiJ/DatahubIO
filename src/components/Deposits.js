@@ -16,12 +16,15 @@ function preventDefault(event) {
 }
 
 export default function Deposits({ chart }) {
-  const [startValue, setStartValue] = React.useState(
-    chart.viewingTimeInterval.startDate
-  );
-  const [endValue, setEndValue] = React.useState(
-      ((chart.viewingTimeInterval.endDate === Infinity || chart.viewingTimeInterval.endDate == null) ? new Date() : chart.viewingTimeInterval.endDate)
-  );
+  console.log(chart);
+  const startValue = chart.viewingTimeInterval.startDate;
+  const endValue = ((chart.viewingTimeInterval.endDate === Infinity || chart.viewingTimeInterval.endDate == null) ? new Date() : chart.viewingTimeInterval.endDate);
+  // const [startValue, setStartValue] = React.useState(
+  //   chart.viewingTimeInterval.startDate
+  // );
+  // const [endValue, setEndValue] = React.useState(
+  //     ((chart.viewingTimeInterval.endDate === Infinity || chart.viewingTimeInterval.endDate == null) ? new Date() : chart.viewingTimeInterval.endDate)
+  // );
 
   const handleAccept = async (newValue) => {
     console.log("started on-demand refresh")
@@ -33,12 +36,14 @@ export default function Deposits({ chart }) {
 
   const handleStartChange = async (newValue) => {
     chart.viewingTimeInterval.startDate = new Date(newValue);
-    setStartValue(newValue);
+    //setStartValue(newValue);
+    startValue = newValue;
   };
 
   const handleEndChange = async (newValue) => {
     chart.viewingTimeInterval.endDate = new Date(newValue);
-    setEndValue(newValue);
+    //setEndValue(newValue);
+    endValue = newValue;
   };
 
   return (
