@@ -34,7 +34,11 @@ Documentation in Polish language is available in `docs` folder - [PDF](https://g
 ## Developers
 
 Bartłomiej Zapart - Backend Developer
+
 Dawid Pastuszka - Backend Developer, Scrum Master
+
 Jakub Janicki - Frontend Developer, DevOps
+
 Maciej Kazalski - Frontend Developer
+
 Michał Stencel - Backend Developer
