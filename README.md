@@ -26,6 +26,11 @@ npm run-script electron:package:linux|windows|mac
 
 ![](visuals.gif)
 
+## Documentation
+
+Documentation in Polish language is available in `docs` folder - [PDF](https://github.com/JanickiJ/DatahubIO/blob/master/docs/DatahubIO.pdf)
+
+
 ## Developers
 
 Bartłomiej Zapart - Backend Developer
