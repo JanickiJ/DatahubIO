@@ -1,16 +1,19 @@
 # DatahubIO
 
-## Opis
+Desktop application developed with purpose of visualising data from AGH cloud - DataHub
 
-Aplikacja wizualna do łączenia się z serwisem datahub.
+## Technologies
 
-## Uruchamianie
+Project is created with:
+* JS
+* Redux
+* Node.js
+* Electron
 
-Aby ptworzyć aplikację należy uruchomić jeden z plików z folderu `exec` (odpowiedni dla systemu na którym aplikacja jest odpalana).
+## Setup
 
-## Budowa własnoręczna
-
-Aby zbudować aplikację należy zainstalować npm oraz yarn i uruchomić następujące komendy:
+To install application you need to run one of the files in `exec` folder, depending on operating system.
+You can also deploy application by running the following commands:
 
 `
 npm i
@@ -19,16 +22,14 @@ npm i
 npm run-script electron:package:linux|windows|mac
 `
 
-## Technologie
+## Visuals
 
-React
-Node.js
-Electron
+![](visuals.gif)
 
-## Autorzy
+## Developers
 
-Bartłomiej Zapart
-Dawid Pastuszka
-Jakub Janicki
-Maciej Kazalski
-Michał Stencel
+Bartłomiej Zapart - Backend Developer
+Dawid Pastuszka - Backend Developer, Scrum Master
+Jakub Janicki - Frontend Developer, DevOps
+Maciej Kazalski - Frontend Developer
+Michał Stencel - Backend Developer
